@@ -8,9 +8,9 @@ const Posting = ({closePosting}) => {
     useEffect(() => {
         setPost(
             {   user_no: 1,
-                status: false,
+                status: "",
                 post_title: "",
-                model_name: "",
+                model_name: "SmartPhone",
                 grade: "",
                 price: "",
                 post_content: ""
@@ -23,6 +23,7 @@ const Posting = ({closePosting}) => {
     const submit = () => {
         
         console.log(post);
+        PostingService.createPost();
         closePosting();
     }
 
@@ -49,7 +50,6 @@ const Posting = ({closePosting}) => {
         <div>
             <form>
             제목 <input onChange={changeTitleHandler}/> <br />
-            모델명 <input onChange={changeModelNameHandler} /> <br />
             등급 <input onChange={changeGradeHandler}/> <br />
             가격 <input onChange={changePriceHandler} /> <br />
             내용 <input onChange={changePostContentHandler} /> <br />

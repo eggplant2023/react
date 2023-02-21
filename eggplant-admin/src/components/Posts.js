@@ -18,7 +18,7 @@ const Posts = () => {
     return( 
         <div>
             <h1>Posts</h1>
-            <GetPostList />
+            <GetPostList /> 
             <button onClick={openPosting}>모달 띄우기</button>
             {   postingState && 
                 <Posting closePosting = {closePosting}/>

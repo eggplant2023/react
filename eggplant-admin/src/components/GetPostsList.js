@@ -19,7 +19,7 @@ const GetPostList = () => {
     
     useEffect(() => {
         //console.log(PostingService.getPosts);
-        setPostList(test);
+        setPostList(PostingService.getPosts);
     },[]);
 
     return (
