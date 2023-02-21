@@ -23,7 +23,10 @@ const Posting = ({closePosting}) => {
     const submit = () => {
         
         console.log(post);
-        PostingService.createPost();
+        console.log("post => "+ JSON.stringify(post));
+        PostingService.createBoard(post).then(res => {
+            post.props.history.push('/post');
+        });
         closePosting();
     }
 
