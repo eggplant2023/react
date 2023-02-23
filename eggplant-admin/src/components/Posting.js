@@ -8,7 +8,7 @@ const Posting = ({closePosting}) => {
     useEffect(() => {
         setPost(
             {   user_no: 1,
-                status: "",
+                status: "S",
                 post_title: "",
                 model_name: "SmartPhone",
                 grade: "",

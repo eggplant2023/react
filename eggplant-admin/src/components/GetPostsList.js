@@ -18,11 +18,10 @@ const GetPostList = () => {
     
     
     useEffect(() => {
-        //console.log(PostingService.getPosts);
-        setPostList(test)
-        
-        console.log(postList);
-        PostingService.getPosts().then((res)=> console.log(res.data))
+
+        PostingService.getPosts().then((res)=> 
+            setPostList(res.data)
+        )
         
     },[]);
 
@@ -39,8 +38,8 @@ const GetPostList = () => {
                     {   postList &&
                         postList.map(
                             (postList) =>
-                            <tr key = {postList.post_num}>
-                                <td>{postList.post_num}</td>
+                            <tr key = {postList.post_no}>
+                                <td>{postList.post_no}</td>
                                 <td>{postList.post_title}</td>
                             </tr>
                         )
