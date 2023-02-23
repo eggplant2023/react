@@ -10,7 +10,7 @@ const Posting = ({closePosting}) => {
             {   user_no: 1,
                 status: "S",
                 post_title: "",
-                model_name: "SmartPhone",
+                model_name: "iphone XE",
                 grade: "",
                 price: 0,
                 post_content: ""
@@ -25,7 +25,7 @@ const Posting = ({closePosting}) => {
         console.log(post);
         console.log("post => "+ JSON.stringify(post));
         PostingService.createPost(post).then(res => {
-            console.log(res);
+            this.props.history.push("/posts");
         });
     }
 
