@@ -22,7 +22,7 @@ const GetPostList = () => {
         setPostList(test)
         
         console.log(postList);
-        PostingService.getPosts().then((res)=> console.log(res))
+        PostingService.getPosts().then((res)=> console.log(res.data))
         
     },[]);
 

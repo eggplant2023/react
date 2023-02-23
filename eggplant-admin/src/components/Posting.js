@@ -12,7 +12,7 @@ const Posting = ({closePosting}) => {
                 post_title: "",
                 model_name: "SmartPhone",
                 grade: "",
-                price: "",
+                price: 0,
                 post_content: ""
             }
         );
@@ -24,10 +24,9 @@ const Posting = ({closePosting}) => {
         
         console.log(post);
         console.log("post => "+ JSON.stringify(post));
-        PostingService.createBoard(post).then(res => {
-            post.props.history.push('/post');
+        PostingService.createPost(post).then(res => {
+            console.log(res);
         });
-        closePosting();
     }
 
     const changeTitleHandler = (event) => {
@@ -54,7 +53,7 @@ const Posting = ({closePosting}) => {
             <form>
             제목 <input onChange={changeTitleHandler}/> <br />
             등급 <input onChange={changeGradeHandler}/> <br />
-            가격 <input onChange={changePriceHandler} /> <br />
+            가격 <input type="number" onChange={changePriceHandler} /> <br />
             내용 <input onChange={changePostContentHandler} /> <br />
             <button onClick={submit}>등록</button>
             <button onClick={closePosting}>닫기</button>
