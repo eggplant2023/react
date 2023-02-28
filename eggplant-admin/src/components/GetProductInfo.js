@@ -3,7 +3,7 @@ import React, {Componet, useState, useEffect} from 'react';
 
 
 
-const GetProductInfo = (modelList, categoryList) => {
+const GetProductInfo = (modelList) => {
 
 
 

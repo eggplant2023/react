@@ -1,7 +1,7 @@
 import React, {Componet,useState,useEffect} from 'react';
 import PostingService from '../services/PostingService';
 
-const CreateModel = (modelList, categoryList) =>{
+const CreateModel = (modelList) =>{
     const [model,setModel] = useState({});
 
     useEffect(() => {
@@ -21,16 +21,20 @@ const CreateModel = (modelList, categoryList) =>{
     }
 
     const submit = () =>{
-        if(modelList.indexOf(model) < 0){
+        
             PostingService.createModel(model).then((res) =>{
                 this.props.history.push("/productinfo");
             })
-        }
+        
     }
 
     return(
         <div>
-            
+            <form>
+            카테고리 <input onChange={changeCategoryHandler}/> <br />
+            모델명 <input onChange={changeModelNameHandler}/> <br />
+            <button onClick={submit}>등록</button>
+            </form>
         </div>
     );
 }
