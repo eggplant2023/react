@@ -3,16 +3,17 @@ import GetProductInfo from "./GetProductInfo";
 import PostingService from '../services/PostingService';
 import CreateModel from "./CreateModel";
 import CreateCategory from "./CreateCategory";
+import GetPostList from './GetPostsList';
 
 const ProductInfo = () => {
-
-    const [categoryList,setCategoryList] = useState([]);
-    const [modelList,setModelList] = useState([]);
-
-    const [modelformStatus, setModelformStatus] = useState(false);
+    
+    const [modelformStatus, setModelformStatus] = useState(false)
     const [categoryformStatus, setCategoryformStatus] = useState(false)
 
+    var categoryList;
+    var modelList;
 
+    
     const modelformOpen = () => {
         setModelformStatus(true);
     }
@@ -21,20 +22,11 @@ const ProductInfo = () => {
         setCategoryformStatus(true);
     }
     
-    useEffect(() => {
-        PostingService.getCategory().then((res) => 
-            setCategoryList(res.data)
-        )
-        PostingService.getModel().then((res)=> 
-            setModelList(res.data)
-        )
-    },[]);
-
+    
     return (
     <div>
         <h1>ProductInfo</h1>
-        <GetProductInfo modelList = {modelList}/> 
-
+        <GetProductInfo modelList = {modelList} categoryList = {categoryList}/>
         <button onClick={categortformOpen}>카테고리 등록</button>
     {   categoryformStatus && 
         <CreateCategory categoryList = {categoryList}/>

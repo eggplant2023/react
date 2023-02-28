@@ -1,10 +1,25 @@
 import React, {Componet, useState, useEffect} from 'react';
+import PostingService from '../services/PostingService';
 
 
 
+const GetProductInfo = (modelList, categoryList) => {
 
-const GetProductInfo = (modelList) => {
+    const [models,setModels] = useState([]);
+    const [categories,setCategories] = useState([]);
 
+    useEffect(()=>{
+        PostingService.getCategory().then((res) => {
+                modelList = res.data
+                setCategories(modelList);
+            }
+        )
+        PostingService.getModel().then((res) => {
+                categoryList = res.data;
+                setModels(categoryList);
+            }
+        )
+    },[])
 
 
     return (
@@ -17,12 +32,12 @@ const GetProductInfo = (modelList) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {   modelList &&
-                        modelList.map(
-                            (modelList) =>
-                            <tr key = {modelList.model_name}>
-                                <td>{modelList.category_name}</td>
-                                <td>{modelList.model_name}</td>
+                    {   
+                        models.map(
+                            (model) =>
+                            <tr key = {model.model_name}>
+                                <td>{model.category_name}</td>
+                                <td>{model.model_name}</td>
                             </tr>
                         )
                     }

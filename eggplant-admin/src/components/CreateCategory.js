@@ -17,11 +17,11 @@ const CreateCategory = (categoryList) =>{
     }
 
     const submit = () =>{
-        if(categoryList.indexOf(category) < 0){
+        
             PostingService.createCategory(category).then((res) =>{
                 this.props.history.push("/productinfo");
             })
-        }
+        
     }
     
     return (

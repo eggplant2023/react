@@ -24,7 +24,7 @@ class PostingService {
     }
 
     createModel(model){
-        return axios.gpostet("http://localhost:8080/api/model",model)
+        return axios.post("http://localhost:8080/api/model",model)
     }
 }
 

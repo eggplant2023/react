@@ -1,7 +1,6 @@
 import GetPostList from "./GetPostsList";
 import Posting from "./Posting";
 import React, {useState} from "react";
-import PostingService from "../services/PostingService";
 
 const Posts = () => {
     
