@@ -3,20 +3,20 @@ import PostingService from '../services/PostingService';
 
 
 
-const GetProductInfo = (modelList, categoryList) => {
+const GetProductInfo = ({setModelList, setCategoryList}) => {
 
     const [models,setModels] = useState([]);
     const [categories,setCategories] = useState([]);
 
     useEffect(()=>{
         PostingService.getCategory().then((res) => {
-                modelList = res.data
-                setCategories(modelList);
+                setCategories(res.data)
+                setCategoryList(categories) 
             }
         )
         PostingService.getModel().then((res) => {
-                categoryList = res.data;
-                setModels(categoryList);
+                setModels(res.data)
+                setModelList(models)
             }
         )
     },[])

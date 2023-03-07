@@ -1,30 +1,30 @@
 import axios from 'axios';
 
-const POST_API_BASE_URL = "http://localhost:8080/api/post";
+const API_BASE_URL = "http://localhost:8080/api";
 
 class PostingService {
     getPosts() {
-        return axios.get(POST_API_BASE_URL);
+        return axios.get(API_BASE_URL+"/post");
     }
 
     createPost(post) {
-        return axios.post(POST_API_BASE_URL, post);
+        return axios.post(API_BASE_URL+"/post", post);
     }
 
     getCategory(){
-        return axios.get("http://localhost:8080/api/category")
+        return axios.get(API_BASE_URL+"/category")
     }
 
     getModel(){
-        return axios.get("http://localhost:8080/api/model")
+        return axios.get(API_BASE_URL+"/model")
     }
 
     createCategory(category){
-        return axios.post("http://localhost:8080/api/category",category)
+        return axios.post(API_BASE_URL+"/category",category)
     }
 
     createModel(model){
-        return axios.post("http://localhost:8080/api/model",model)
+        return axios.post(API_BASE_URL+"/model",model)
     }
 }
 

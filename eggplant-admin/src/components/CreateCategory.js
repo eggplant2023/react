@@ -1,9 +1,8 @@
 import React, {Componet,useState,useEffect} from 'react';
 import PostingService from '../services/PostingService';
 
-const CreateCategory = (categoryList) =>{
+const CreateCategory = () =>{
     const [category,setCategory] = useState({});
-
     useEffect(() => {
         setCategory(
             {   category_name : "",

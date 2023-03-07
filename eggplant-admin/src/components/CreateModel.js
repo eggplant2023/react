@@ -1,7 +1,7 @@
 import React, {Componet,useState,useEffect} from 'react';
 import PostingService from '../services/PostingService';
 
-const CreateModel = (modelList) =>{
+const CreateModel = () =>{
     const [model,setModel] = useState({});
 
     useEffect(() => {

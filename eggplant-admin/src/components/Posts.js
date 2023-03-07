@@ -5,7 +5,6 @@ import React, {useState} from "react";
 const Posts = () => {
     
     const [postingState, setPostingState] = useState(false);
-
     const openPosting = () => {
         setPostingState(true)
     }

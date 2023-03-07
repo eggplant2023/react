@@ -9,10 +9,6 @@ const ProductInfo = () => {
     
     const [modelformStatus, setModelformStatus] = useState(false)
     const [categoryformStatus, setCategoryformStatus] = useState(false)
-
-    var categoryList;
-    var modelList;
-
     
     const modelformOpen = () => {
         setModelformStatus(true);
@@ -23,18 +19,19 @@ const ProductInfo = () => {
     }
     
     
+
     return (
     <div>
         <h1>ProductInfo</h1>
-        <GetProductInfo modelList = {modelList} categoryList = {categoryList}/>
+        <GetProductInfo />
         <button onClick={categortformOpen}>카테고리 등록</button>
     {   categoryformStatus && 
-        <CreateCategory categoryList = {categoryList}/>
+        <CreateCategory />
     }
 
     <button onClick={modelformOpen}>모델 등록</button>
     {   modelformStatus && 
-        <CreateModel modelList = {modelList}/>
+        <CreateModel />
     }
     </div>
     );
