@@ -1,0 +1,22 @@
+@import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: F5F5F5;
+}
+
+.menu_container{
+    background-color: white;
+    border: 1px;
+    border-color: F5F5F5;
+    left:0px;
+}
+
+.menu_table{
+    border-bottom: 1px;
+    border-color: F5F5F5;
+}
+

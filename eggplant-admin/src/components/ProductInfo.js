@@ -9,7 +9,20 @@ const ProductInfo = () => {
     
     const [modelformStatus, setModelformStatus] = useState(false)
     const [categoryformStatus, setCategoryformStatus] = useState(false)
+    const [CategoryList, setCategoryList] = useState([]);
+    const [ModelList, setModelList] = useState([]);
     
+    useEffect(()=>{
+        PostingService.getCategory().then((res) => {
+
+            }
+        )
+        PostingService.getModel().then((res) => {
+
+            }
+        )
+    },[])
+
     const modelformOpen = () => {
         setModelformStatus(true);
     }

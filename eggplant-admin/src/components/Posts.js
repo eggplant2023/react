@@ -1,5 +1,5 @@
 import GetPostList from "./GetPostsList";
-import Posting from "./Posting";
+import CreatePost from "./CreatePost";
 import React, {useState} from "react";
 
 const Posts = () => {
@@ -19,7 +19,7 @@ const Posts = () => {
             <GetPostList /> 
             <button onClick={openPosting}>모달 띄우기</button>
             {   postingState && 
-                <Posting closePosting = {closePosting}/>
+                <CreatePost closePosting = {closePosting}/>
             }
         </div>
     )

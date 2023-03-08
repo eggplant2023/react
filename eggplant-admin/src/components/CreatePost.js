@@ -2,7 +2,7 @@ import styles from '../css/Posting.css';
 import React, {Componet,useState,useEffect} from 'react';
 import PostingService from '../services/PostingService';
 
-const Posting = ({closePosting}) => {
+const CreatePost = ({closePosting}) => {
     const [post,setPost] = useState({});
     
     useEffect(() => {
@@ -62,4 +62,4 @@ const Posting = ({closePosting}) => {
     );
 }
 
-export default Posting;
+export default CreatePost;
