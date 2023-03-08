@@ -15,12 +15,16 @@ const Posts = () => {
 
     return( 
         <div>
+            <div className="post_header">
+            </div>
+        <div className="post_container">
             <h1>Posts</h1>
             <GetPostList /> 
             <button onClick={openPosting}>모달 띄우기</button>
             {   postingState && 
                 <CreatePost closePosting = {closePosting}/>
             }
+        </div>
         </div>
     )
 };

@@ -7,12 +7,16 @@ import ProduInfo from "./components/ProductInfo";
 import Posts from "./components/Posts";
 import Confirm from "./components/Confirm";
 import Menu from "./components/Menu"; 
+import styles from "./css/styles.css"
 
 
-const App = () => (
-  <>
+const App = () => {
+  
+
+  return(
+  <div className="app">
   <Menu />
-  <Routes>
+  <Routes className="pages">
     <Route path="/" element={<Home />} />
     <Route path="/users" element={<Users />} />
     <Route path="/posts" element={<Posts />} />
@@ -21,7 +25,9 @@ const App = () => (
     <Route path="/question" element={<Questions />} />
     <Route path="/productinfo" element={<ProduInfo />} />
   </Routes>
-  </>
-)
+
+  </div>
+  )
+}
 
 export default App;
