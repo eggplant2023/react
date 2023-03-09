@@ -12,11 +12,13 @@ const GetProductInfo = ({setModelList, setCategoryList}) => {
         PostingService.getCategory().then((res) => {
                 setCategories(res.data)
                 setCategoryList(categories) 
+                console.log(res.data)
             }
         )
         PostingService.getModel().then((res) => {
                 setModels(res.data)
                 setModelList(models)
+                console.log(res.data)
             }
         )
     },[])
@@ -33,13 +35,13 @@ const GetProductInfo = ({setModelList, setCategoryList}) => {
                 </thead>
                 <tbody>
                     {   
-                        models.map(
+                        /*models.map(
                             (model) =>
                             <tr key = {model.model_name}>
                                 <td>{model.category_name}</td>
                                 <td>{model.model_name}</td>
                             </tr>
-                        )
+                        )*/
                     }
                 </tbody>
                 </table>  

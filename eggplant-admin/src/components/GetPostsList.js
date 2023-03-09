@@ -8,9 +8,10 @@ const GetPostList = () => {
     
     
     useEffect(() => {
-
-        PostingService.getPosts().then((res)=> 
-            setPostList(res.data)
+        PostingService.getPosts().then((res)=> {
+                setPostList(res.data)
+                console.log(res.data)
+            }
         )
         
     },[]);
@@ -26,13 +27,13 @@ const GetPostList = () => {
                 </thead>
                 <tbody>
                     {   
-                        postList.map(
+                        /*postList.map(
                             (post) =>
                             <tr key = {post.post_no}>
                                 <td>{post.post_no}</td>
                                 <td>{post.post_title}</td>
                             </tr>
-                        )
+                        )*/
                     }
                 </tbody>
                 </table>  
