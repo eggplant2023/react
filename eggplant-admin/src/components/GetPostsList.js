@@ -6,14 +6,24 @@ const GetPostList = () => {
 
     const [postList,setPostList] = useState([]);
     
-    
+    const test = [
+        {
+            post_no: 1,
+            post_title : "테스트게시글1"
+        },
+        {
+            post_no: 2,
+            post_title : "테스트게시글2"
+        }
+    ]
+
     useEffect(() => {
-        PostingService.getPosts().then((res)=> {
-                setPostList(res.data)
-                console.log(res.data)
-            }
-        )
-        
+        // PostingService.getPosts().then((res)=> {
+        //         setPostList(res.data)
+        //         console.log(res.data)
+        //     }
+        // )
+            setPostList(test)
     },[]);
 
     return (
