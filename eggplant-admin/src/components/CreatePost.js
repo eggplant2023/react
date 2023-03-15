@@ -23,9 +23,7 @@ const CreatePost = ({closePosting}) => {
         
         console.log(post);
         console.log("post => "+ JSON.stringify(post));
-        PostingService.createPost(post).then(res => {
-            this.props.history.push("/posts");
-        });
+        PostingService.createPost(post)
     }
 
     const changeTitleHandler = (event) => {

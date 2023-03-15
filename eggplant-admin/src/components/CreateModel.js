@@ -22,9 +22,7 @@ const CreateModel = () =>{
 
     const submit = () =>{
         
-            PostingService.createModel(model).then((res) =>{
-                this.props.history.push("/productinfo");
-            })
+            PostingService.createModel(model)
         
     }
 

@@ -17,9 +17,7 @@ const CreateCategory = () =>{
 
     const submit = () =>{
         
-            PostingService.createCategory(category).then((res) =>{
-                this.props.history.push("/productinfo");
-            })
+            PostingService.createCategory(category)
         
     }
     
