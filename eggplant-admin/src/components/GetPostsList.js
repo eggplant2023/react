@@ -36,7 +36,16 @@ const GetPostList = () => {
                         )
                     }
                 </tbody>
-                </table>  
+                </table>
+                  <form>
+                    <select>
+                        <option>--정렬--</option>
+                        <option>오름차순</option>
+                        <option>내림차순</option>
+                    </select>
+                    <input type = "text"></input>
+                    <button>검색</button>
+                  </form>
         </div>
     );
 }
