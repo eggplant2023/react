@@ -4,6 +4,7 @@ import PostingService from '../services/PostingService';
 const CreatePost = ({closePosting}) => {
     const [post,setPost] = useState({});
     const [attachment,setAttachment] = useState();
+    const [images,setImages] = useState();
     const formData = new FormData();
 
     useEffect(() => {
@@ -20,13 +21,19 @@ const CreatePost = ({closePosting}) => {
     },[])
 
     const submit = () => {
+
         formData.append('post', new Blob([JSON.stringify(post)], {
             type: "application/json"
         }))
-
-        for(var value of formData.values()) {
-            console.log(value);
+        if(images){
+            const imageLists = images
+        
+            for (let i = 0; i < imageLists.length; i++) {
+                formData.append("files",imageLists[i])
+          }
         }
+        console.log(formData.get("files"))
+        console.log(formData.get("post"))
         PostingService.createPost(formData)
     }
 
@@ -51,17 +58,14 @@ const CreatePost = ({closePosting}) => {
     }
 
     const onFileChange = (event) => {
+        setImages(event.target.files)
         const imageLists = event.target.files
         let imageUrlLists = []
         
         for (let i = 0; i < imageLists.length; i++) {
-            const currentImageUrl = URL.createObjectURL(imageLists[i]);
-            formData.append("files",imageLists[i]);
+            const currentImageUrl = URL.createObjectURL(imageLists[i])
             imageUrlLists.push(currentImageUrl);
           }
-        for(var value of formData.values()) {
-            console.log(value);
-        }
         setAttachment(imageUrlLists)
       };
 
