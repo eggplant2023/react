@@ -8,7 +8,11 @@ class PostingService {
     }
 
     createPost(post) {
-        return axios.post(API_BASE_URL+"/post", post);
+        return axios.post(API_BASE_URL+"/post", post,{
+            headers: {
+                "Contest-Type": "multipart/form-data"
+            }
+        });
     }
 
     getCategory(){
