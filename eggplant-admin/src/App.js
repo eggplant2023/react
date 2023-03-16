@@ -1,11 +1,11 @@
 import {Route, Routes, Navigate } from 'react-router-dom';
-import Home from "./components/Home";
-import Users from "./components/Users";
-import Reports from"./components/Reports";
-import Questions from "./components/Questions";
-import ProduInfo from "./components/ProductInfo";
-import Posts from "./components/Posts";
-import Confirm from "./components/Confirm";
+import Home from "./routes/Home";
+import Users from "./routes/Users";
+import Reports from"./routes/Reports";
+import Questions from "./routes/Questions";
+import ProduInfo from "./routes/ProductInfo";
+import Posts from "./routes/Posts";
+import Confirm from "./routes/Confirm";
 import Menu from "./components/Menu"; 
 import styles from "./css/styles.css"
 

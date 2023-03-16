@@ -2,7 +2,6 @@ import React, {Componet, useState, useEffect} from 'react';
 import PostingService from '../services/PostingService';
 
 
-
 const GetProductInfo = () => {
 
     const [models,setModels] = React.useState([]);
@@ -20,7 +19,6 @@ const GetProductInfo = () => {
             }
         )
     },[])
-
 
     return (
         <div>

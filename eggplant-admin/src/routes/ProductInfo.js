@@ -1,9 +1,9 @@
 import React, {Componet, useState, useEffect} from 'react';
-import GetProductInfo from "./GetProductInfo";
+import GetProductInfo from "../components/GetProductInfo";
 import PostingService from '../services/PostingService';
-import CreateModel from "./CreateModel";
-import CreateCategory from "./CreateCategory";
-import GetPostList from './GetPostsList';
+import CreateModel from "../components/CreateModel";
+import CreateCategory from "../components/CreateCategory";
+import GetPostList from '../components/GetPostsList';
 
 const ProductInfo = () => {
     

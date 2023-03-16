@@ -18,11 +18,11 @@ const GetPostList = () => {
     ]
 
     useEffect(() => {
-        // PostingService.getPosts().then((res)=> {
-        //         setPostList(res.data)
-        //         console.log(res.data)
-        //     }
-        // )
+         PostingService.getPosts().then((res)=> {
+                 setPostList(res.data)
+                 console.log(res.data)
+             }
+         )
             setPostList(test)
     },[]);
 
