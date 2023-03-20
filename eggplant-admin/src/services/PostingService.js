@@ -30,6 +30,14 @@ class PostingService {
     createModel(model){
         return axios.post(API_BASE_URL+"/model",model)
     }
+
+    createChat(chat){
+        return axios.post(API_BASE_URL+"/api/",chat)
+    }
+
+    getChatroom(){
+        return axios.post(API_BASE_URL+"/api/1/1")
+    }
 }
 
 export default new PostingService();
