@@ -7,6 +7,7 @@ import ProduInfo from "./routes/ProductInfo";
 import Posts from "./routes/Posts";
 import Confirm from "./routes/Confirm";
 import Menu from "./components/Menu"; 
+import Chatroom from './routes/Chatroom';
 import styles from "./css/styles.css"
 
 
@@ -24,6 +25,7 @@ const App = () => {
     <Route path="/confirm" element={<Confirm />} />
     <Route path="/question" element={<Questions />} />
     <Route path="/productinfo" element={<ProduInfo />} />
+    <Route path="/chatroom" element={<Chatroom />} />
   </Routes>
 
   </div>

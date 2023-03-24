@@ -155,3 +155,16 @@ td{
 .pagination{
     margin-top: 10px;
 }
+
+.chatroom_container {
+    margin: 20px;
+    background-color: white;
+    border-radius: 1%;
+    padding: 10px;
+    width: 100%;
+}
+
+.Chatrooms{
+    margin: auto;
+    border-collapse: collapse;
+}
