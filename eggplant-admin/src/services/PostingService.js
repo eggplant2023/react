@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = "http://52.78.130.186/:8080/api";
+const API_BASE_URL = "http://localhost:8080/api";
 
 class PostingService {
     getPosts() {
@@ -31,12 +31,8 @@ class PostingService {
         return axios.post(API_BASE_URL+"/model",model)
     }
 
-    createChat(chat){
-        return axios.post(API_BASE_URL+"/api/",chat)
-    }
-
     getChatroom(){
-        return axios.post(API_BASE_URL+"/api/1/1")
+        return axios.post(API_BASE_URL+"/chattingroom/1/1")
     }
 }
 

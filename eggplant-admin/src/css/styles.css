@@ -15,6 +15,8 @@ body {
     background-color: #E3E3E3;
 }
 
+
+
 hr {
     height: 1px;
     border: 0;
@@ -34,8 +36,20 @@ button {
     padding-left: 10px;
     padding-right: 10px;
     color:white;
+    display: inline;
+    
 }
 
+th{
+    padding: 0px 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #E3E3E3;
+}
+
+td{
+   padding: 3px 0px;
+   border-bottom: 2px solid #E3E3E3;
+}
 .menu_container {
     background-color: white;
     border: 1px;
@@ -100,3 +114,44 @@ button {
     border-radius: 10px;
 }
 
+.filebox label {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #CD67DE;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.body{
+    text-align: center;
+}
+
+.Postings{
+    margin: auto;
+    border-collapse: collapse;
+}
+
+#postList_form{
+    margin: 15px 0px;
+}
+
+.header button{
+    float:right;
+}
+
+.pagination{
+    margin-top: 10px;
+}

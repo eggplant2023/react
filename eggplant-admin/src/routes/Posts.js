@@ -1,27 +1,35 @@
 import GetPostList from "../components/GetPostsList";
 import CreatePost from "../components/CreatePost";
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const Posts = () => {
-    
+
     const [postingState, setPostingState] = useState(false);
     const openPosting = () => {
         setPostingState(true)
     }
 
-    const closePosting = () =>{
+    const closePosting = () => {
         setPostingState(false)
     }
 
-    return( 
+    return (
         <div className="post_container">
-            <h1>게시글 관리</h1>
+            <div className="header">
+            <button id="post_create" onClick={openPosting}>게시글 등록</button>   
+                <h1>게시글 관리</h1>
+                  
+                
+            </div>
             <hr />
-            <GetPostList /> 
-            <button onClick={openPosting}>게시글 등록</button>
-            {   postingState && 
-                <CreatePost closePosting = {closePosting}/>
-            }
+            <div className="body">
+
+                <GetPostList />
+                
+                {postingState &&
+                    <CreatePost closePosting={closePosting} />
+                }
+            </div>
         </div>
     )
 };

@@ -77,8 +77,12 @@ const CreatePost = ({ closePosting }) => {
             <div className="modal_body">
                 <form>
                     <h1>게시글 등록</h1>
-                    <hr/>
-                    제목 <input onChange={changeTitleHandler} /> <br />
+                    <hr />
+                    제목 <input type="text" onChange={changeTitleHandler} /> <br />
+                    등급 <input type="text" onChange={changeGradeHandler} /> <br />
+                    가격 <input type="number" onChange={changePriceHandler} /> <br />
+                    내용 <input type="textarea" className="conent_box" onChange={changePostContentHandler} /> <br />
+                    <br />
                     {
                         attachment &&
                         attachment.map(
@@ -89,16 +93,17 @@ const CreatePost = ({ closePosting }) => {
                                     height: 100
                                 }} />
                         )
-                    }<br />
-                    등급 <input onChange={changeGradeHandler} /> <br />
-                    가격 <input type="number" onChange={changePriceHandler} /> <br />
-                    내용 <input onChange={changePostContentHandler} /> <br />
-                    <input id="attach-file"
-                        type="file"
-                        accept="image/*"
-                        onChange={onFileChange}
-                        multiple="multiple"
-                    />
+                    }
+                    <br/><br/>
+                    <div class="filebox">
+                        <label for="attach-file">파일찾기</label>
+                        <input id="attach-file"
+                            type="file"
+                            accept="image/*"
+                            onChange={onFileChange}
+                            multiple="multiple"
+                        />
+                    </div>
                     <br />
                     <button onClick={submit}>등록</button>
                     <button onClick={closePosting}>닫기</button>
