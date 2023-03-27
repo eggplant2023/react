@@ -1,4 +1,4 @@
-import React, { Componet, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
 const CreatePost = ({ closePosting }) => {
@@ -6,6 +6,9 @@ const CreatePost = ({ closePosting }) => {
     const [attachment, setAttachment] = useState();
     const [images, setImages] = useState([]);
     const formData = new FormData();
+
+    const [categories, setCategories] = useState([]);
+    const [models, setModels] = useState([]);
 
     useEffect(() => {
         setPost(
@@ -19,6 +22,9 @@ const CreatePost = ({ closePosting }) => {
                 post_content: "",
             }
         )
+
+        PostingService.getCategory().then((res) => { setCategories(res.data) })
+        PostingService.getModel().then((res) => (setModels(res.data)))
     }, [])
 
     const submit = () => {
@@ -76,13 +82,41 @@ const CreatePost = ({ closePosting }) => {
         <div className="modal">
             <div className="modal_body">
                 <form>
-                    <h1>게시글 등록</h1>
+                    <div className="modal-header">
+                        <h1>게시글 등록</h1>
+                    </div>
                     <hr />
-                    제목 <input type="text" onChange={changeTitleHandler} /> <br />
-                    등급 <input type="text" onChange={changeGradeHandler} /> <br />
-                    가격 <input type="number" onChange={changePriceHandler} /> <br />
-                    내용 <input type="textarea" className="conent_box" onChange={changePostContentHandler} /> <br />
-                    <br />
+                    <table className="form_table">
+                        <tr>
+                            <td colspan="2">제목 <input type="text" className="form_title" onChange={changeTitleHandler} /></td>
+                        </tr>
+                        <tr>
+                            <td>카테고리 <input className="form_category" type="text" list="category"></input><datalist id="category">
+                                {
+                                    categories.map((category) =>
+                                        <option>{category.category_name}</option>
+                                    )
+                                }
+                            </datalist>
+                            </td>
+                            <td>
+                                모델명 <input type="text" className="form_model" list="model"></input><datalist id="model">
+                                    {
+                                        models.map((model) =>
+                                            <option>{model.model_name}</option>
+                                        )
+                                    }
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>등급 <input type="text" classNmae="form_grade" onChange={changeGradeHandler} /> <br />
+                            </td>
+                            <td>가격 <input type="number" classNmae="form_price" onChange={changePriceHandler} /> <br />
+                            </td>
+                        </tr>
+                    </table>
+
                     {
                         attachment &&
                         attachment.map(
@@ -94,7 +128,12 @@ const CreatePost = ({ closePosting }) => {
                                 }} />
                         )
                     }
-                    <br/><br/>
+                    <br />
+                    내용 
+                    <br/>
+                    <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
+
+                    <br /><br />
                     <div class="filebox">
                         <label for="attach-file">파일찾기</label>
                         <input id="attach-file"
@@ -103,10 +142,10 @@ const CreatePost = ({ closePosting }) => {
                             onChange={onFileChange}
                             multiple="multiple"
                         />
+                        <button onClick={submit}>등록</button>
+                        <button onClick={closePosting}>닫기</button>
                     </div>
-                    <br />
-                    <button onClick={submit}>등록</button>
-                    <button onClick={closePosting}>닫기</button>
+
                 </form>
             </div>
         </div>

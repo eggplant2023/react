@@ -32,7 +32,11 @@ class PostingService {
     }
 
     getChatroom(){
-        return axios.post(API_BASE_URL+"/chattingroom/post/3/2")
+        return axios.get(API_BASE_URL+"/chattingroom")
+    }
+
+    getSinglePost(num){
+        return axios.get(API_BASE_URL+"/post/"+num)
     }
 }
 

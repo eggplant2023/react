@@ -1,12 +1,24 @@
 import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import Pagination from './Pagination';
+import UpdatePost from './UpdatePost';
 
 const GetPostList = () => {
 
     const [postList, setPostList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
+    const [postnum,setPostnum] = useState(0);
+    const [postState, setPostState] = useState(false);
+
+
+    const openPost = () => {
+        setPostState(true)
+    }
+
+    const closePost = () => {
+        setPostState(false)
+    }
 
 
     useEffect(() => {
@@ -21,11 +33,19 @@ const GetPostList = () => {
 
     const indexOfLast = currentPage * postsPerPage;
     const indexOfFirst = indexOfLast - postsPerPage;
+
     const currentPosts = (posts) => {
         let currentPosts = 0;
         currentPosts = posts.slice(indexOfFirst, indexOfLast);
         return currentPosts;
     };
+
+    const onClickManage = (num) => {
+        if(!postState){
+            openPost()
+            setPostnum(num)
+        }
+    }
 
     return (
         <div>
@@ -61,9 +81,9 @@ const GetPostList = () => {
                                     <td>{post.post_title}</td>
                                     <td>{post.user_no}</td>
                                     <td>{post.updateat}</td>
-                                    <td className="manage_button"><button>관리</button></td>
+                                    <td className="manage_button"><button onClick={()=>onClickManage(post.post_no)}>관리</button></td>
                                 </tr>
-                        )
+                        ) 
                     }
                 </tbody>
             </table>
@@ -72,6 +92,9 @@ const GetPostList = () => {
                 totalPosts={postList.length}
                 paginate={setCurrentPage}
             />
+            {  postState &&
+                    <UpdatePost post_num={postnum} closePost={closePost}/>
+            }
         </div>
     );
 }

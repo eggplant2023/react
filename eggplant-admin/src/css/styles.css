@@ -103,14 +103,14 @@ td{
     padding-bottom: 7px;
     transform: translate(-50%, -50%);
     z-index: 1011;
-
+    height:550px;
 }
 
 .modal_body{
     padding:20px;
     background-color: white;
     width: 800px;
-    height: 500px;
+    height: 100%;
     border-radius: 10px;
 }
 
@@ -168,3 +168,34 @@ td{
     margin: auto;
     border-collapse: collapse;
 }
+
+.productInfo_container{
+    margin: 20px;
+    background-color: white;
+    border-radius: 1%;
+    padding: 10px;
+    width: 100%;
+}
+.Models{
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.form_table td{
+    width:300px;
+    text-align: right;
+    border:0px;
+}
+
+.form_content{
+    width:500px;
+    height:200px;
+}
+
+.form_title{
+    width:447px;
+}
+
+ .content_area{
+   position: relative;
+ }
