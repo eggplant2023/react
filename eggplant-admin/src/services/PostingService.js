@@ -38,6 +38,10 @@ class PostingService {
     getSinglePost(num){
         return axios.get(API_BASE_URL+"/post/"+num)
     }
+
+    getCategoriesModel(category){
+        return axios.get(API_BASE_URL+"/"+category+"/model")
+    }
 }
 
 export default new PostingService();

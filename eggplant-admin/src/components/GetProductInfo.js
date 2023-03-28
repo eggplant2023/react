@@ -4,8 +4,9 @@ import PostingService from '../services/PostingService';
 
 const GetProductInfo = () => {
 
-    const [models,setModels] = React.useState([]);
-    const [categories,setCategories] = React.useState([]);
+    const [models,setModels] = useState([]);
+    const [categories,setCategories] = useState([]);
+
 
     useEffect(()=>{
         PostingService.getCategory().then((res) => {

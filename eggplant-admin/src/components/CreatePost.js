@@ -10,6 +10,7 @@ const CreatePost = ({ closePosting }) => {
     const [categories, setCategories] = useState([]);
     const [models, setModels] = useState([]);
 
+    const [category, setCategory] = useState("");
     useEffect(() => {
         setPost(
             {
@@ -24,8 +25,12 @@ const CreatePost = ({ closePosting }) => {
         )
 
         PostingService.getCategory().then((res) => { setCategories(res.data) })
-        PostingService.getModel().then((res) => (setModels(res.data)))
+        setModels({model_name:"먼저 카테고리를 선택하세요"})
     }, [])
+
+    useEffect(()=>{
+        PostingService.getCategoriesModel(category).then((res) => (setModels(res.data)))
+    },[category])
 
     const submit = () => {
         console.log(images)
@@ -64,6 +69,14 @@ const CreatePost = ({ closePosting }) => {
         setPost({ ...post, post_content: event.target.value })
     }
 
+    const changeCategoryHandler = (event) => {
+        for(c in categories){
+            if (event.target.value == c.category_name){
+                setCategory(event.target.value)
+            }
+        }
+    }
+
     const onFileChange = (event) => {
         const imageLists = event.target.files
         setImages(imageLists)
@@ -91,7 +104,7 @@ const CreatePost = ({ closePosting }) => {
                             <td colspan="2">제목 <input type="text" className="form_title" onChange={changeTitleHandler} /></td>
                         </tr>
                         <tr>
-                            <td>카테고리 <input className="form_category" type="text" list="category"></input><datalist id="category">
+                            <td>카테고리 <input className="form_category" type="text" list="category" onChange={changeCategoryHandler}></input><datalist id="category">
                                 {
                                     categories.map((category) =>
                                         <option>{category.category_name}</option>
@@ -100,7 +113,7 @@ const CreatePost = ({ closePosting }) => {
                             </datalist>
                             </td>
                             <td>
-                                모델명 <input type="text" className="form_model" list="model"></input><datalist id="model">
+                                모델명 <input type="text" className="form_model" list="model" onChange={changeModelNameHandler}></input><datalist id="model">
                                     {
                                         models.map((model) =>
                                             <option>{model.model_name}</option>
@@ -129,9 +142,11 @@ const CreatePost = ({ closePosting }) => {
                         )
                     }
                     <br />
+                    <div className="content_area">
                     내용 
                     <br/>
                     <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
+                    </div>
 
                     <br /><br />
                     <div class="filebox">
@@ -143,7 +158,7 @@ const CreatePost = ({ closePosting }) => {
                             multiple="multiple"
                         />
                         <button onClick={submit}>등록</button>
-                        <button onClick={closePosting}>닫기</button>
+                        <button onClick={()=>closePosting}>닫기</button>
                     </div>
 
                 </form>

@@ -81,6 +81,8 @@ const UpdatePost = ({post_num, closePost}) => {
                             (attachment) =>
                                 <img src={attachment} style={{
                                     backgroundImage: attachment,
+                                    width: 100,
+                                    height: 100
                                 }} />
                         )
                     }
