@@ -42,6 +42,10 @@ class PostingService {
     getCategoriesModel(category){
         return axios.get(API_BASE_URL+"/"+category+"/model")
     }
+
+    getChatList(roomnumber){
+        return axios.get(API_BASE_URL+"/chatting/"+roomnumber)
+    }
 }
 
 export default new PostingService();

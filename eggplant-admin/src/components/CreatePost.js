@@ -163,7 +163,7 @@ const CreatePost = ({ closePosting }) => {
                             multiple="multiple"
                         />
                         <button onClick={submit}>등록</button>
-                        <button onClick={()=>closePosting}>닫기</button>
+                        <button onClick={closePosting}>닫기</button>
                     </div>
 
                 </form>

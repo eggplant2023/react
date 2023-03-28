@@ -13,8 +13,6 @@ const UpdatePost = ({post_num, close}) => {
 
     }, [])
 
-
-
     return (
         <div className="modal">
             <div className="modal_body">
@@ -66,7 +64,7 @@ const UpdatePost = ({post_num, close}) => {
                     <div class="filebox">
                         &nbsp;
                         <button>비공개</button> &nbsp;
-                        <button onClick={()=>close}>닫기</button>
+                        <button onClick={close}>닫기</button>
                     </div>
 
                 </form>
