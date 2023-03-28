@@ -29,7 +29,9 @@ const CreatePost = ({ closePosting }) => {
     }, [])
 
     useEffect(()=>{
-        PostingService.getCategoriesModel(category).then((res) => (setModels(res.data)))
+        if(category != ""){
+            PostingService.getCategoriesModel(category).then((res) => (setModels(res.data)))
+        }
     },[category])
 
     const submit = () => {
@@ -70,7 +72,7 @@ const CreatePost = ({ closePosting }) => {
     }
 
     const changeCategoryHandler = (event) => {
-        for(c in categories){
+        for(let c in categories){
             if (event.target.value == c.category_name){
                 setCategory(event.target.value)
             }
