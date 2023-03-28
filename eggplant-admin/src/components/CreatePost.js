@@ -25,12 +25,18 @@ const CreatePost = ({ closePosting }) => {
         )
 
         PostingService.getCategory().then((res) => { setCategories(res.data) })
-        setModels({model_name:"먼저 카테고리를 선택하세요"})
+        setModels([{model_name:"먼저 카테고리를 선택하세요"}])
     }, [])
 
     useEffect(()=>{
         if(category != ""){
-            PostingService.getCategoriesModel(category).then((res) => (setModels(res.data)))
+            for(let c in categories){
+                if (category == c.category_name){
+                    PostingService.getCategoriesModel(category).then((res) => (setModels(res.data)))
+                    break
+                }
+            }
+
         }
     },[category])
 
@@ -72,11 +78,8 @@ const CreatePost = ({ closePosting }) => {
     }
 
     const changeCategoryHandler = (event) => {
-        for(let c in categories){
-            if (event.target.value == c.category_name){
-                setCategory(event.target.value)
-            }
-        }
+        setCategory(event.target.value) 
+
     }
 
     const onFileChange = (event) => {
