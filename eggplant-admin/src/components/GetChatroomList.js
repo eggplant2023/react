@@ -17,7 +17,7 @@ const GetChatroom = () => {
 
     useEffect(() => {
         PostingService.getChatroom().then((res) => {
-            setChatroomList(res.data.chattingList)
+            setChatroomList(res.data)
         })
     }, [])
 

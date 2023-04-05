@@ -6,7 +6,7 @@ const GetChatList = ({ roomnumber, close }) => {
 
     useEffect(() => {
         PostingService.getChatList(roomnumber).then((res) => {
-            setChatList(res.data)
+            setChatList(res.data.chattingList)
             console.log(res.data)
         })
 
