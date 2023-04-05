@@ -48,7 +48,7 @@ class PostingService {
     }
 
     getClassify(data){
-        return axios.post("http://localhost:5000/predict",data,{
+        return axios.post("http://localhost:5000/predictsmartphone",data,{
             headers: {
                 "Contest-Type": "multipart/form-data"
             }
