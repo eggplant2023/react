@@ -104,9 +104,9 @@ const CreatePost = ({ closePosting }) => {
         if (images) {
             const imageLists = images
 
-            for (let i = 0; i < imageLists.length; i++) {
-                formData.append("files", imageLists[i])
-            }
+            
+            formData.append("files", imageLists[0])
+            
         }
 
         const res = PostingService.getClassify(dataforclassify)
