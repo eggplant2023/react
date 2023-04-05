@@ -75,7 +75,7 @@ const GetPostList = () => {
                     {
                         postList.map(
                             (post) =>
-                                <tr key={post.post_no}>
+                                <tr>
                                     <td>{post.post_no}</td>
                                     <td>{post.model_name}</td>
                                     <td>{post.post_title}</td>

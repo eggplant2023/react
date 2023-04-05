@@ -46,6 +46,10 @@ class PostingService {
     getChatList(roomnumber){
         return axios.get(API_BASE_URL+"/chatting/"+roomnumber)
     }
+
+    getClassify(data){
+        return axios.post("http://localhost:5000/predict",data)
+    }
 }
 
 export default new PostingService();
