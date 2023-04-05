@@ -99,7 +99,6 @@ const CreatePost = ({ closePosting }) => {
         PostingService.getClassify(dataforclassify).then((res) => { 
             console.log(res)
         })
-        getClassify()
     };
 
 
