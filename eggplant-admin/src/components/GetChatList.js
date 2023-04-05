@@ -22,11 +22,13 @@ const GetChatList = ({ roomnumber, close }) => {
                 <div className="content_area">
 
                     <table className="chat_table">
+                        <tbody>
                         {
                             chatList.map((chat) =>
                                 <tr><td>작성시간: {chat.cht_time}</td><td>작성자: {chat.cht_member}</td><td>내용: {chat.cht_text}</td></tr>
                             )
                         }
+                        </tbody>
                     </table>
                 </div>
                 <br/>

@@ -25,20 +25,23 @@ const CreatePost = ({ closePosting }) => {
         )
 
         PostingService.getCategory().then((res) => { setCategories(res.data) })
-        setModels([{model_name:"먼저 카테고리를 선택하세요"}])
+        setModels([{ model_name: "먼저 카테고리를 선택하세요" }])
     }, [])
 
     useEffect(()=>{
-        if(category != ""){
-            for(let c in categories){
-                if (category == c.category_name){
-                    PostingService.getCategoriesModel(category).then((res) => (setModels(res.data)))
+        console.log("effect!!"+category)
+            for(let i in categories){
+                if (category == categories[i].category_name){
+                    console.log("true!!")
+                    PostingService.getCategoriesModel(category).then((res) => {
+                        setModels(res.data)
+                        console.log(res.data)
+                            })
                     break
                 }
             }
-
-        }
     },[category])
+
 
     const submit = () => {
         console.log(images)
@@ -78,8 +81,8 @@ const CreatePost = ({ closePosting }) => {
     }
 
     const changeCategoryHandler = (event) => {
-        setCategory(event.target.value) 
-
+        setCategory(event.target.value)
+        console.log(event.target.value)
     }
 
     const onFileChange = (event) => {
@@ -96,11 +99,16 @@ const CreatePost = ({ closePosting }) => {
 
         const dataforclassify = new FormData();
         dataforclassify.append("files", imageLists[0])
-        PostingService.getClassify(dataforclassify).then((res) => { 
+        PostingService.getClassify(dataforclassify).then((res) => {
             console.log(res)
         })
     };
 
+    useEffect(() => {
+        if (!!models) {
+          console.log(models)
+        }
+      }, [models]);
 
     return (
         <div className="modal">
@@ -154,9 +162,9 @@ const CreatePost = ({ closePosting }) => {
                     }
                     <br />
                     <div className="content_area">
-                    내용 
-                    <br/>
-                    <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
+                        내용
+                        <br />
+                        <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
                     </div>
 
                     <br /><br />
