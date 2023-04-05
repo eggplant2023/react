@@ -8,7 +8,7 @@ module.exports = function (app) {
         }),
     );
     app.use(
-        createProxyMiddleware('predict',{
+        createProxyMiddleware('/predict',{
             target: "http://localhost:5000",
             changeOrigin: true,
         }),
