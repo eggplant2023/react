@@ -93,28 +93,15 @@ const CreatePost = ({ closePosting }) => {
         }
         setAttachment(imageUrlLists)
         console.log(imageLists)
-        console.log(images)
-        getClassify()
-    };
-
-    const getClassify = () =>{
 
         const dataforclassify = new FormData();
-
-        if (images) {
-            const imageLists = images
-
-            
-            formData.append("files", imageLists[0])
-            
-        }
-        
-        console.log(images)
-
+        dataforclassify.append("files", imageLists[0])
         PostingService.getClassify(dataforclassify).then((res) => { 
             console.log(res)
         })
-    }
+        getClassify()
+    };
+
 
     return (
         <div className="modal">
