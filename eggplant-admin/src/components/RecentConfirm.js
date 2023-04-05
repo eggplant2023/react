@@ -1,22 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const RecentConfirm = () => {
-    const [confirmList, setConfirmList] = useState([{
-        conf_title: "갤럭시 z플립 팝니다",
-        conf_date: "오늘"
-    }, {
-        conf_title: "갤럭시 zz플립플립 팝니다",
-        conf_date: "오늘"
-    }])
-
-    const test = [{
-        conf_title: "갤럭시 z플립 팝니다",
-        conf_date: "오늘"
-    }, {
-        conf_title: "갤럭시 zz플립플립 팝니다",
-        conf_date: "오늘"
-    }]
+const RecentConfirm = ({confirmList}) => {
 
 
     return (
@@ -26,10 +11,10 @@ const RecentConfirm = () => {
             <table className="home_lists"><tbody>
                 {
                     confirmList.map((it) =>
-                        <tr>
+                        <tr key={it.num}>
                             <td><span className="new_note">NEW</span></td>
-                            <td>{it.conf_title}</td>
-                            <td>{it.conf_date}</td>
+                            <td>{it.title}</td>
+                            <td>{it.date}</td>
                         </tr>
                     )
                 }

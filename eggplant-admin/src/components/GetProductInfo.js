@@ -1,11 +1,14 @@
 import React, {Componet, useState, useEffect} from 'react';
 import PostingService from '../services/PostingService';
-
+import Pagination from './Pagination';
 
 const GetProductInfo = () => {
 
     const [models,setModels] = useState([]);
     const [categories,setCategories] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostPerPage] = useState(10);
+    const [postnum,setPostnum] = useState(0);
 
 
     useEffect(()=>{
@@ -53,6 +56,11 @@ const GetProductInfo = () => {
                     }
                 </tbody>
                 </table>  
+                <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={models.length}
+                paginate={setCurrentPage}
+            />
         </div>
     );
 }

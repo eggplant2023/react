@@ -8,23 +8,45 @@ import RecentReports from "../components/RecentReports";
 import Statistics from "../components/Statistics";
 const Home = () => {
 
+    const [worknum, setWorknum] = useState(0)
+    const [qnum, setQnum] = useState(0)
+    const [rnum, setRnum] = useState(0)
+    const [cnum, setCnum] = useState(0)
+    const [confirmList, setConfirmList] = useState([])
+    const [questionList, setQuestionList] = useState([])
+    const [reportsList,setReportsList] = useState([])
+    const test = [{
+        num:1,
+        title: "테스트 타이틀",
+        date:"오늘"
+    }, {
+        num:2,
+        title: "테스트 타이틀",
+        date:"오늘"
+    }, {
+        num:3,
+        title: "테스트 타이틀",
+        date:"오늘"
+    }]
+
+    useEffect(()=>{
+        setQnum(0)
+        setRnum(0)
+        setCnum(0)
+        setConfirmList(test)
+        setQuestionList(test)
+        setReportsList(test)
+    },[])
+
+
+
     return (
         <div>
-            <div className="today_list">
-                <Today/>
-            </div>
-            <div className="question_list">
-                <RecentQuestions qnum/>
-            </div>
-            <div className="reprot_list">
-                <RecentReports/>
-            </div>
-            <div className="confirm_list">
-                <RecentConfirm/>
-            </div>
-            <div className="statistics">
-                <Statistics/>
-            </div>
+                {/* <Today className="today_list" worknum={worknum} qnum={qnum} rnum={rnum} cnum={cnum}/>
+                <RecentQuestions className="question_list" questionList={questionList}/>
+                <RecentReports className="reprot_list" reportsList={reportsList}/>
+                <RecentConfirm  className="confirm_list" confirmList={confirmList}/>
+                <Statistics  className="statistics"/> */}
         </div>
     )
 }

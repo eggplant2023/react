@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const RecentReports = () => {
-    const [reportsList, setReportsList] = useState([{
-        report_title: "이거 신고되나요??",
-        report_date: "오늘"
-    }])
+const RecentReports = ({reportsList}) => {
 
     return(
         <div>
@@ -14,10 +10,10 @@ const RecentReports = () => {
         <table className="home_lists"><tbody>
             {
                 reportsList.map((it) =>
-                    <tr>
+                    <tr key={it.num}>
                         <td><span className="new_note">NEW</span></td>
-                        <td>{it.report_title}</td>
-                        <td>{it.report_date}</td>
+                        <td>{it.title}</td>
+                        <td>{it.date}</td>
                     </tr>
                 )
             }

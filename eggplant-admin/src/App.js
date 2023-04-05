@@ -1,3 +1,4 @@
+import React ,{Component} from 'react';
 import {Route, Routes, Navigate } from 'react-router-dom';
 import Home from "./routes/Home";
 import Users from "./routes/Users";
@@ -12,7 +13,6 @@ import styles from "./css/styles.css"
 
 
 const App = () => {
-  
 
   return(
   <div className="app">

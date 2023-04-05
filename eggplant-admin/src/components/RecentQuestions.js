@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const RecentQuestions = () => {
-    const [questionList, setQuestionList] = useState([{
-        quest_title: "문의드립ㄴ디ㅏ",
-        quest_date: "오늘"
-    }])
+const RecentQuestions = ({questionList}) => {
 
     return (
         <div>
@@ -15,9 +11,9 @@ const RecentQuestions = () => {
                 {
                     questionList.map((it) =>
                         <tr>
-                            <td><span className="new_note">NEW</span></td>
-                            <td>{it.quest_title}</td>
-                            <td>{it.quest_date}</td>
+                            <td key={it.num}><span className="new_note">NEW</span></td>
+                            <td>{it.title}</td>
+                            <td>{it.date}</td>
                         </tr>
                     )
                 }
