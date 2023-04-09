@@ -5,7 +5,7 @@ const RecentConfirm = ({confirmList}) => {
 
 
     return (
-        <div>
+        <div className="hom_conf">
             <h1>게시글 승인 <span className="big_number">{confirmList.length}</span></h1>
             <hr />
             <table className="home_lists"><tbody>
@@ -13,7 +13,7 @@ const RecentConfirm = ({confirmList}) => {
                     confirmList.map((it) =>
                         <tr key={it.num}>
                             <td><span className="new_note">NEW</span></td>
-                            <td>{it.title}</td>
+                            <td className="home_lists_title">{it.title}</td>
                             <td>{it.date}</td>
                         </tr>
                     )

@@ -27,7 +27,7 @@ const ProductInfo = () => {
     }
 
     return (
-        <div className="productInfo_container">
+        <div className="post_container">
             <div className="header">
             <button onClick={modelformOpen}>모델 등록</button><button onClick={categoryformOpen}>카테고리 등록</button>
                 <h1>ProductInfo</h1>

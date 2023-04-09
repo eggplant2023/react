@@ -18,7 +18,7 @@ body {
 
 
 hr {
-    height: 1px;
+    height: 2px;
     border: 0;
     background: #E3E3E3;
 }
@@ -54,9 +54,11 @@ td{
     background-color: white;
     border: 1px;
     border-color: #E3E3E3;
-    height: 100%;
+    height: 120vh;
     width: 244px;
     flex-shrink: 0;
+    animation:fadeInLeft;
+    animation-duration: 0.8s;
 }
 
 .menu_list a {
@@ -83,6 +85,10 @@ td{
     border-radius: 1%;
     padding: 10px;
     width: 100%;
+
+    animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 0.8s; /* don't forget to set a duration! */
+  
 }
 
 .page_title {
@@ -112,6 +118,8 @@ td{
     width: 800px;
     height: 100%;
     border-radius: 10px;
+    animation: bounceIn;
+    animation-duration: 0.5s;
 }
 
 .filebox label {
@@ -215,4 +223,115 @@ td{
     padding:3px 20px;
     border:0px;
     text-align: left;
+}
+
+.home{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.today{
+    margin: 20px;
+    margin-bottom: 8px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    animation:fadeInRight;
+    animation-duration: 0.8s;
+}
+
+.hom_conf{
+    margin: 8px 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    flex:1;
+    margin-right: 8px;
+    animation:fadeInRight;
+    animation-duration: 0.8s;
+}
+
+.hom_quest{
+    margin: 8px 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    flex:1;
+    margin-right: 8px;
+    animation:fadeInRight;
+    animation-duration: 0.8s;
+}
+
+.hom_report{
+    margin: 8px 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    flex:1;
+    margin-left: 8px;
+    animation:fadeInRight;
+    animation-duration: 0.8s;
+}
+
+.stat{
+    margin: 8px 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    flex:1;
+    margin-left: 8px;
+    animation:fadeInRight;
+    animation-duration: 0.8s;
+}
+
+.wrap_box{
+    display: flex;
+    height: 250px;
+}
+
+
+
+.big_number{
+    border: #CD67DE;
+    border-radius: 15px;
+    background-color:  #CD67DE;
+    padding:2px 10px;
+    color:white;
+    display: inline;
+    margin-left: 5px;
+    font-size: 23px;
+}
+.small_number{
+    margin-left: 10px;
+    color:#CD67DE;
+    font-weight: bold;
+}
+.today_table td{
+    padding:5px 20px;
+    border:0px;
+}
+
+.home_lists{
+    margin: auto;
+}
+
+.home_lists td {
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.home_lists_title{
+    width: 250px;
+}
+.new_note{
+    border: #CD67DE;
+    border-radius: 15px;
+    background-color:  #CD67DE;
+    padding:5px 10px;
+    color:white;
+    display: inline;
+    margin-left: 5px;
 }

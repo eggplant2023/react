@@ -1,4 +1,4 @@
-import React ,{Component} from 'react';
+import React ,{ useEffect, useState } from 'react';
 import {Route, Routes, Navigate } from 'react-router-dom';
 import Home from "./routes/Home";
 import Users from "./routes/Users";
@@ -9,25 +9,15 @@ import Posts from "./routes/Posts";
 import Confirm from "./routes/Confirm";
 import Menu from "./components/Menu"; 
 import Chatroom from './routes/Chatroom';
-import styles from "./css/styles.css"
-
-
+import AppRouter from './AppRouter';
 const App = () => {
+  const id = "admin"
+  const pwd = "1111"
+
 
   return(
-  <div className="app">
-  <Menu />
-  <Routes className="pages">
-    <Route path="/" element={<Home />} />
-    <Route path="/users" element={<Users />} />
-    <Route path="/posts" element={<Posts />} />
-    <Route path="/reports" element={<Reports />} />
-    <Route path="/confirm" element={<Confirm />} />
-    <Route path="/question" element={<Questions />} />
-    <Route path="/productinfo" element={<ProduInfo />} />
-    <Route path="/chatroom" element={<Chatroom />} />
-  </Routes>
-
+  <div>
+    <AppRouter isLoggedIn={true}/>
   </div>
   )
 }

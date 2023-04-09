@@ -99,9 +99,9 @@ const CreatePost = ({ closePosting }) => {
 
         const dataforclassify = new FormData();
         dataforclassify.append("files", imageLists[0])
-        PostingService.getClassify(dataforclassify).then((res) => {
-            console.log(res)
-        })
+        // PostingService.getClassify(dataforclassify).then((res) => {
+        //     console.log(res)
+        // })
     };
 
     useEffect(() => {

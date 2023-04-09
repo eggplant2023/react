@@ -14,39 +14,45 @@ const Home = () => {
     const [cnum, setCnum] = useState(0)
     const [confirmList, setConfirmList] = useState([])
     const [questionList, setQuestionList] = useState([])
-    const [reportsList,setReportsList] = useState([])
+    const [reportsList, setReportsList] = useState([])
     const test = [{
-        num:1,
+        num: 1,
         title: "테스트 타이틀",
-        date:"오늘"
+        date: "오늘"
     }, {
-        num:2,
+        num: 2,
         title: "테스트 타이틀",
-        date:"오늘"
+        date: "오늘"
     }, {
-        num:3,
+        num: 3,
         title: "테스트 타이틀",
-        date:"오늘"
+        date: "오늘"
     }]
 
-    useEffect(()=>{
+    useEffect(() => {
         setQnum(0)
         setRnum(0)
         setCnum(0)
         setConfirmList(test)
         setQuestionList(test)
         setReportsList(test)
-    },[])
+    }, [])
 
 
 
     return (
-        <div>
-                {/* <Today className="today_list" worknum={worknum} qnum={qnum} rnum={rnum} cnum={cnum}/>
-                <RecentQuestions className="question_list" questionList={questionList}/>
-                <RecentReports className="reprot_list" reportsList={reportsList}/>
-                <RecentConfirm  className="confirm_list" confirmList={confirmList}/>
-                <Statistics  className="statistics"/> */}
+        <div className="home">
+            
+
+                <Today worknum={worknum} qnum={qnum} rnum={rnum} cnum={cnum} />
+                <div className="wrap_box">
+                <RecentQuestions questionList={questionList} />
+                <RecentReports reportsList={reportsList} />
+            </div>
+            <div className="wrap_box">
+                <RecentConfirm confirmList={confirmList} />
+                <Statistics />
+            </div>
         </div>
     )
 }

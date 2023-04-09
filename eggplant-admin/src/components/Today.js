@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const Today = () => {
-
-    const [worknum, setWorknum] = useState(0)
-    const [qnum, setQnum] = useState(0)
-    const [rnum, setRnum] = useState(0)
-    const [cnum, setCnum] = useState(0)
-
-    useEffect = (() => {
-        //대충 할일 갯수 받아오는 부분 필요
-        setWorknum(qnum + rnum + cnum)
-    }, [])
+const Today = ({worknum, qnum, rnum, cnum}) => {
 
     return (
-        <div>
+        <div className="today">
             <h1>오늘의 할 일 <span className="big_number">{worknum}</span></h1>
             <hr/>
             <table className="today_table">

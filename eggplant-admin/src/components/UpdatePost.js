@@ -8,10 +8,15 @@ const UpdatePost = ({post_num, close}) => {
     useEffect(() => {
         PostingService.getSinglePost(post_num).then((res)=>{
             setPost(res.data)
+            setAttachment(res.data.pictureURL)
             console.log(res.data)
         })
 
     }, [])
+
+    const imgClicked = (e) => {
+        console.log(e.target.src)
+    }
 
     return (
         <div className="modal">
@@ -48,7 +53,9 @@ const UpdatePost = ({post_num, close}) => {
                                     backgroundImage: attachment,
                                     width: 100,
                                     height: 100
-                                }} />
+                                }}
+                                    onClick={imgClicked}
+                                />
                         )
                     }
                     <br />
