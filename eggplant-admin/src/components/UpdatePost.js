@@ -1,10 +1,12 @@
 import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
+import GetImageView from './GetImageView';
 
 const UpdatePost = ({post_num, close}) => {
     const [post, setPost] = useState({});
     const [attachment, setAttachment] = useState();
-
+    const [viewStat, setViewStat] = useState(false);
+    const [viewSrc, setViewSrc] = useState("")
     useEffect(() => {
         PostingService.getSinglePost(post_num).then((res)=>{
             setPost(res.data)
@@ -16,6 +18,13 @@ const UpdatePost = ({post_num, close}) => {
 
     const imgClicked = (e) => {
         console.log(e.target.src)
+        setViewSrc(e.target.src)
+        setViewStat(true)
+    }
+
+    const closeView = () => {
+        setViewStat(false)
+        setViewSrc("")
     }
 
     return (
@@ -75,6 +84,9 @@ const UpdatePost = ({post_num, close}) => {
                     </div>
 
                 </form>
+                {
+                    viewStat && <GetImageView src={viewSrc} closeView={closeView}/>
+                }
             </div>
         </div>
     );

@@ -335,3 +335,12 @@ td{
     display: inline;
     margin-left: 5px;
 }
+
+.img_view{
+    width:90%;
+    height: 80%;
+}
+
+.modal-header button{
+    float:right;
+}

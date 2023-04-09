@@ -161,8 +161,9 @@ const CreatePost = ({ closePosting }) => {
                         )
                     }
                     <br />
+                    내용
                     <div className="content_area">
-                        내용
+                        
                         <br />
                         <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
                     </div>
