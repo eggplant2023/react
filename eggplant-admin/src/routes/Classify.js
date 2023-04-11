@@ -7,12 +7,12 @@ const Classfy = () => {
     const [classRes, SetClassRes] = useState(false)
     const [attachment, setAttachment] = useState();
     const [images, setImages] = useState([]);
-    const formData = new FormData();
     const [resCategory, setResCategory] = useState({});
     const [resModel, setResModel] = useState({});
 
 
     const getCategory = () => {
+        const formData = new FormData();
         if (images) {
             const imageLists = images
 
@@ -27,9 +27,15 @@ const Classfy = () => {
     }
 
     const getModel = () => {
-        if (formData.get("files")) {
-        }
+        const formData = new FormData();
+        if (images) {
+            const imageLists = images
 
+            for (let i = 0; i < imageLists.length; i++) {
+                formData.append("files", imageLists[i])
+            }
+        }
+        
         PostingService.getModelClassfy(formData).then(
             (res)=>
             setResModel(res.data)
@@ -48,16 +54,12 @@ const Classfy = () => {
             imageUrlLists.push(currentImageUrl);
         }
         setAttachment(imageUrlLists)
-        console.log(imageLists)
 
-        const dataforclassify = new FormData();
-        dataforclassify.append("files", imageLists[0])
     };
 
     const reset = () => {
         setAttachment([])
         setImages([])
-        formData = new FormData();
     }
 
     return (

@@ -30,7 +30,7 @@ const ProductInfo = () => {
         <div className="post_container">
             <div className="header">
             <button onClick={modelformOpen}>모델 등록</button><button onClick={categoryformOpen}>카테고리 등록</button>
-                <h1>ProductInfo</h1>
+                <h1>제품 정보 관리</h1>
                 <hr/>
             </div>
             <div className="body">

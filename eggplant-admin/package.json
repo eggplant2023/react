@@ -6,9 +6,11 @@
     "@nivo/bar": "^0.80.0",
     "@nivo/core": "^0.80.0",
     "@nivo/line": "^0.80.0",
+    "@stomp/stompjs": "^7.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/stompjs": "^2.3.5",
     "animate.css": "^4.1.1",
     "apexcharts": "^3.37.3",
     "axios": "^1.3.3",
@@ -19,7 +21,10 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "react-stomp": "^5.1.0",
     "scheduler": "0.14.0",
+    "socketjs-client": "^1.0.2",
+    "sockjs-client": "^1.6.1",
     "vis": "^4.21.0-EOL",
     "web-vitals": "^2.1.4"
   },
@@ -33,6 +38,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ]
   },
   "browserslist": {

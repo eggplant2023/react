@@ -55,7 +55,7 @@ const UpdatePost = ({post_num, close}) => {
                     </table>
 
                     {
-                        attachment &&
+                        attachment && 
                         attachment.map(
                             (attachment) =>
                                 <img src={attachment} style={{

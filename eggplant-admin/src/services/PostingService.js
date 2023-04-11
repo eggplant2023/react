@@ -13,7 +13,7 @@ class PostingService {
     createPost(post) {
         return axios.post(API_BASE_URL+"/post", post,{
             headers: {
-                "Contest-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data"
             }
         });
     }
@@ -53,7 +53,7 @@ class PostingService {
     getCategoryClassfy(data){
         return axios.post(FLASK_BASE_URL+"/predict",data,{
             headers: {
-                "Contest-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data"
             }
         })
     }
@@ -61,7 +61,7 @@ class PostingService {
     getModelClassify(data){
         return axios.post(FLASK_BASE_URL+"/predict/smartphone",data,{
             headers: {
-                "Contest-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data"
             }
         })
     }
