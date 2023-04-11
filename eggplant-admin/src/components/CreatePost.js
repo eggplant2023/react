@@ -29,13 +29,10 @@ const CreatePost = ({ closePosting }) => {
     }, [])
 
     useEffect(()=>{
-        console.log("effect!!"+category)
             for(let i in categories){
                 if (category == categories[i].category_name){
-                    console.log("true!!")
                     PostingService.getCategoriesModel(category).then((res) => {
                         setModels(res.data)
-                        console.log(res.data)
                             })
                     break
                 }
@@ -87,6 +84,7 @@ const CreatePost = ({ closePosting }) => {
 
     const onFileChange = (event) => {
         const imageLists = event.target.files
+        console.log(event.target.fi)
         setImages(imageLists)
         let imageUrlLists = []
 

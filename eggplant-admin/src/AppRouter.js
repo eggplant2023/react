@@ -9,7 +9,7 @@ import Posts from "./routes/Posts";
 import Confirm from "./routes/Confirm";
 import Menu from "./components/Menu"; 
 import Chatroom from './routes/Chatroom';
-
+import Classify from './routes/Classify';
 
 const AppRouter = () => {
 
@@ -25,6 +25,7 @@ const AppRouter = () => {
     <Route path="/question" element={<Questions />} />
     <Route path="/productinfo" element={<ProduInfo />} />
     <Route path="/chatroom" element={<Chatroom />} />
+    <Route path="/classify" element={<Classify />}/>
   </Routes>
 
   </div>

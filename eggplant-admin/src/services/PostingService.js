@@ -2,6 +2,9 @@ import axios from 'axios';
 
 const API_BASE_URL = "http://localhost:8080/api";
 
+const FLASK_BASE_URL = "http://localhost:5000";
+
+
 class PostingService {
     getPosts() {
         return axios.get(API_BASE_URL+"/post");
@@ -47,8 +50,16 @@ class PostingService {
         return axios.get(API_BASE_URL+"/chatting/"+roomnumber)
     }
 
-    getClassify(data){
-        return axios.post("http://localhost:5000/predictsmartphone",data,{
+    getCategoryClassfy(data){
+        return axios.post(FLASK_BASE_URL+"/predict",data,{
+            headers: {
+                "Contest-Type": "multipart/form-data"
+            }
+        })
+    }
+
+    getModelClassify(data){
+        return axios.post(FLASK_BASE_URL+"/predict/smartphone",data,{
             headers: {
                 "Contest-Type": "multipart/form-data"
             }
