@@ -7,7 +7,7 @@ const GetChatList = ({ roomnumber, close }) => {
     const [chatList, setChatList] = useState([])
     const [clientConnected,setClientConnected] = useState(false)
     
-    const client = useRef()
+    const client = useRef(null)
     const topic = `/sub/chat/room/${roomnumber}`
 
     const onMessageReceive = (msg, topic) => {
@@ -20,7 +20,7 @@ const GetChatList = ({ roomnumber, close }) => {
     }
 
     const sendMessage = (msg, selfMsg) => {
-        console.log("메세지전송!!")
+        
         try {
           var send_message = {
             "cht_room_num": roomnumber,
@@ -28,6 +28,7 @@ const GetChatList = ({ roomnumber, close }) => {
             "cht_text" : selfMsg.message
           }
           client.current.sendMessage("/pub/chat/sendMessage", JSON.stringify(send_message))
+          console.log("메세지전송!!")
           return true;
         } catch(e) {
             console.log(e)
@@ -76,7 +77,7 @@ const GetChatList = ({ roomnumber, close }) => {
                         onSendMessage={sendMessage} connected={clientConnected} />
 
                     <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
-                        onMessage={onMessageReceive} ref={client}
+                        onMessage={onMessageReceive} ref={(e) => { client = e }}
                         onConnect={onConnect}
                         onDisconnect={onDisconnect}
                         debug={false} style={[{ width: '100%', height: '90%' }]} />
