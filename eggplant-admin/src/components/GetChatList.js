@@ -21,7 +21,7 @@ const GetChatList = ({ roomnumber, close }) => {
         }
 
         setChatList(
-            [...chatList, msg]
+            [...chatList, chat]
         )
     }
 
