@@ -19,7 +19,7 @@ const GetChatList = ({ roomnumber, close }) => {
         )
     }
 
-    const sendMessage = (msg, selfMsg) => {
+    const onSendMessage = (msg, selfMsg) => {
         
         try {
           var send_message = {
@@ -27,7 +27,7 @@ const GetChatList = ({ roomnumber, close }) => {
             "cht_member" : selfMsg.author,
             "cht_text" : selfMsg.message
           }
-          client.current.sendMessage("/pub/chat/sendMessage", JSON.stringify(send_message))
+          client.send("/pub/chat/sendMessage", send_message)
           console.log("메세지전송!!")
           return true;
         } catch(e) {
@@ -74,7 +74,7 @@ const GetChatList = ({ roomnumber, close }) => {
                 <div>
                     <TalkBox topic={topic} currentUserId="1"
                         currentUser="user1" messages={chatList}
-                        onSendMessage={sendMessage} connected={clientConnected} />
+                        onSendMessage={onSendMessage} connected={clientConnected} />
 
                     <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
                         onMessage={onMessageReceive} ref={(clientref) => { client = clientref }}
