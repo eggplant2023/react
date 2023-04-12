@@ -5,13 +5,13 @@ import { TalkBox } from "react-talk";
 
 const GetChatList = ({ roomnumber, close }) => {
     const [chatList, setChatList] = useState([])
-    const [inputMessage, setInputMessage] = useState({});
     const [clientConnected,setClientConnected] = useState(false)
     
     const client = useRef()
     const topic = `/sub/chat/room/${roomnumber}`
+
     const onMessageReceive = (msg, topic) => {
-        //alert(JSON.stringify(msg) + " @ " +  JSON.stringify(this.state.messages)+" @ " + JSON.stringify(topic));
+        //alert(JSON.stringify(msg) + " @ " +  JSON.stringify(this.sitate.messages)+" @ " + JSON.stringify(topic));
         setChatList(
           [...chatList, msg]
         )
@@ -24,7 +24,7 @@ const GetChatList = ({ roomnumber, close }) => {
             "cht_member" : selfMsg.author,
             "cht_text" : selfMsg.message
           }
-          client.current.sendMessage("/app/message", JSON.stringify(send_message))
+          client.current.sendMessage("/pub/chat/sendmessage", JSON.stringify(send_message))
           return true;
         } catch(e) {
             console.log(e)
@@ -34,22 +34,18 @@ const GetChatList = ({ roomnumber, close }) => {
 
     useEffect(() => {
         PostingService.getChatList(roomnumber).then((res) => {
-            setChatList(res.data.chattingList)
-            console.log(res.data)
+            let msg = []
+            for(let i in res.data){
+                msg[i] = {message: res.data[i].cht_text,
+                    authorId: res.data[i].cht_member,
+                    author: res.data[i].cht_membe,
+                    timestamp: cht_time
+                }
+            }
+            setChatList(msg)
         })
 
     }, [])
-
-
-    const submit = () => {
-        PostingService.getChatList(roomnumber).then((res) => {
-            setChatList(res.data.chattingList)
-        })
-    }
-
-    const changeChat = (e) => {
-        setInputMessage(e.target.value)
-    }
 
     return (
         <div className="modal">
@@ -60,18 +56,6 @@ const GetChatList = ({ roomnumber, close }) => {
                 <hr />
                 <br />
                 <div className="content_area">
-
-                    <table className="chat_table">
-                        <tbody>
-                            {
-                                chatList.map((chat) =>
-                                    <tr><td>작성시간: {chat.cht_time}</td><td>작성자: {chat.cht_member}</td><td>내용: {chat.cht_text}</td></tr>
-                                )
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <br />
                 <div>
                     <TalkBox topic={topic} currentUserId="1"
                         currentUser="user1" messages={chatList}
@@ -81,15 +65,9 @@ const GetChatList = ({ roomnumber, close }) => {
                         onMessage={onMessageReceive} ref={client}
                         onConnect={() =>  setClientConnected(true) }
                         onDisconnect={() => setClientConnected(true)}
-                        debug={false} style={[{ width: '100%', height: '100%' }]} />
+                        debug={false} style={[{ width: '100%', height: '90%' }]} />
                 </div>
-                <div>
-                    <form>
-                        <input type="text" onChange={changeChat}></input>
-                        <button onClick={submit}>등록</button>
-                    </form>
                 </div>
-                <button>삭제</button> &nbsp;
                 <button onClick={close}>닫기</button>
             </div>
         </div>
