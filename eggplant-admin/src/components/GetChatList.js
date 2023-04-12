@@ -27,6 +27,7 @@ const GetChatList = ({ roomnumber, close }) => {
             "cht_text" : selfMsg.message
           }
           clientRef.current.sendMessage("/pub/chat/sendMessage", JSON.stringify(send_message))
+          console.log(selfMsg)
           console.log(send_message)
           console.log("메세지전송!!")
           setChatList([...chatList,selfMsg])
