@@ -23,10 +23,10 @@ const GetChatList = ({ roomnumber, close }) => {
         try {
           var send_message = {
             "cht_room_num": roomnumber,
-            "cht_member" : selfMsg.author,
+            "cht_member" : parseInt(selfMsg.author),
             "cht_text" : selfMsg.message
           }
-          clientRef.current.sendMessage("/pub/chat/sendMessage", send_message)
+          clientRef.current.sendMessage("/pub/chat/sendMessage", JSON.stringify(send_message))
           console.log(send_message)
           console.log("메세지전송!!")
           return true;
