@@ -28,6 +28,7 @@ const GetChatList = ({ roomnumber, close }) => {
             "cht_text" : selfMsg.message
           }
           client.send("/pub/chat/sendMessage", send_message)
+          console.log(selfMsg)
           console.log("메세지전송!!")
           return true;
         } catch(e) {
@@ -77,7 +78,7 @@ const GetChatList = ({ roomnumber, close }) => {
                         onSendMessage={onSendMessage} connected={clientConnected} />
 
                     <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
-                        onMessage={onMessageReceive} ref={(clientref) => { client = clientref }}
+                        onMessage={onMessageReceive} ref={client}
                         onConnect={onConnect}
                         onDisconnect={onDisconnect}
                         debug={false} style={[{ width: '100%', height: '90%' }]} />
