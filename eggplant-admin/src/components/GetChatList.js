@@ -52,12 +52,12 @@ const GetChatList = ({ roomnumber, close }) => {
                 msg[i] = {
                     message: res.data[i].cht_text,
                     authorId: res.data[i].cht_member,
-                    author: res.data[i].cht_membe,
+                    author: res.data[i].cht_member,
                     timestamp: res.data[i].cht_time
                 }
             }
             console.log(msg)
-            setChatList({...chatList,msg})
+            setChatList({msg})
         })
 
     }, [])
