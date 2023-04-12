@@ -1,51 +1,36 @@
-import React, { Componet, useState, useEffect } from 'react';
+import React, { Componet, useRef, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
-import Stomp from '@stomp/stompjs'
-import SockJs from 'sockjs-client'
+import SockJsClient from "react-stomp";
+import { TalkBox } from "react-talk";
 
 const GetChatList = ({ roomnumber, close }) => {
     const [chatList, setChatList] = useState([])
     const [inputMessage, setInputMessage] = useState({});
-
-    const client = useRef();
-
-    const connectHaner = () => {
-        client.current = Stomp.over(() => {
-            const sock = new SockJS("http://localhost:8080/chat")
-            return sock;
-        });
-        client.current.connect(
-            // {
-            //     // 여기에서 유효성 검증을 위해 header를 넣어줄 수 있음.
-            //     // ex) 
-            //     Authorization: token
-            // },
-            // () => {
-            //     // callback 함수 설정, 대부분 여기에 sub 함수 씀
-            //     client.current.subscribe(
-            //         `/백엔드와 협의한 api주소/${roomnumber}`,
-            //         (message) => {
-            //             setChatList([...message.body]);
-            //         },
-            //         {
-            //             // 여기에도 유효성 검증을 위한 header 넣어 줄 수 있음
-            //         }
-            //     );
-            // }
-        );
+    const [clientConnected,setClientConnected] = useState(false)
+    
+    const client = useRef()
+    const topic = `/sub/chat/room/${roomnumber}`
+    const onMessageReceive = (msg, topic) => {
+        //alert(JSON.stringify(msg) + " @ " +  JSON.stringify(this.state.messages)+" @ " + JSON.stringify(topic));
+        setChatList(
+          [...chatList, msg]
+        )
     }
 
-    const sendHandler = () => {
-        client.current.send(
-            "/sendMessage",
-            { "Content-Type": "application/json" },
-            JSON.stringify({
-                chat_room_num: roomId,
-                cht_member: user.name,
-                cht_text: inputMessage
-            })
-        );
-    };
+    const sendMessage = (msg, selfMsg) => {
+        try {
+          var send_message = {
+            "cht_room_num": roomnumber,
+            "cht_member" : selfMsg.author,
+            "cht_text" : selfMsg.message
+          }
+          client.current.sendMessage("/app/message", JSON.stringify(send_message))
+          return true;
+        } catch(e) {
+            console.log(e)
+          return false;
+        }
+      }
 
     useEffect(() => {
         PostingService.getChatList(roomnumber).then((res) => {
@@ -57,7 +42,6 @@ const GetChatList = ({ roomnumber, close }) => {
 
 
     const submit = () => {
-        sendHandler()
         PostingService.getChatList(roomnumber).then((res) => {
             setChatList(res.data.chattingList)
         })
@@ -88,6 +72,17 @@ const GetChatList = ({ roomnumber, close }) => {
                     </table>
                 </div>
                 <br />
+                <div>
+                    <TalkBox topic={topic} currentUserId="1"
+                        currentUser="user1" messages={chatList}
+                        onSendMessage={sendMessage} connected={clientConnected} />
+
+                    <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
+                        onMessage={onMessageReceive} ref={client}
+                        onConnect={() =>  setClientConnected(true) }
+                        onDisconnect={() => setClientConnected(true)}
+                        debug={false} style={[{ width: '100%', height: '100%' }]} />
+                </div>
                 <div>
                     <form>
                         <input type="text" onChange={changeChat}></input>
