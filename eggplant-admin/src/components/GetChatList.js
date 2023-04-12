@@ -47,17 +47,18 @@ const GetChatList = ({ roomnumber, close }) => {
 
     useEffect(() => {
         PostingService.getChatList(roomnumber).then((res) => {
-            let msg = []
+            var msg = []
             for (let i=0; i < res.data.length; i++) {
                 msg[i] = {
                     message: res.data[i].cht_text,
                     authorId: res.data[i].cht_member,
                     author: res.data[i].cht_member,
                     timestamp: res.data[i].cht_time
+                    
                 }
+                setChatList([...chatList,msg])
             }
-            console.log(msg)
-            setChatList(msg)
+            
         })
 
     }, [])
