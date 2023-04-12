@@ -12,14 +12,14 @@ const GetChatList = ({ roomnumber, close }) => {
     const onMessageReceive = (msg, topic) => {
         //alert(JSON.stringify(msg) + " @ " +  JSON.stringify(this.sitate.messages)+" @ " + JSON.stringify(topic));
         console.log("메세지 수신")
-        console.log(msg)
+        
         const chat = {
             message: msg.cht_text,
             authorId: msg.cht_member,
             author: msg.cht_membe,
             timestamp: msg.cht_time
         }
-
+        console.log(chat)
         setChatList(
             [...chatList, chat]
         )

@@ -30,9 +30,10 @@ const Home = () => {
     }]
 
     useEffect(() => {
-        setQnum(0)
-        setRnum(0)
-        setCnum(0)
+        setQnum(test.length)
+        setRnum(test.length)
+        setCnum(test.length)
+        setWorknum(qnum+rnum+cnum)
         setConfirmList(test)
         setQuestionList(test)
         setReportsList(test)
