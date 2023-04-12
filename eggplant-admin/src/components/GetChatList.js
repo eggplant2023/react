@@ -7,7 +7,7 @@ const GetChatList = ({ roomnumber, close }) => {
     const [chatList, setChatList] = useState([])
     const [clientConnected,setClientConnected] = useState(false)
     
-    const client = useRef(null)
+    const $websocket = useRef(null)
     const topic = `/sub/chat/room/${roomnumber}`
 
     const onMessageReceive = (msg, topic) => {
@@ -77,7 +77,7 @@ const GetChatList = ({ roomnumber, close }) => {
                         onSendMessage={sendMessage} connected={clientConnected} />
 
                     <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
-                        onMessage={onMessageReceive} ref={(e) => { client = e }}
+                        onMessage={onMessageReceive} ref={$websocket}
                         onConnect={onConnect}
                         onDisconnect={onDisconnect}
                         debug={false} style={[{ width: '100%', height: '90%' }]} />
