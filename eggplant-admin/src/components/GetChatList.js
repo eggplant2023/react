@@ -12,19 +12,22 @@ const GetChatList = ({ roomnumber, close }) => {
 
     const onMessageReceive = (msg, topic) => {
         //alert(JSON.stringify(msg) + " @ " +  JSON.stringify(this.sitate.messages)+" @ " + JSON.stringify(topic));
+        console.log("메세지 수신")
+        console.log(msg)
         setChatList(
           [...chatList, msg]
         )
     }
 
     const sendMessage = (msg, selfMsg) => {
+        console.log("메세지전송!!")
         try {
           var send_message = {
             "cht_room_num": roomnumber,
             "cht_member" : selfMsg.author,
             "cht_text" : selfMsg.message
           }
-          client.current.sendMessage("/pub/chat/sendmessage", JSON.stringify(send_message))
+          client.current.sendMessage("/pub/chat/sendMessage", JSON.stringify(send_message))
           return true;
         } catch(e) {
             console.log(e)
@@ -41,11 +44,22 @@ const GetChatList = ({ roomnumber, close }) => {
                     author: res.data[i].cht_membe,
                     timestamp: res.data[i].cht_time
                 }
-            }
+            }   
+            console.log(msg)
             setChatList(msg)
         })
 
     }, [])
+
+    const onConnect = () => {
+        console.log("소켓 연결성공!!!!")
+        setClientConnected(true)
+    }
+
+    const onDisconnect = () => {
+        console.log("소켓 연결해제!!!!")
+        setClientConnected(true)
+    }
 
     return (
         <div className="modal">
@@ -63,8 +77,8 @@ const GetChatList = ({ roomnumber, close }) => {
 
                     <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
                         onMessage={onMessageReceive} ref={client}
-                        onConnect={() =>  setClientConnected(true) }
-                        onDisconnect={() => setClientConnected(true)}
+                        onConnect={onConnect}
+                        onDisconnect={onDisconnect}
                         debug={false} style={[{ width: '100%', height: '90%' }]} />
                 </div>
                 </div>
