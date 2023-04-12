@@ -27,7 +27,7 @@ const GetChatList = ({ roomnumber, close }) => {
             "cht_member" : selfMsg.author,
             "cht_text" : selfMsg.message
           }
-          client.send("/pub/chat/sendMessage", send_message)
+          client.sendMessage("/pub/chat/sendMessage", send_message)
           console.log(selfMsg)
           console.log("메세지전송!!")
           return true;
