@@ -73,7 +73,7 @@ const GetChatList = ({ roomnumber, close }) => {
                 <div className="content_area">
                 <div>
                     <TalkBox topic={topic} currentUserId="1"
-                        currentUser="user1" messages={chatList}
+                        currentUser="1" messages={chatList}
                         onSendMessage={onSendMessage} connected={clientConnected} />
 
                     <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
