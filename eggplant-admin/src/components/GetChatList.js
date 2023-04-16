@@ -6,27 +6,29 @@ import { TalkBox } from "react-talk";
 const GetChatList = ({ roomnumber, close }) => {
     const [chatList, setChatList] = useState([])
     const [clientConnected, setClientConnected] = useState(false)
-
+    const [apponent, setApponent] = useState("")
     const topic = `/sub/chat/room/${roomnumber}`
     const clientRef = useRef(null)
+    const [currentUser, setCurrentUser] = useState(1234)
     const onMessageReceive = (msg, topic) => {
-        //alert(JSON.stringify(msg) + " @ " +  JSON.stringify(this.sitate.messages)+" @ " + JSON.stringify(topic));
+    //const chatUrl = "http://localhost:8080/ws-stomp"
+    const chatUrl = "http://52.78.130.186:8080/ws-stomp"
         console.log("메세지 수신")
-        
-        const chat = {
-            message: msg.cht_text,
-            authorId: msg.cht_member,
-            author: msg.cht_member,
-            timestamp: msg.cht_time
+        if (msg.cht_member == currentUser) {
+            const chat = {
+                message: msg.cht_text,
+                authorId: msg.cht_member,
+                author: msg.cht_member_name,
+                timestamp: msg.cht_time
+            }
+            console.log(chat)
+            setChatList(
+                [...chatList, chat]
+            )
         }
-        console.log(chat)
-        setChatList(
-            [...chatList, chat]
-        )
     }
 
     const onSendMessage = (msg, selfMsg) => {
-
         try {
             var send_message = {
                 "cht_room_num": roomnumber,
@@ -48,17 +50,17 @@ const GetChatList = ({ roomnumber, close }) => {
     useEffect(() => {
         PostingService.getChatList(roomnumber).then((res) => {
             var msg = []
-            for (let i=0; i < res.data.length; i++) {
+            for (let i = 0; i < res.data.length; i++) {
                 msg[i] = {
                     message: res.data[i].cht_text,
                     authorId: res.data[i].cht_member,
                     author: res.data[i].cht_member,
                     timestamp: res.data[i].cht_time
-                    
+
                 }
-                setChatList([...chatList,msg])
+                onMessageReceive(msg,topic)
             }
-            
+
         })
 
     }, [])
@@ -83,8 +85,8 @@ const GetChatList = ({ roomnumber, close }) => {
                 <br />
                 <div className="content_area">
                     <div>
-                        <TalkBox topic={topic} currentUserId="1"
-                            currentUser="1" messages={chatList}
+                        <TalkBox topic={topic} currentUserId={currentUser}
+                            currentUser="admin" messages={chatList}
                             onSendMessage={onSendMessage} connected={clientConnected} />
 
                         <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
