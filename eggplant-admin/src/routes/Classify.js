@@ -20,7 +20,7 @@ const Classfy = () => {
                 formData.append("files", imageLists[i])
             }
         }
-        PostingService.getCategoryClasify(formData).then(
+        PostingService.getCategoryClassify(formData).then(
             (res)=>
             setResCategory(res.data)
         )
