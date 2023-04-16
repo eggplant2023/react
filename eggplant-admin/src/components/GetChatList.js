@@ -2,6 +2,7 @@ import React, { Componet, useRef, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import SockJsClient from "react-stomp";
 import { TalkBox } from "react-talk";
+import ChatBox from './ChatBox';
 
 const GetChatList = ({ roomnumber, close }) => {
     const [chatList, setChatList] = useState([])
@@ -10,10 +11,11 @@ const GetChatList = ({ roomnumber, close }) => {
     const topic = `/sub/chat/room/${roomnumber}`
     const clientRef = useRef(null)
     const [currentUser, setCurrentUser] = useState(1234)
-    const chatUrl = "http://localhost:8080/ws-stomp"
-    //const chatUrl = "http://52.78.130.186:8080/ws-stomp"
 
+    const chatUrl = "http://localhost:8080/ws-stomp"
+        //const chatUrl = "http://52.78.130.186:8080/ws-stomp"
     const onMessageReceive = (msg, topic) => {
+
         console.log("메세지 수신")
         if (msg.cht_member == currentUser) {
             const chat = {
@@ -29,18 +31,16 @@ const GetChatList = ({ roomnumber, close }) => {
         }
     }
 
-    const onSendMessage = (msg, selfMsg) => {
+    const onSendMessage = (msg) => {
         try {
             var send_message = {
                 "cht_room_num": roomnumber,
-                "cht_member": parseInt(selfMsg.author),
-                "cht_text": selfMsg.message
+                "cht_member": parseInt(currentUser),
+                "cht_text": msg
             }
             clientRef.current.sendMessage("/pub/chat/sendMessage", JSON.stringify(send_message))
-            console.log(selfMsg)
             console.log(send_message)
             console.log("메세지전송!!")
-            setChatList([...chatList, selfMsg])
             return true;
         } catch (e) {
             console.log(e)
@@ -48,16 +48,12 @@ const GetChatList = ({ roomnumber, close }) => {
         }
     }
 
+    const setMessages = (msg) => {
+        setChatList([...chatList, msg])
+    }
 
     const onConnect = () => {
         console.log("소켓 연결성공!!!!")
-        PostingService.getChatList(roomnumber).then((res) => {
-            var msg = []
-            for (let i = 0; i < res.data.length; i++) {
-                onMessageReceive(res.data[i], topic)
-            }
-
-        })
         setClientConnected(true)
     }
 
@@ -76,9 +72,9 @@ const GetChatList = ({ roomnumber, close }) => {
                 <br />
                 <div className="content_area">
                     <div>
-                        <TalkBox topic={topic} currentUserId={currentUser}
-                            currentUser="admin" messages={chatList}
-                            onSendMessage={onSendMessage} connected={clientConnected} />
+                        <ChatBox topic={topic} currentUserId={currentUser}
+                            currentUser="admin" messages={chatList} setMessages={setChatList}
+                            onSendMessage={onSendMessage} connected={clientConnected} roomnumber={roomnumber}/>
 
                         <SockJsClient url={chatUrl} topics={[topic]}
                             onMessage={onMessageReceive} ref={clientRef}
