@@ -81,7 +81,7 @@ const GetPostList = () => {
                                     <td>{post.post_title}</td>
                                     <td>{post.user_name}</td>
                                     <td>{post.written_date}</td>
-                                    <td className="manage_button"><button onClick={()=>onClickManage(post.post_no)}>관리</button></td>
+                                    <td className="manage_button"><button onClick={()=>onClickManage(post.post_num)}>관리</button></td>
                                 </tr>
                         ) 
                     }
