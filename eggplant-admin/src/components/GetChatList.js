@@ -48,7 +48,9 @@ const GetChatList = ({ roomnumber, close }) => {
         }
     }
 
-    useEffect(() => {
+
+    const onConnect = () => {
+        console.log("소켓 연결성공!!!!")
         PostingService.getChatList(roomnumber).then((res) => {
             var msg = []
             for (let i = 0; i < res.data.length; i++) {
@@ -56,11 +58,6 @@ const GetChatList = ({ roomnumber, close }) => {
             }
 
         })
-
-    }, [])
-
-    const onConnect = () => {
-        console.log("소켓 연결성공!!!!")
         setClientConnected(true)
     }
 

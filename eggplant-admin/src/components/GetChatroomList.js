@@ -10,7 +10,6 @@ const GetChatroom = () => {
     const openRoom = () => {
         setChatroomstate(true)
     }
-
     const closeRoom = () => {
         setChatroomstate(false)
     }
