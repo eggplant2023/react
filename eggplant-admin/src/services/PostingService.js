@@ -7,7 +7,7 @@ const server_ipv4 = "http://52.78.130.186";
 const API_BASE_URL = server_ipv4 + ":8080/api";
 
 //const FLASK_BASE_URL = "http://localhost:5000";
-const FLASK_BASE_URL = "http://ec2-52-78-130-186.ap-northeast-2.compute.amazonaws.com/5000";
+const FLASK_BASE_URL = "http://ec2-52-78-130-186.ap-northeast-2.compute.amazonaws.com:5000";
 
 class PostingService {
     getPosts() {
