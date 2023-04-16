@@ -7,7 +7,7 @@ const server_ipv4 = "http://52.78.130.186";
 const API_BASE_URL = server_ipv4 + ":8080/api";
 
 //const FLASK_BASE_URL = "http://localhost:5000";
-const FLASK_BASE_URL = "http://127.0.0.1:5000";
+const FLASK_BASE_URL = server_ipv4 + ":5000";
 
 class PostingService {
     getPosts() {
