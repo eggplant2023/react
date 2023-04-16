@@ -69,6 +69,32 @@ class PostingService {
             }
         })
     }
+
+    hidePost(report_num){
+        return axios.get(API_BASE_URL+`/report/${report_num}/hide`)
+    }
+    getReportList(){
+        return axios.get(API_BASE_URL+"/report")
+    }
+    exposurePost(report_num){
+        return axios.get(API_BASE_URL+`/report/${report_num}/exposure`)
+    }
+    deletePost(report_num){
+        return axios.get(API_BASE_URL+`/report/${report_num}/delete`)
+    }
+
+    getApprovalList(){
+        return axios.get(API_BASE_URL+"/approval")
+    }
+    rejectApproval(no){
+        return axios.get(API_BASE_URL+`/approval/${no}/reject`)
+    }
+    acceptApproval(no,model_name){
+        return axios.get(API_BASE_URL+`/approval/${no}/${model_name}`)
+    }
+    getApproval(no){
+        return axios.get(API_BASE_URL+`/approval/${no}`)
+    }
 }
 
 export default new PostingService();

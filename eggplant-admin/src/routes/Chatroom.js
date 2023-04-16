@@ -1,5 +1,4 @@
 import React from "react";
-import ChatroomForGuest from "../components/ChatroomForGuest";
 import GetChatroom from "../components/GetChatroomList";
 
 const Chatroom = () => {

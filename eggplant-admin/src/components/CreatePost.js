@@ -14,8 +14,8 @@ const CreatePost = ({ closePosting }) => {
     useEffect(() => {
         setPost(
             {
-                user_no: 1,
-                status: "S",
+                user_num: 1,
+                status: "공개",
                 post_title: "",
                 model_name: "iphone XE",
                 grade: "",

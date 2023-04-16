@@ -27,23 +27,18 @@ const UpdatePost = ({ post_num, close }) => {
         setViewSrc("")
     }
 
-    const onHide = () => {
-        PostingService.hidePost.then(res => 
+    const onConfirm = () => {
+        PostingService.rejectApproval.then(res => 
             console.log(res)
         )
     }
 
-    const onExposure = () => {
-        PostingService.exposurePost.then(res => 
+    const onReject = () => {
+        PostingService.acceptApproval.then(res => 
                 console.log(res)
             )
     }
 
-    const onDelete = () => {
-        PostingService.deletePost.then(res => 
-                console.log(res)
-            )
-    }
     return (
         <div className="modal">
             <div className="modal_body">
@@ -97,13 +92,9 @@ const UpdatePost = ({ post_num, close }) => {
                     <br /><br />
                     <div class="filebox">
                         &nbsp;
-                        {post.status == "숨김" ?
-                            <button onClick={onHide}>비공개</button>
-                            :
-                            <button onClick={onExposure}>공개</button>
-                        }
+                        <button onClick={onConfirm}>승인</button>
                         &nbsp;
-                        <button onClick={onDelete}>삭제</button>
+                        <button onClick={onReject}>거절</button>
                         &nbsp;
                         <button onClick={close}>닫기</button>
                     </div>

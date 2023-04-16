@@ -1,11 +1,13 @@
 import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import Pagination from './Pagination';
+import UpdatePost from './UpdatePost';
 const GetConfirmList = () => {
     const [confirmList, setConfirmList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
     const [postnum,setPostnum] = useState(0);
+    const [postState, setPostState] = useState(false)
     // const [chatrommstate, setChatroomstate] = useState(false);
     // const [roomnum, setRoomnum] = useState();
 
@@ -53,19 +55,21 @@ const GetConfirmList = () => {
 ]
 
     useEffect(() => {
-        // PostingService.getChatroom().then((res) => {
-        //     setChatroomList(res.data)
-        // })
-        setConfirmList(test)
+        PostingService.getApprovalList().then((res) => {
+            setConfirmList(res.data)
+         })
     }, [])
 
     const onClickManage = (num) => {
-        // if(!chatrommstate){
-        //     openRoom()
-        //     setRoomnum(num)
-        // }
+         if(!setPostState){
+            setPostnum(num)
+            setPostState(true)
+         }
     }
 
+    const closePost = () => {
+        setPostState(false)
+    }
 
     return (
         <div>
@@ -96,11 +100,11 @@ const GetConfirmList = () => {
                         confirmList.map(
                             (post) =>
                                 <tr>
-                                    <td>{post.post_no}</td>
+                                    <td>{post.post_num}</td>
                                     <td>{post.model_name}</td>
                                     <td>{post.post_title}</td>
-                                    <td>{post.user_no}</td>
-                                    <td>{post.updateat}</td>
+                                    <td>{post.user_name}</td>
+                                    <td>{post.written_date}</td>
                                     <td className="manage_button"><button onClick={()=>onClickManage(post.post_no)}>관리</button></td>
                                 </tr>
                         ) 
@@ -112,9 +116,9 @@ const GetConfirmList = () => {
                 totalPosts={confirmList.length}
                 paginate={setCurrentPage}
             />
-            {/* {  postState &&
+            {  postState &&
                     <UpdatePost post_num={postnum} closePost={closePost}/>
-            } */}
+            }
         </div>
     );
 }

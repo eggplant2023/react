@@ -1,22 +1,13 @@
 import React, { Componet, useState, useEffect } from 'react';
 import Pagination from './Pagination';
 import PostingService from '../services/PostingService';
-
+import UpdatePost from './UpdatePost';
 const GetReprotList = () => {
     const [reportList, setReportList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
     const [postnum,setPostnum] = useState(0);
-    // const [chatrommstate, setChatroomstate] = useState(false);
-    // const [roomnum, setRoomnum] = useState();
-
-    // const openRoom = () => {
-    //     setChatroomstate(true)
-    // }
-
-    // const closeRoom = () => {
-    //     setChatroomstate(false)
-    // }
+    const [postState, setPostState] = useState(false)
 
     const test = [{
         report_no: 1,
@@ -39,20 +30,21 @@ const GetReprotList = () => {
     ]
 
     useEffect(() => {
-        // PostingService.getChatroom().then((res) => {
-        //     setChatroomList(res.data)
-        // })
-        setReportList(test)
+         PostingService.getReportList().then((res) => {
+            setReportList(res.data)
+         })
     }, [])
 
     const onClickManage = (num) => {
-        // if(!chatrommstate){
-        //     openRoom()
-        //     setRoomnum(num)
-        // }
-    }
+        if(!setPostState){
+           setPostnum(num)
+           setPostState(true)
+        }
+   }
 
-
+   const closePost = () => {
+    setPostState(false)
+}
     return (
         <div>
             <div id="postList_form">
@@ -81,11 +73,11 @@ const GetReprotList = () => {
                         reportList.map(
                             (report) =>
                                 <tr>
-                                    <td>{report.report_no}</td>
+                                    <td>{report.report_num}</td>
                                     <td>{report.report_title}</td>
-                                    <td>{report.user_no}</td>
-                                    <td>{report.updateat}</td>
-                                    <td className="manage_button"><button onClick={() => onClickManage(report.report_no)}>관리</button></td>
+                                    <td>{report.repoter_num}</td>
+                                    <td>{report.report_date}</td>
+                                    <td className="manage_button"><button onClick={() => onClickManage(report.report_num)}>관리</button></td>
                                 </tr>
                         )
                     }
@@ -96,9 +88,9 @@ const GetReprotList = () => {
                 totalPosts={reportList.length}
                 paginate={setCurrentPage}
             />
-            {/* {  postState &&
+            {  postState &&
                     <UpdatePost post_num={postnum} closePost={closePost}/>
-            } */}
+            }
         </div>
     );
 }
