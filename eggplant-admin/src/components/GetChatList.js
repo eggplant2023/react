@@ -10,9 +10,10 @@ const GetChatList = ({ roomnumber, close }) => {
     const topic = `/sub/chat/room/${roomnumber}`
     const clientRef = useRef(null)
     const [currentUser, setCurrentUser] = useState(1234)
+    const chatUrl = "http://localhost:8080/ws-stomp"
+    //const chatUrl = "http://52.78.130.186:8080/ws-stomp"
+
     const onMessageReceive = (msg, topic) => {
-    //const chatUrl = "http://localhost:8080/ws-stomp"
-    const chatUrl = "http://52.78.130.186:8080/ws-stomp"
         console.log("메세지 수신")
         if (msg.cht_member == currentUser) {
             const chat = {
@@ -51,14 +52,7 @@ const GetChatList = ({ roomnumber, close }) => {
         PostingService.getChatList(roomnumber).then((res) => {
             var msg = []
             for (let i = 0; i < res.data.length; i++) {
-                msg[i] = {
-                    message: res.data[i].cht_text,
-                    authorId: res.data[i].cht_member,
-                    author: res.data[i].cht_member,
-                    timestamp: res.data[i].cht_time
-
-                }
-                onMessageReceive(msg,topic)
+                onMessageReceive(res.data[i], topic)
             }
 
         })
@@ -89,7 +83,7 @@ const GetChatList = ({ roomnumber, close }) => {
                             currentUser="admin" messages={chatList}
                             onSendMessage={onSendMessage} connected={clientConnected} />
 
-                        <SockJsClient url="http://localhost:8080/ws-stomp" topics={[topic]}
+                        <SockJsClient url={chatUrl} topics={[topic]}
                             onMessage={onMessageReceive} ref={clientRef}
                             onConnect={onConnect}
                             onDisconnect={onDisconnect}
