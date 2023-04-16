@@ -20,7 +20,7 @@ const Classfy = () => {
                 formData.append("files", imageLists[i])
             }
         }
-        PostingService.getCategoryClassfy(formData).then(
+        PostingService.getCategoryClasify(formData).then(
             (res)=>
             setResCategory(res.data)
         )
@@ -36,7 +36,7 @@ const Classfy = () => {
             }
         }
         
-        PostingService.getModelClassfy(formData).then(
+        PostingService.getModelClassify(formData).then(
             (res)=>
             setResModel(res.data)
         )
@@ -69,19 +69,15 @@ const Classfy = () => {
                 <hr />
             </div>
             <div className="body">
-
+                <div clssName="class_view">
                 {
                     attachment &&
                     attachment.map(
                         (attachment) =>
-                            <img src={attachment} style={{
-                                backgroundImage: attachment,
-                                width: 100,
-                                height: 100
-                            }} />
+                            <img className="class_img" src={attachment} />
                     )
                 }
-
+                </div>
                 <div class="filebox">
                     <label for="attach-file">파일찾기</label>
                     <input id="attach-file"

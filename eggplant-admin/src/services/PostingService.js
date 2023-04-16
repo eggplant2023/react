@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-const API_BASE_URL = "http://localhost:8080/api";
 
-const FLASK_BASE_URL = "http://localhost:5000";
+const server_ipv4 = "http://52.78.130.186";
 
+//const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = server_ipv4 + ":8080/api";
+
+//const FLASK_BASE_URL = "http://localhost:5000";
+const FLASK_BASE_URL = server_ipv4 + ":5000";
 
 class PostingService {
     getPosts() {
@@ -50,7 +54,7 @@ class PostingService {
         return axios.get(API_BASE_URL+"/chatting/"+roomnumber)
     }
 
-    getCategoryClassfy(data){
+    getCategoryClassify(data){
         return axios.post(FLASK_BASE_URL+"/predict",data,{
             headers: {
                 "Content-Type": "multipart/form-data"

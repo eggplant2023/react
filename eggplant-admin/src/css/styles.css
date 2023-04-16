@@ -344,3 +344,8 @@ td{
 .modal-header button{
     float:right;
 }
+
+.class_view{
+    width:200px;
+    height: 200px;
+}
