@@ -18,47 +18,49 @@ class PostingService {
         return axios.post(API_BASE_URL+"/post", post,{
             headers: {
                 "Content-Type": "multipart/form-data"
-            }
+            },
+            withCredentials: true
         });
     }
 
     getCategory(){
-        return axios.get(API_BASE_URL+"/category")
+        return axios.get(API_BASE_URL+"/category",{ withCredentials: true})
     }
 
     getModel(){
-        return axios.get(API_BASE_URL+"/model")
+        return axios.get(API_BASE_URL+"/model",{ withCredentials: true})
     }
 
     createCategory(category){
-        return axios.post(API_BASE_URL+"/category",category)
+        return axios.post(API_BASE_URL+"/category",category,{ withCredentials: true})
     }
 
     createModel(model){
-        return axios.post(API_BASE_URL+"/model",model)
+        return axios.post(API_BASE_URL+"/model",model,{ withCredentials: true})
     }
 
     getChatroom(){
-        return axios.get(API_BASE_URL+"/chattingroom")
+        return axios.get(API_BASE_URL+"/chattingroom",{ withCredentials: true})
     }
 
     getSinglePost(num){
-        return axios.get(API_BASE_URL+"/post/"+num)
+        return axios.get(API_BASE_URL+"/post/"+num,{ withCredentials: true})
     }
 
     getCategoriesModel(category){
-        return axios.get(API_BASE_URL+"/"+category+"/model")
+        return axios.get(API_BASE_URL+"/"+category+"/model",{ withCredentials: true})
     }
 
     getChatList(roomnumber){
-        return axios.get(API_BASE_URL+"/chatting/"+roomnumber)
+        return axios.get(API_BASE_URL+"/chatting/"+roomnumber,{ withCredentials: true})
     }
 
     getCategoryClassify(data){
         return axios.post(FLASK_BASE_URL+"/predict",data,{
             headers: {
                 "Content-Type": "multipart/form-data"
-            }
+            },
+            withCredentials: true
         })
     }
 
@@ -66,34 +68,35 @@ class PostingService {
         return axios.post(FLASK_BASE_URL+"/predict/smartphone",data,{
             headers: {
                 "Content-Type": "multipart/form-data"
-            }
+            },
+            withCredentials: true
         })
     }
 
     hidePost(report_num){
-        return axios.get(API_BASE_URL+`/report/${report_num}/hide`)
+        return axios.get(API_BASE_URL+`/report/${report_num}/hide`,{ withCredentials: true})
     }
     getReportList(){
-        return axios.get(API_BASE_URL+"/report")
+        return axios.get(API_BASE_URL+"/report",{ withCredentials: true})
     }
     exposurePost(report_num){
-        return axios.get(API_BASE_URL+`/report/${report_num}/exposure`)
+        return axios.get(API_BASE_URL+`/report/${report_num}/exposure`,{ withCredentials: true})
     }
     deletePost(report_num){
-        return axios.get(API_BASE_URL+`/report/${report_num}/delete`)
+        return axios.get(API_BASE_URL+`/report/${report_num}/delete`,{ withCredentials: true})
     }
 
     getApprovalList(){
-        return axios.get(API_BASE_URL+"/approval")
+        return axios.get(API_BASE_URL+"/approval",{ withCredentials: true})
     }
     rejectApproval(no){
-        return axios.get(API_BASE_URL+`/approval/${no}/reject`)
+        return axios.get(API_BASE_URL+`/approval/${no}/reject`,{ withCredentials: true})
     }
     acceptApproval(no,model_name){
-        return axios.get(API_BASE_URL+`/approval/${no}/${model_name}`)
+        return axios.get(API_BASE_URL+`/approval/${no}/${model_name}`,{ withCredentials: true})
     }
     getApproval(no){
-        return axios.get(API_BASE_URL+`/approval/${no}`)
+        return axios.get(API_BASE_URL+`/approval/${no}`,{ withCredentials: true})
     }
 }
 
