@@ -11,7 +11,7 @@ const Chatroom = () => {
             <div className="body">
                 <GetChatroom />
             </div>
-            
+
         </div>
     )
 }
