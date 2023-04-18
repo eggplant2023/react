@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
+import imageCompression from 'browser-image-compression';
 
 const CreatePost = ({ closePosting }) => {
     const [post, setPost] = useState({});
@@ -28,16 +29,16 @@ const CreatePost = ({ closePosting }) => {
         setModels([{ model_name: "먼저 카테고리를 선택하세요" }])
     }, [])
 
-    useEffect(()=>{
-            for(let i in categories){
-                if (category == categories[i].category_name){
-                    PostingService.getCategoriesModel(category).then((res) => {
-                        setModels(res.data)
-                            })
-                    break
-                }
+    useEffect(() => {
+        for (let i in categories) {
+            if (category == categories[i].category_name) {
+                PostingService.getCategoriesModel(category).then((res) => {
+                    setModels(res.data)
+                })
+                break
             }
-    },[category])
+        }
+    }, [category])
 
 
     const submit = () => {
@@ -82,31 +83,42 @@ const CreatePost = ({ closePosting }) => {
         console.log(event.target.value)
     }
 
-    const onFileChange = (event) => {
-        const imageLists = event.target.files
-        console.log(event.target.fi)
-        setImages(imageLists)
-        let imageUrlLists = []
 
-        for (let i = 0; i < imageLists.length; i++) {
-            const currentImageUrl = URL.createObjectURL(imageLists[i])
-            imageUrlLists.push(currentImageUrl);
+    const resizeImages = async (images) => {
+        let image
+        let resizingBlob
+        let resizingFile
+        let imageLists = []
+        for (let i = 0; i < images.length; i++) {
+            image = images[i]
+            resizingBlob = await imageCompression(image, { maxSizeMB: 0.1 });
+            resizingFile = new File([resizingBlob], image.name, { type: image.type });
+            imageLists[i] = resizingFile
         }
-        setAttachment(imageUrlLists)
-        console.log(imageLists)
+        return imageLists;
+    };
 
-        const dataforclassify = new FormData();
-        dataforclassify.append("files", imageLists[0])
-        // PostingService.getClassify(dataforclassify).then((res) => {
-        //     console.log(res)
-        // })
+    const onFileChange = (event) => {
+        const imgtoResize = event.target.files
+        resizeImages(imgtoResize).then((imageLists) => {
+            setImages(imageLists)
+            let imageUrlLists = []
+
+            for (let i = 0; i < imageLists.length; i++) {
+                const currentImageUrl = URL.createObjectURL(imageLists[i])
+                imageUrlLists.push(currentImageUrl);
+            }
+            setAttachment(imageUrlLists)
+        }
+        )
+
     };
 
     useEffect(() => {
         if (!!models) {
-          console.log(models)
+            console.log(models)
         }
-      }, [models]);
+    }, [models]);
 
     return (
         <div className="modal">
@@ -161,7 +173,7 @@ const CreatePost = ({ closePosting }) => {
                     <br />
                     내용
                     <div className="content_area">
-                        
+
                         <br />
                         <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
                     </div>

@@ -10,7 +10,7 @@ const UpdatePost = ({ post_num, close }) => {
     useEffect(() => {
         PostingService.getSinglePost(post_num).then((res) => {
             setPost(res.data)
-            setAttachment(res.data.picture_location)
+            setAttachment(res.data.pictureURL)
             console.log(res.data)
         })
 
