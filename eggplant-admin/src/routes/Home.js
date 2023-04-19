@@ -33,7 +33,7 @@ const Home = () => {
         setQnum(test.length)
         setRnum(test.length)
         setCnum(test.length)
-        setWorknum(qnum+rnum+cnum)
+        setWorknum(test.length+test.length+test.length)
         setConfirmList(test)
         setQuestionList(test)
         setReportsList(test)

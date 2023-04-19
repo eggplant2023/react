@@ -46,6 +46,10 @@ class PostingService {
         return axios.get(API_BASE_URL+"/post/"+num)
     }
 
+    getAdminChatroom(num){
+        return axios.get(API_BASE_URL+`/chattingroom/guest/${num}`)
+    }
+
     getCategoriesModel(category){
         return axios.get(API_BASE_URL+"/"+category+"/model")
     }
