@@ -75,7 +75,7 @@ const GetReprotList = () => {
                                 <tr>
                                     <td>{report.report_num}</td>
                                     <td>{report.report_title}</td>
-                                    <td>{report.repoter_num}</td>
+                                    <td>{report.nickname}</td>
                                     <td>{report.report_date}</td>
                                     <td className="manage_button"><button onClick={() => onClickManage(report.report_num)}>관리</button></td>
                                 </tr>

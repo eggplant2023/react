@@ -103,7 +103,7 @@ const GetConfirmList = () => {
                                     <td>{post.post_num}</td>
                                     <td>{post.model_name}</td>
                                     <td>{post.post_title}</td>
-                                    <td>{post.user_name}</td>
+                                    <td>{post.nickname}</td>
                                     <td>{post.written_date}</td>
                                     <td className="manage_button"><button onClick={()=>onClickManage(post.post_no)}>관리</button></td>
                                 </tr>

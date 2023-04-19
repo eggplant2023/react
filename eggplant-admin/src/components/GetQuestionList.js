@@ -82,7 +82,7 @@ const GetQuestionList = () => {
                                 <tr>
                                     <td>{question.question_no}</td>
                                     <td>{question.question_tite}</td>
-                                    <td>{question.user_no}</td>
+                                    <td>{question.nickname}</td>
                                     <td>{question.updateat}</td>
                                     <td className="manage_button"><button onClick={()=>onClickManage(question.question_no)}>관리</button></td>
                                 </tr>

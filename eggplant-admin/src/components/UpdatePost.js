@@ -55,7 +55,7 @@ const UpdatePost = ({ post_num, close }) => {
                     <table className="form_table">
                         <tr>
                             <td>제목: {post.post_title}</td>
-                            <td>작성자: {post.user_num}</td>
+                            <td>작성자: {post.nickname}</td>
                         </tr>
                         <tr>
                             <td>카테고리: {post.category_name}
