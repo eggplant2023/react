@@ -21,6 +21,17 @@ const GetChatList = ({ roomnumber, close }) => {
             const chat = {
                 message: msg.cht_text,
                 authorId: msg.cht_member,
+                timestamp: msg.cht_time
+            }
+            console.log(chat)
+            setChatList(
+                [...chatList, chat]
+            )
+        }
+        else{
+            const chat = {
+                message: msg.cht_text,
+                authorId: msg.cht_member,
                 author: msg.cht_member_name,
                 timestamp: msg.cht_time
             }

@@ -35,23 +35,27 @@ const ChatBox = ({ currentUserId,
     }
 
     return (
+        <div>
         <div className="chatbox">
             {messages.map((msg) =>
-                msg.authorId === "1234" ?
+                msg.authorId == "1234" ?
                     <div className="mychat">
-                        <span className="mychat_massage">{msg.message}</span>{msg.timestamp}
+                        <div className="mychat_massage">{msg.message}</div>{msg.timestamp}
                     </div>
                     :
                     <div className="otherchat">
                         {msg.author}<br />
-                        <span className="otherchat_massage">{msg.message}</span>{msg.timestamp}
+                        <div className="otherchat_massage">{msg.message}</div>{msg.timestamp}
                     </div>
             )
 
             }
 
-            <input onChange={chatChange} value={chat}></input><button onClick={onSend}>보내기</button>
-        </div>);
+        
+        </div>
+        <input className="chat_input" onChange={chatChange} value={chat}></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onClick={onSend}>보내기</button>
+        </div>
+        );
 }
 
 export default ChatBox;

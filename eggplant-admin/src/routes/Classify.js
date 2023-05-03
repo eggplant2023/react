@@ -69,7 +69,7 @@ const Classfy = () => {
                 <hr />
             </div>
             <div className="body">
-                <div clssName="class_view">
+                <div className="class_view">
                 {
                     attachment &&
                     attachment.map(
@@ -78,6 +78,7 @@ const Classfy = () => {
                     )
                 }
                 </div>
+                <br />
                 <div class="filebox">
                     <label for="attach-file">파일찾기</label>
                     <input id="attach-file"
@@ -85,15 +86,17 @@ const Classfy = () => {
                         accept="image/*"
                         onChange={onFileChange}
                         multiple="multiple"
-                    />
+                    /> &nbsp;
                         <button onClick={reset}>취소</button>
                 </div>
-
+                <br />
                 <button onClick={getCategory}>카테고리 분석</button> <button onClick={getModel}>모델 분석</button>
+                <br />
                 <br />
                 {
                     resCategory && <h3>카테고리: {resCategory.answer} 확률:{resCategory.percent}</h3>
                 }
+                <br />
                 {
                     resCategory && <h3>모델: {resModel.answer} 확률:{resModel.percent}</h3>
                 }

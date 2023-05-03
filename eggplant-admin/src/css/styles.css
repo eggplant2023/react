@@ -345,7 +345,52 @@ td{
     float:right;
 }
 
-.class_view{
-    width:200px;
-    height: 200px;
+
+.class_img{
+    width:300px;
+    height: 300px;
+}
+
+.chatbox{
+    border: solid 1px #E3E3E3;
+    border-radius: 3%;
+    overflow:scroll;
+    width:500px;
+    height:350px;
+    padding: 10px;
+    
+}
+
+.chat_input{
+    border: solid 1px #E3E3E3;
+    border-radius: 3%;
+    width:420px;
+}
+.mychat{
+    width:fit-content;
+    padding:3px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+.mychat_massage{
+    border: solid 1px #CD67DE;
+    border-radius: 10px;
+    width:fit-content;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: 0;
+    background-color: #CD67DE;
+    color: white;
+}
+.otherchat{
+    text-align: left;
+    width:fit-content;
+    padding:3px;
+}
+.otherchat_massage{
+    border-radius: 10px;
+    border: solid 1px #E3E3E3;
+    padding: 10px;
+    width:fit-content;
+    background-color: #F5F5F5;
 }
