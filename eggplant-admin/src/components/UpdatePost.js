@@ -2,7 +2,7 @@ import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import GetImageView from './GetImageView';
 
-const UpdatePost = ({ post_num, close }) => {
+const UpdatePost = ({ post_num, closePost }) => {
     const [post, setPost] = useState({});
     const [attachment, setAttachment] = useState();
     const [viewStat, setViewStat] = useState(false);
@@ -44,7 +44,6 @@ const UpdatePost = ({ post_num, close }) => {
     return (
         <div className="modal">
             <div className="modal_body">
-               <form>
 
                     <div className="modal-header">
                         <h1>게시글 관리</h1>
@@ -103,9 +102,8 @@ const UpdatePost = ({ post_num, close }) => {
                         &nbsp;
                         <button onClick={onDelete}>삭제</button>
                         &nbsp;
-                        <button onClick={close}>닫기</button>
+                        <button onClick={closePost}>닫기</button>
                     </div>
-                    </form>
 
                
                 {
