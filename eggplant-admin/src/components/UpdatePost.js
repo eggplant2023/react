@@ -40,7 +40,7 @@ const UpdatePost = ({ post_num, close }) => {
     }
 
     const onDelete = () => {
-        PostingService.deletePost.then(res => 
+        PostingService.deleteReport.then(res => 
                 console.log(res)
             )
     }

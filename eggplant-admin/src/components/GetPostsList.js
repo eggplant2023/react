@@ -7,7 +7,7 @@ const GetPostList = () => {
 
     const [postList, setPostList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostPerPage] = useState(15);
+    const [postsPerPage, setPostPerPage] = useState(10);
     const [postnum,setPostnum] = useState(0);
     const [postState, setPostState] = useState(false);
     const [allPosts, setAllPosts] = useState([]);
