@@ -80,11 +80,13 @@ class PostingService {
     getReportList(){
         return axios.get(API_BASE_URL+"/report")
     }
-    exposurePost(report_num){
+
+    exposureReport(report_num){
         return axios.get(API_BASE_URL+`/report/${report_num}/exposure`)
     }
-    deletePost(report_num){
-        return axios.get(API_BASE_URL+`/report/${report_num}/delete`)
+
+    deleteReport(report_num){
+        return axios.get(API_BASE_URL+`/post/${report_num}/delete`)
     }
 
     getApprovalList(){
@@ -99,6 +101,16 @@ class PostingService {
     getApproval(no){
         return axios.get(API_BASE_URL+`/approval/${no}`)
     }
+    
+    updatePost(postnum, post){
+        return axios.post(API_BASE_URL+`/post/${postnum}/modify`, post,{
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
+    }
+
 }
+
 
 export default new PostingService();

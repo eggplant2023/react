@@ -394,3 +394,14 @@ td{
     width:fit-content;
     background-color: #F5F5F5;
 }
+
+.pagination li {
+    display: inline-block;
+    border: 1px solid #E3E3E3;
+    padding: 3px 8px;;
+}
+
+.current-page{
+    background-color: #CD67DE;
+    color: white;
+}

@@ -7,10 +7,18 @@ const GetPostList = () => {
 
     const [postList, setPostList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostPerPage] = useState(10);
+    const [postsPerPage, setPostPerPage] = useState(15);
     const [postnum,setPostnum] = useState(0);
     const [postState, setPostState] = useState(false);
+    const [allPosts, setAllPosts] = useState([]);
 
+    const setPage = (pageNum) => {
+        console.log(`post now page ${pageNum} `)
+        let i = (pageNum - 1) * 15
+        setPostList(allPosts.slice(i,i+postsPerPage))
+        console.log(postList)
+        setCurrentPage(pageNum)
+    }
 
     const openPost = () => {
         setPostState(true)
@@ -23,12 +31,11 @@ const GetPostList = () => {
 
     useEffect(() => {
         PostingService.getPosts().then((res) => {
-            setPostList(res.data)
+            setAllPosts(res.data)
             console.log(res.data)
+            setPostList(res.data.slice(0,15))
         }
         )
-
-
     }, []);
 
     const indexOfLast = currentPage * postsPerPage;
@@ -90,7 +97,8 @@ const GetPostList = () => {
             <Pagination
                 postsPerPage={postsPerPage}
                 totalPosts={postList.length}
-                paginate={setCurrentPage}
+                paginate={setPage}
+                currentPage={currentPage}
             />
             {  postState &&
                     <UpdatePost post_num={postnum} closePost={closePost}/>
