@@ -43,7 +43,7 @@ class PostingService {
     }
 
     getSinglePost(num, usernum){
-        return axios.get(API_BASE_URL+`/post/${num}/${usernum}`)
+        return axios.get(API_BASE_URL+`/post/${usernum}/${num}`)
     }
 
     getAdminChatroom(num){
