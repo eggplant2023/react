@@ -14,7 +14,7 @@ const GetPostList = () => {
 
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
-        let i = (pageNum - 1) * 15
+        let i = (pageNum - 1) * postsPerPage
         setPostList(allPosts.slice(i,i+postsPerPage))
         console.log(postList)
         setCurrentPage(pageNum)

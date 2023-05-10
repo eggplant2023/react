@@ -34,20 +34,18 @@ const UpdatePost = ({ post_num, close }) => {
     }
 
     const onExposure = () => {
-        PostingService.exposurePost.then(res => 
-                console.log(res)
-            )
+        PostingService.exposureReport(post_num)
     }
 
     const onDelete = () => {
-        PostingService.deleteReport.then(res => 
-                console.log(res)
-            )
+        PostingService.deleteReport(post_num)
+            console.log("dd")
     }
     return (
         <div className="modal">
             <div className="modal_body">
-                <form>
+               <form>
+
                     <div className="modal-header">
                         <h1>게시글 관리</h1>
                     </div>
@@ -76,15 +74,15 @@ const UpdatePost = ({ post_num, close }) => {
                         attachment &&
                         attachment.map(
                             (attachment) =>
-                                <img src={attachment} style={{
-                                    backgroundImage: attachment,
-                                    width: 100,
-                                    height: 100
-                                }}
-                                    onClick={imgClicked}
-                                />
-                        )
-                    }
+                            <img src={attachment} style={{
+                                backgroundImage: attachment,
+                                width: 100,
+                                height: 100
+                            }}
+                            onClick={imgClicked}
+                            />
+                            )
+                        }
                     <br />
                     내용
                     <div className="content_area">
@@ -107,8 +105,9 @@ const UpdatePost = ({ post_num, close }) => {
                         &nbsp;
                         <button onClick={close}>닫기</button>
                     </div>
+                    </form>
 
-                </form>
+               
                 {
                     viewStat && <GetImageView src={viewSrc} closeView={closeView} />
                 }
