@@ -5,13 +5,13 @@ const GetUserInfo = ({user_num, closePost}) => {
     const [visitList, setVisitList] = useState([]);
     const [likeList, setLikeList] = useState([]);
 
-    useEffect((user) => {
-        PostingService.getVisitList.then((res) => {
+    useEffect(() => {
+        PostingService.getVisitList(user_num).then((res) => {
             setVisitList(res.data)
             console.log(res.data)
         })
 
-        PostingService.getLikeList.then((res) => {
+        PostingService.getLikeList(user_num).then((res) => {
             setLikeList(res.data)
             console.log(res.data)
         })
