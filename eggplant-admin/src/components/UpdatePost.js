@@ -46,9 +46,12 @@ const UpdatePost = ({ post_num, closePost }) => {
             <div className="modal_body">
 
                     <div className="modal-header">
+                        
+
                         <h1>게시글 관리</h1>
                     </div>
                     <hr />
+                    <form>
                     <table className="form_table">
                         <tr>
                             <td>제목: {post.post_title}</td>
@@ -104,8 +107,9 @@ const UpdatePost = ({ post_num, closePost }) => {
                         &nbsp;
                         <button onClick={closePost}>닫기</button>
                     </div>
-
+                    </form>
                
+                    
                 {
                     viewStat && <GetImageView src={viewSrc} closeView={closeView} />
                 }
