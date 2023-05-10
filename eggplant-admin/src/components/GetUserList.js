@@ -1,12 +1,14 @@
 import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
+import GetUserInfo from './GetUserInfo';
 import Pagination from './Pagination';
-
 const GetUserList = () => {
     const [userList, setUserList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
-    const [postnum,setPostnum] = useState(0);
+    const [usernum,setUsernum] = useState(0);
+    const [postState, setPostState] = useState(false);
+
     // const [chatrommstate, setChatroomstate] = useState(false);
     // const [roomnum, setRoomnum] = useState();
 
@@ -26,6 +28,10 @@ const GetUserList = () => {
         currentPosts = posts.slice(indexOfFirst, indexOfLast);
         return currentPosts;
     };
+
+    const closePost = () => {
+        setPostState(false)
+    }
 
     const test = [{
         uid: 1,
@@ -58,10 +64,8 @@ const GetUserList = () => {
     }, [])
 
     const onClickManage = (num) => {
-        // if(!chatrommstate){
-        //     openRoom()
-        //     setRoomnum(num)
-        // }
+        setUsernum(num);
+        setPostState(true);
     }
 
 
@@ -110,9 +114,9 @@ const GetUserList = () => {
                 totalPosts={userList.length}
                 paginate={setCurrentPage}
             />
-            {/* {  postState &&
-                    <UpdatePost post_num={postnum} closePost={closePost}/>
-            } */}
+            {  postState &&
+                    <GetUserInfo user_num={usernum} closePost={closePost}/>
+            }
         </div>
     );
 }

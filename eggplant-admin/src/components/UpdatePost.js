@@ -8,7 +8,7 @@ const UpdatePost = ({ post_num, closePost }) => {
     const [viewStat, setViewStat] = useState(false);
     const [viewSrc, setViewSrc] = useState("")
     useEffect(() => {
-        PostingService.getSinglePost(post_num).then((res) => {
+        PostingService.getSinglePost(post_num, 1234).then((res) => {
             setPost(res.data)
             setAttachment(res.data.pictureURL)
             console.log(res.data)

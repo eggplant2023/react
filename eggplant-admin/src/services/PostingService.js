@@ -42,8 +42,8 @@ class PostingService {
         return axios.get(API_BASE_URL+"/chattingroom")
     }
 
-    getSinglePost(num){
-        return axios.get(API_BASE_URL+"/post/"+num)
+    getSinglePost(num, usernum){
+        return axios.get(API_BASE_URL+`/post/${num}/${usernum}`)
     }
 
     getAdminChatroom(num){
@@ -109,7 +109,13 @@ class PostingService {
             }
         });
     }
+    getVisitList(userno){
+        return axios.get(API_BASE_URL+`/visit/${userno}`)
+    }
 
+    getLikeList(userno){
+        return axios.get(API_BASE_URL+`/like/${userno}`)
+    }
 }
 
 
