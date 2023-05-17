@@ -4,6 +4,7 @@ import PostingService from '../services/PostingService';
 import CreateModel from "../components/CreateModel";
 import CreateCategory from "../components/CreateCategory";
 import GetPostList from '../components/GetPostsList';
+import Menu from "../components/Menu"; 
 
 const ProductInfo = () => {
 
@@ -27,6 +28,8 @@ const ProductInfo = () => {
     }
 
     return (
+        <>
+        <Menu/>
         <div className="post_container">
             <div className="header">
             <button onClick={modelformOpen}>모델 등록</button><button onClick={categoryformOpen}>카테고리 등록</button>
@@ -43,6 +46,7 @@ const ProductInfo = () => {
                 }
             </div>
         </div>
+        </>
     );
 }
 

@@ -6,6 +6,8 @@ import RecentConfirm from "../components/RecentConfirm";
 import RecentQuestions from "../components/RecentQuestions";
 import RecentReports from "../components/RecentReports";
 import Statistics from "../components/Statistics";
+import Menu from "../components/Menu"; 
+
 const Home = () => {
 
     const [worknum, setWorknum] = useState(0)
@@ -42,6 +44,8 @@ const Home = () => {
 
 
     return (
+        <>
+        <Menu />
         <div className="home">
             
 
@@ -55,6 +59,7 @@ const Home = () => {
                 <Statistics />
             </div>
         </div>
+        </>
     )
 }
 

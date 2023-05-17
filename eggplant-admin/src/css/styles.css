@@ -57,8 +57,7 @@ td{
     height: 120vh;
     width: 244px;
     flex-shrink: 0;
-    animation:fadeInLeft;
-    animation-duration: 0.8s;
+    z-index: 0;
 }
 
 .menu_list a {
@@ -404,4 +403,12 @@ td{
 .current-page{
     background-color: #CD67DE;
     color: white;
+}
+
+.mappage{
+    --vh: 100%;
+}
+
+#map{
+    z-index: 999;
 }

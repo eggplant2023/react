@@ -1,7 +1,7 @@
 import React, { Componet, useState, useEffect } from 'react';
 import GetProductInfo from "../components/GetProductInfo";
 import PostingService from '../services/PostingService';
-
+import Menu from "../components/Menu"; 
 const Classfy = () => {
 
     const [classRes, SetClassRes] = useState(false)
@@ -45,7 +45,6 @@ const Classfy = () => {
 
     const onFileChange = (event) => {
         const imageLists = event.target.files
-        console.log(event.target.fi)
         setImages(imageLists)
         let imageUrlLists = []
 
@@ -63,6 +62,8 @@ const Classfy = () => {
     }
 
     return (
+        <>
+        <Menu/>
         <div className="post_container">
             <div className="header">
                 <h1>분류 확인</h1>
@@ -102,6 +103,7 @@ const Classfy = () => {
                 }
             </div>
         </div>
+        </>
     );
 }
 

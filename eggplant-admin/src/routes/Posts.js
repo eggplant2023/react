@@ -1,6 +1,7 @@
 import GetPostList from "../components/GetPostsList";
 import CreatePost from "../components/CreatePost";
 import React, { useState } from "react";
+import Menu from "../components/Menu"; 
 
 const Posts = () => {
 
@@ -14,6 +15,8 @@ const Posts = () => {
     }
 
     return (
+        <>
+        <Menu/>
         <div className="post_container">
             <div className="header">
             <button id="post_create" onClick={openPosting}>게시글 등록</button>   
@@ -31,6 +34,7 @@ const Posts = () => {
                 }
             </div>
         </div>
+        </>
     )
 };
 

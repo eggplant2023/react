@@ -7,15 +7,16 @@ import Questions from "./routes/Questions";
 import ProduInfo from "./routes/ProductInfo";
 import Posts from "./routes/Posts";
 import Confirm from "./routes/Confirm";
-import Menu from "./components/Menu"; 
 import Chatroom from './routes/Chatroom';
 import Classify from './routes/Classify';
+import Map from './routes/Map';
+import { BrowserView, MobileView } from 'react-device-detect'
 
 const AppRouter = () => {
 
   return(
+    
   <div className="app">
-  <Menu />
   <Routes className="pages">
     <Route path="/" element={<Home />} />
     <Route path="/users" element={<Users />} />
@@ -26,6 +27,7 @@ const AppRouter = () => {
     <Route path="/productinfo" element={<ProduInfo />} />
     <Route path="/chatroom" element={<Chatroom />} />
     <Route path="/classify" element={<Classify />}/>
+    <Route path="/map" element={<Map />} />
   </Routes>
 
   </div>
