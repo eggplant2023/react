@@ -9,9 +9,8 @@ import Posts from "./routes/Posts";
 import Confirm from "./routes/Confirm";
 import Chatroom from './routes/Chatroom';
 import Classify from './routes/Classify';
-import Map from './routes/Map';
-import { BrowserView, MobileView } from 'react-device-detect'
-
+import Map from './mobiles/Map';
+import NearMap from './mobiles/Nearmap';
 const AppRouter = () => {
 
   return(
@@ -28,6 +27,7 @@ const AppRouter = () => {
     <Route path="/chatroom" element={<Chatroom />} />
     <Route path="/classify" element={<Classify />}/>
     <Route path="/map" element={<Map />} />
+    <Route path="/nearmap" element={<NearMap />} />
   </Routes>
 
   </div>

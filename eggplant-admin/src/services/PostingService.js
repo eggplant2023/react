@@ -116,6 +116,14 @@ class PostingService {
     getLikeList(userno){
         return axios.get(API_BASE_URL+`/like/${userno}`)
     }
+
+    getSellerLocation(post){
+        return axios.get(API_BASE_URL+`/post/location/${post}`)
+    }
+
+    getNearLocation(location){
+        return axios.get(API_BASE_URL+`/post/lonlat/${location.lon}/${location.lat}`)
+    }
 }
 
 
