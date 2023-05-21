@@ -33,7 +33,7 @@ const GetPostList = () => {
         PostingService.getPosts().then((res) => {
             setAllPosts(res.data)
             console.log(res.data)
-            setPostList(res.data.slice(0,15))
+            setPostList(res.data.slice(0,postsPerPage))
         }
         )
     }, []);
@@ -96,7 +96,7 @@ const GetPostList = () => {
             </table>
             <Pagination
                 postsPerPage={postsPerPage}
-                totalPosts={postList.length}
+                totalPosts={allPosts.length}
                 paginate={setPage}
                 currentPage={currentPage}
             />
