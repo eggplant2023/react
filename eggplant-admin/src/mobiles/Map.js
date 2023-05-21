@@ -53,7 +53,6 @@ const Map = () => {
                 position: positions[i].latlng, // 마커를 표시할 위치
             });
         }
-        marker.setMap(map);
     }
 
     useEffect(() => {
