@@ -19,6 +19,22 @@ const Map = () => {
         document.documentElement.style.setProperty("--vh", `${vh}px`);
     }
 
+    const setLocations = () => {
+        PostingService.getSellerLocation(post).then((res) => {
+            console.log(res.data)
+            setPositions([
+                {
+                    title: '내 위치', 
+                    latlng: new kakao.maps.LatLng(lat, lon)
+                },{
+                    title: '내 위치', 
+                    latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
+                }
+            ])
+        }
+        )
+    }
+
     const createMaps = () => {
         var container = document.getElementById('map');
         var options = {
@@ -27,20 +43,8 @@ const Map = () => {
         };
 
         var positions = []
+        console.log()
 
-        PostingService.getSellerLocation(post).then((res) => {
-            console.log(res.data)
-            positions = [
-                {
-                    title: '내 위치', 
-                    latlng: new kakao.maps.LatLng(lat, lon)
-                },{
-                    title: '내 위치', 
-                    latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
-                }
-            ]
-        }
-        )
 
         var map = new kakao.maps.Map(container, options);
 
@@ -64,6 +68,7 @@ const Map = () => {
 
     useEffect(() => {
         setScreenSize();
+        setLocations();
         createMaps();
     });
 
