@@ -28,7 +28,8 @@ const Map = () => {
 
         var positions = []
 
-        PostingService.getSellerLocation(post).then((res) => 
+        PostingService.getSellerLocation(post).then((res) => {
+            console.log(res.data)
             positions = [
                 {
                     title: '내 위치', 
@@ -38,6 +39,7 @@ const Map = () => {
                     latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
                 }
             ]
+        }
         )
 
         var map = new kakao.maps.Map(container, options);
