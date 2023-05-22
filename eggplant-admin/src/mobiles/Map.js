@@ -27,7 +27,7 @@ const Map = () => {
                     title: '내 위치', 
                     latlng: new kakao.maps.LatLng(lat, lon)
                 },{
-                    title: '내 위치', 
+                    title: '판매자', 
                     latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
                 }
             ])
@@ -51,6 +51,7 @@ const Map = () => {
             var marker = new kakao.maps.Marker({
                 map: map, // 마커를 표시할 지도
                 position: positions[i].latlng, // 마커를 표시할 위치
+                title: positions[i].title
             });
         }
     }
