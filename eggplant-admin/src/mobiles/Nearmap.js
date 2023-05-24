@@ -38,6 +38,7 @@ const NearMap = () => {
                     latlng: new kakao.maps.LatLng(res.data[i].location.latitude, res.data[i].location.langitude)
                 }])
             }
+
         })
     }
 
@@ -106,6 +107,7 @@ const NearMap = () => {
     useEffect(() => {
         setScreenSize();
         setLocations();
+        console.log(positions)
     },[]);
 
     useEffect(()=>{
