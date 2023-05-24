@@ -25,12 +25,16 @@ const NearMap = () => {
         let data = []
         PostingService.getNearLocation(lon, lat, 10).then((res) => {
             data = res.data
-            temp[0] = {
-                title: data[0].post_title,
-                img: data[0].pictureURL,
-                price: data[0].price,
-                model: data[0].model_name,
-                latlng: new kakao.maps.LatLng(parseFloat(data[0].location.latitude).toFixed(6), parseFloat(data[0].location.langitude).toFixed(6))
+
+            for(var i = 0; i < 5; i++ ){
+                console.log()
+                temp[i] = {
+                    title: data[i].post_title,
+                    img: data[i].pictureURL,
+                    price: data[i].price,
+                    model: data[i].model_name,
+                    latlng: new kakao.maps.LatLng(lat, lon)
+                }
             }
             
             temp[temp.length] = {
