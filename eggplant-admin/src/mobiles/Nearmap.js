@@ -27,13 +27,12 @@ const NearMap = () => {
             data = res.data
 
             for(var i = 0; i < data.length; i++ ){
-                console.log(data[i])
                 temp[i] = {
                     title: data[i].post_title,
                     img: data[i].pictureURL,
                     price: data[i].price,
                     model: data[i].model_name,
-                    latlng: new kakao.maps.LatLng(parseFloat(data[i].location.latitude).toFixed(15), parseFloat(data[i].location.langitude))
+                    latlng: new kakao.maps.LatLng(parseFloat(data[i].location.latitude).toPrecision(15), parseFloat(data[i].location.langitude))
                 }
             }
             
