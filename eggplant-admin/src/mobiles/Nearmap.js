@@ -118,6 +118,10 @@ const NearMap = () => {
         createMaps();
     },[]);
 
+    useEffect(() => {
+        createMaps();
+    });
+
     return (
         <div className="mappage">
 
