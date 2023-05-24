@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import location from '../services/PostingService';
 import PostingService from '../services/PostingService';
 import { useLocation, useSearchParams } from "react-router-dom"
 
@@ -110,9 +109,11 @@ const NearMap = () => {
     useEffect(() => {
         setScreenSize();
         setLocations();
-        createMaps();
     },[]);
 
+    useEffect(()=>{
+        createMaps();
+    })
     return (
         <div className="mappage">
 
