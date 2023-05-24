@@ -47,7 +47,6 @@ const NearMap = () => {
             model: "",
         }
         setPositions(temp)
-        map.relayout()
     }
 
     const sendMessage = (num) => {
