@@ -7,6 +7,8 @@ const { kakao } = window;
 
 const NearMap = () => {
 
+    var map 
+
     const [lat, setLat] = useState(37.582286794056294)
     const [lon, setLon] = useState(127.00981565163072)
     const [positions, setPositions] = useState([])
@@ -42,8 +44,8 @@ const NearMap = () => {
                     latlng: new kakao.maps.LatLng(res.data[i].location.latitude, res.data[i].location.langitude)
                 }
             }
-
-            setPositions([...positions, temp])
+            setPositions(temp)
+            map.relayout()
         })
     }
 
@@ -61,7 +63,7 @@ const NearMap = () => {
         };
 
 
-        var map = new kakao.maps.Map(container, options);
+        map = new kakao.maps.Map(container, options);
 
 
         positions.forEach(function (pos) {
