@@ -23,7 +23,10 @@ const NearMap = () => {
         setPositions([
             {
                 title: '내 위치',
-                latlng: new kakao.maps.LatLng(lat, lon)
+                latlng: new kakao.maps.LatLng(lat, lon),
+                img: "",
+                price: "",
+                model: "",
             }])
 
         PostingService.getNearLocation(lon, lat, 10).then((res) => {
