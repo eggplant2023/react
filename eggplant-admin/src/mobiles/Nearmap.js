@@ -29,6 +29,7 @@ const NearMap = () => {
         PostingService.getNearLocation(lon, lat, 10).then((res) => {
             
             for(var i = 0; i < res.data.length; i++ ){
+                console.log(res.data[i])
                 setPositions([...positions, {
                     title: res.data[i].post_title,
                     img: res.data[i].pictureURL,
