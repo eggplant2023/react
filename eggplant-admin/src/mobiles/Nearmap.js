@@ -21,31 +21,33 @@ const NearMap = () => {
     }
 
     const setLocations = () => {
-
-
-        PostingService.getNearLocation(lon, lat, 10).then((res) => {
-            
         let temp = []
-            for(var i = 0; i < res.data.length; i++ ){
-                console.log(res.data[i])
-                temp[i] = {
-                    title: res.data[i].post_title,
-                    img: res.data[i].pictureURL,
-                    price: res.data[i].price,
-                    model: res.data[i].model_name,
-                    latlng: new kakao.maps.LatLng(res.data[i].location.latitude, res.data[i].location.langitude)
-                }
-            }
-            temp[temp.length] = {
-                title: '내 위치',
-                latlng: new kakao.maps.LatLng(lat, lon),
-                img: "",
-                price: "",
-                model: "",
-            }
-            setPositions(temp)
-            map.relayout()
+        let data = []
+        PostingService.getNearLocation(lon, lat, 10).then((res) => {
+            data = res.data
+            console.log(data[1].location.latitude)
         })
+        
+        for(var i = 0; i < data.length; i++ ){
+            console.log(data[i])
+            temp[i] = {
+                title: data[i].post_title,
+                img: data[i].pictureURL,
+                price: data[i].price,
+                model: data[i].model_name,
+                latlng: new kakao.maps.LatLng(data[i].location.latitude, data[i].location.langitude)
+            }
+        }
+
+        temp[temp.length] = {
+            title: '내 위치',
+            latlng: new kakao.maps.LatLng(lat, lon),
+            img: "",
+            price: "",
+            model: "",
+        }
+        setPositions(temp)
+        map.relayout()
     }
 
     const sendMessage = (num) => {
@@ -115,7 +117,6 @@ const NearMap = () => {
     useEffect(() => {
         setScreenSize();
         setLocations();
-        createMaps();
     },[]);
 
     useEffect(() => {
