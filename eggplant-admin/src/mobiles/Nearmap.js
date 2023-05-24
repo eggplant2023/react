@@ -33,10 +33,10 @@ const NearMap = () => {
                     img: data[i].pictureURL,
                     price: data[i].price,
                     model: data[i].model_name,
-                    latlng: new kakao.maps.LatLng(parseFloat(data[i].location.latitude), parseFloat(data[i].location.langitude))
+                    latlng: new kakao.maps.LatLng(parseFloat(data[i].location.latitude).toFixed(15), parseFloat(data[i].location.langitude))
                 }
             }
-    
+            
             temp[temp.length] = {
                 title: '내 위치',
                 latlng: new kakao.maps.LatLng(lat, lon),
