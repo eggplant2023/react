@@ -28,17 +28,19 @@ const NearMap = () => {
 
         PostingService.getNearLocation(lon, lat, 10).then((res) => {
             
+        let temp = []
             for(var i = 0; i < res.data.length; i++ ){
                 console.log(res.data[i])
-                setPositions([...positions, {
+                temp[i] = {
                     title: res.data[i].post_title,
                     img: res.data[i].pictureURL,
                     price: res.data[i].price,
                     model: res.data[i].model_name,
                     latlng: new kakao.maps.LatLng(res.data[i].location.latitude, res.data[i].location.langitude)
-                }])
+                }
             }
 
+            setPositions([...positions, temp])
         })
     }
 
@@ -113,7 +115,7 @@ const NearMap = () => {
 
     useEffect(()=>{
         createMaps();
-    })
+    },[positions])
     return (
         <div className="mappage">
 
