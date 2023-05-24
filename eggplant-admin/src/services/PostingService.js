@@ -121,8 +121,8 @@ class PostingService {
         return axios.get(API_BASE_URL+`/post/location/${post}`)
     }
 
-    getNearLocation(location){
-        return axios.get(API_BASE_URL+`/post/lonlat/${location.lon}/${location.lat}`)
+    getNearLocation(lon, lat, distance){
+        return axios.get(API_BASE_URL+`/post/lonlat/${lon}/${lat}/${distance}`)
     }
 }
 

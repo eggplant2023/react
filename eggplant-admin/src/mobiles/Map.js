@@ -11,6 +11,7 @@ const Map = () => {
     const [lon,setLon] = useState(127.00981565163072)
     const [positions,setPositions] = useState([])
     const [searchParams, setSearchParams] = useSearchParams();
+    
     const post = searchParams.get('post'); // postnum 값 변수에 저장
 
     function setScreenSize() {
@@ -57,6 +58,8 @@ const Map = () => {
 
     useEffect(() => {
         setScreenSize();
+        setLat(searchParams.get('lat'))
+        setLon(searchParams.get('lon'))
         setLocations();
     },[]);
 

@@ -25,24 +25,20 @@ const NearMap = () => {
                 title: '내 위치',
                 latlng: new kakao.maps.LatLng(lat, lon)
             }])
-        // PostingService.getSellerLocation(post).then((res) => {
-        //     console.log(res.data)
-        //     setPositions([
-        //         {
-        //             title: '내 위치',
-        //             latlng: new kakao.maps.LatLng(lat, lon)
-        //         }, {
-        //             title: '판매자',
-        //             latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
-        //         }
-        //     ])
-        // }
-        // )
-    }
 
-    var content = document.createElement('div');
-    content.className = 'overlay';
-    content.innerHTML = '드래그 해주세요 :D';
+        PostingService.getNearLocation(lon, lat, 10).then((res) => {
+            
+            for(var i = 0; i < res.data.length; i++ ){
+                setPositions([...positions, {
+                    title: res.data[i].post_title,
+                    img: res.data[i].pictureURL,
+                    price: res.data[i].price,
+                    model: res.data[i].model_name,
+                    latlng: new kakao.maps.LatLng(res.data[i].location.latitude, res.data[i].location.langitude)
+                }])
+            }
+        })
+    }
 
     const sendMessage = (num) => {
         window.ReactNativeWebView.postMessage(num)
@@ -69,7 +65,7 @@ const NearMap = () => {
         
             // content HTMLElement 생성
             var content = document.createElement('div');
-        
+            content.classList.add('test');
             var info = document.createElement('span');
             info.appendChild(document.createTextNode(pos.title));
             content.appendChild(info);
