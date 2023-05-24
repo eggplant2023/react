@@ -47,6 +47,8 @@ const NearMap = () => {
     }
 
     const createMaps = () => {
+
+        console.log(positions)
         var container = document.getElementById('map');
         var options = {
             center: new kakao.maps.LatLng(lat, lon),
@@ -107,7 +109,6 @@ const NearMap = () => {
     useEffect(() => {
         setScreenSize();
         setLocations();
-        console.log(positions)
     },[]);
 
     useEffect(()=>{
