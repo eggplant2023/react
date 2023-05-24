@@ -33,7 +33,7 @@ const NearMap = () => {
                     img: data[i].pictureURL,
                     price: data[i].price,
                     model: data[i].model_name,
-                    latlng: new kakao.maps.LatLng(data[i].location.latitude, data[i].location.langitude)
+                    latlng: new kakao.maps.LatLng(parseFloat(data[i].location.latitude), parseFloat(data[i].location.langitude))
                 }
             }
     
@@ -52,6 +52,7 @@ const NearMap = () => {
     const sendMessage = (num) => {
         window.ReactNativeWebView.postMessage(num)
     }
+
 
     const createMaps = () => {
 
