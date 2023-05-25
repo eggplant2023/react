@@ -89,30 +89,31 @@ const NearMap = () => {
 
             // content HTMLElement 생성
             var content = document.createElement('div');
-            content.classList.add('test');
+            content.classList.add('ovcontent');
 
             var titlediv = document.createElement('div');
             var title = document.createElement('span');
             title.appendChild(document.createTextNode(pos.title));
             titlediv.appendChild(title);
             content.appendChild(titlediv);
+            titlediv.classList.add('ovtitle');
 
             var image = document.createElement('img');
             image.setAttribute("src",pos.img);
             image.setAttribute("width","50px");
             image.setAttribute("height","50px");
             content.appendChild(image);
+            image.classList.add('ovimage');
 
             var infodiv = document.createElement('div');
-            var infomodel = document.createElement('span');
+            var infomodel = document.createElement('div');
             infomodel.appendChild(document.createTextNode("모델명: "+pos.model))
-            var br = document.createElement('br');
-            var infoprice = document.createElement('span');
+            var infoprice = document.createElement('div');
             infoprice.appendChild(document.createTextNode("가격: "+pos.price));
 
             infodiv.appendChild(infomodel)
-            infodiv.appendChild(br)
             infodiv.appendChild(infoprice)
+            infodiv.classList.add('ovinfo');
             content.appendChild(infodiv)
 
 
@@ -124,6 +125,9 @@ const NearMap = () => {
             var goto = document.createElement('button');
             goto.appendChild(document.createTextNode('이동'));
 
+            var buttondiv = document.createElement('div');
+            buttondiv.classList.add('ovbuttondiv');
+
             closeBtn.onclick = () => {
                 overlay.setMap(null);
             };
@@ -133,7 +137,9 @@ const NearMap = () => {
                 sendMessage(pos.num);
             };
             controlldiv.appendChild(closeBtn);
+            controlldiv.appendChild(buttondiv);
             controlldiv.appendChild(goto);
+            controlldiv.classList.add('ovcontrol');
             content.appendChild(controlldiv);
 
             // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.

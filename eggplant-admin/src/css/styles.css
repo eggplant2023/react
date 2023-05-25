@@ -413,10 +413,35 @@ td{
     z-index: 999;
 }
 
-.test{
+.ovcontent{
     width:200px;
-    height: 130px;
+    height: 150px;
     border-radius: 10px;
     background-color: white;
-    padding:20px;
+    padding:10px;
+}
+
+.ovtitle{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.ovimage{
+    display: inline-block;
+}
+
+.ovinfo{
+    display: inline-block;
+    height: auto;
+}
+
+.ovcontrol{
+    display: block;
+
+}
+.ovbuttondiv{
+    width: 4px;
+    height: auto;
+    display: inline-block;
 }
