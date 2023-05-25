@@ -46,7 +46,6 @@ const NearMap = () => {
                 price: "",
                 model: "",
             }
-            setPositions(temp)
             createMaps(temp);
         })
 
@@ -91,6 +90,11 @@ const NearMap = () => {
             // content HTMLElement 생성
             var content = document.createElement('div');
             content.classList.add('test');
+
+            var image = document.createElement('img');
+            image.src = pos.img
+            content.appendChild(image);
+
             var info = document.createElement('span');
             info.appendChild(document.createTextNode(pos.title));
             content.appendChild(info);
