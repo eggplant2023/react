@@ -47,7 +47,7 @@ const NearMap = () => {
                 model: "",
             }
             setPositions(temp)
-            createMaps();
+            createMaps(temp);
         })
 
     }
@@ -57,7 +57,7 @@ const NearMap = () => {
     }
 
 
-    const createMaps = () => {
+    const createMaps = (temp) => {
 
         console.log(positions)
         var container = document.getElementById('map');
@@ -80,7 +80,7 @@ const NearMap = () => {
             setLevel(map.getLevel());
         });
 
-        positions.forEach(function (pos) {
+        temp.forEach(function (pos) {
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
                 map: map, // 마커를 표시할 지도
