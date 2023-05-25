@@ -91,15 +91,17 @@ const NearMap = () => {
             var content = document.createElement('div');
             content.classList.add('test');
 
+            var info = document.createElement('span');
+            info.appendChild(document.createTextNode(pos.title));
+            content.appendChild(info);
+
             var image = document.createElement('img');
             image.setAttribute("src",pos.img);
             image.setAttribute("width","50px");
             image.setAttribute("height","50px");
             content.appendChild(image);
 
-            var info = document.createElement('span');
-            info.appendChild(document.createTextNode(pos.title));
-            content.appendChild(info);
+
 
             var closeBtn = document.createElement('button');
             closeBtn.appendChild(document.createTextNode('닫기'));
