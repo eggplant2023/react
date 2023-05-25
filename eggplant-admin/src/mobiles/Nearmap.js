@@ -100,22 +100,10 @@ const NearMap = () => {
 
             var image = document.createElement('img');
             image.setAttribute("src",pos.img);
-            image.setAttribute("width","50px");
-            image.setAttribute("height","50px");
+            image.setAttribute("width","150px");
+            image.setAttribute("height","150px");
             content.appendChild(image);
             image.classList.add('ovimage');
-
-            var infodiv = document.createElement('div');
-            var infomodel = document.createElement('div');
-            infomodel.appendChild(document.createTextNode(" 모델명: "+pos.model))
-            var infoprice = document.createElement('div');
-            infoprice.appendChild(document.createTextNode(" 가격: "+pos.price));
-
-            infodiv.appendChild(infomodel)
-            infodiv.appendChild(infoprice)
-            infodiv.classList.add('ovinfo');
-            content.appendChild(infodiv)
-
 
             var controlldiv = document.createElement('div');
 
