@@ -88,6 +88,7 @@ const NearMap = () => {
             });
 
             // content HTMLElement 생성
+            if(pos.title != '내 위치'){
             var content = document.createElement('div');
             content.classList.add('ovcontent');
 
@@ -142,6 +143,7 @@ const NearMap = () => {
             kakao.maps.event.addListener(marker, 'click', () => {
                 overlay.setMap(map);
             });
+        }
         });
     }
 
