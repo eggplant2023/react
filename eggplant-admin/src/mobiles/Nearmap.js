@@ -104,8 +104,15 @@ const NearMap = () => {
             content.appendChild(image);
 
             var infodiv = document.createElement('div');
-            infodiv.appendChild(document.createTextNode("모델명: "+pos.model))
-            infodiv.appendChild(document.createTextNode("가격: "+pos.price));
+            var infomodel = document.createElement('span');
+            infomodel.appendChild(document.createTextNode("모델명: "+pos.model))
+            var br = document.createElement('br');
+            var infoprice = document.createElement('span');
+            infoprice.appendChild(document.createTextNode("가격: "+pos.price));
+
+            infodiv.appendChild(infomodel)
+            infodiv.appendChild(br)
+            infodiv.appendChild(infoprice)
             content.appendChild(infodiv)
 
 
