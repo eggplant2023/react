@@ -419,10 +419,13 @@ td{
     border-radius: 10px;
     background-color: white;
     padding:10px;
+    height: auto;
+    width: auto;
 }
 
 .ovtitle{
     display: block;
+    text-align: center;
     font-weight: bold;
     margin-bottom: 3px;
 }

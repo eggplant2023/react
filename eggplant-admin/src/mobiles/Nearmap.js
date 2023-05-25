@@ -107,9 +107,9 @@ const NearMap = () => {
 
             var infodiv = document.createElement('div');
             var infomodel = document.createElement('div');
-            infomodel.appendChild(document.createTextNode("모델명: "+pos.model))
+            infomodel.appendChild(document.createTextNode(" 모델명: "+pos.model))
             var infoprice = document.createElement('div');
-            infoprice.appendChild(document.createTextNode("가격: "+pos.price));
+            infoprice.appendChild(document.createTextNode(" 가격: "+pos.price));
 
             infodiv.appendChild(infomodel)
             infodiv.appendChild(infoprice)
