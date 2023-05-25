@@ -95,7 +95,7 @@ const NearMap = () => {
             var title = document.createElement('span');
             title.appendChild(document.createTextNode(pos.title));
             titlediv.appendChild(title);
-            content.appendChild(infodiv);
+            content.appendChild(titlediv);
 
             var image = document.createElement('img');
             image.setAttribute("src",pos.img);
