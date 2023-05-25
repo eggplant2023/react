@@ -16,7 +16,7 @@ const CreatePost = ({ closePosting }) => {
         setPost(
             {
                 user_num: 1,
-                status: "공개",
+                status: "판매중",
                 post_title: "",
                 model_name: "iphone XE",
                 grade: "",
@@ -83,7 +83,9 @@ const CreatePost = ({ closePosting }) => {
         console.log(event.target.value)
     }
 
-
+    const changeUserHandler = (event) => {
+        setPost({ ...post, user_num: event.target.value })
+    }
     const resizeImages = async (images) => {
         let image
         let resizingBlob
@@ -130,7 +132,8 @@ const CreatePost = ({ closePosting }) => {
                     <hr />
                     <table className="form_table">
                         <tr>
-                            <td colspan="2">제목 <input type="text" className="form_title" onChange={changeTitleHandler} /></td>
+                            <td>제목 <input type="text" className="form_title" onChange={changeTitleHandler} /></td>
+                            <td>유저ID <input type="number" onChange={changeUserHandler}/></td>
                         </tr>
                         <tr>
                             <td>카테고리 <input className="form_category" type="text" list="category" onChange={changeCategoryHandler}></input><datalist id="category">
