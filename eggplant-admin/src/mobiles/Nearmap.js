@@ -94,8 +94,8 @@ const NearMap = () => {
             var titlediv = document.createElement('div');
             var title = document.createElement('span');
             var closeBtn = document.createElement('button');
-            closeBtn.appendChild(document.createTextNode('닫기'));
-            title.appendChild(document.createTextNode(pos.title));
+            closeBtn.appendChild(document.createTextNode('X'));
+            title.appendChild(document.createTextNode(pos.title+"    "));
             titlediv.appendChild(title);
             titlediv.appendChild(closeBtn);
             content.appendChild(titlediv);

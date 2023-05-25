@@ -418,9 +418,10 @@ td{
     height: 150px;
     border-radius: 10px;
     background-color: #585459;
-    padding:5px;
+    padding:10px;
     height: auto;
     width: auto;
+    color: #C1B8C1;
 }
 
 .ovtitle{
@@ -443,5 +444,9 @@ td{
 
 .ovcontrol{
     display: block;
+}
 
+.ovcontent button {
+    background-color:  #585459;
+    color:white;
 }
