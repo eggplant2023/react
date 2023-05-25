@@ -429,7 +429,6 @@ td{
     text-align: center;
     font-weight: bold;
     margin-bottom: 3px;
-    float: right;
 }
 
 .ovimage{
@@ -450,5 +449,5 @@ td{
 .ovcontent button {
     background-color:  #585459;
     color:white;
-    float :left;
+    float :right;
 }
