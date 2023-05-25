@@ -84,10 +84,10 @@ const GetUserList = () => {
             <table className="Postings">
                 <thead>
                     <tr>
-                        <th>UID</th>
-                        <th>이름</th>
+                        <th>유저번호</th>
                         <th>아이디</th>
                         <th>닉네임</th>
+                        <th>매너온도</th>
                         <th>가입날짜</th>
                         <th>      </th>
                     </tr>
@@ -97,10 +97,10 @@ const GetUserList = () => {
                         userList.map(
                             (user) =>
                                 <tr>
-                                    <td>{user.uid}</td>
-                                    <td>{user.user_name}</td>
-                                    <td>{user.id}</td>
+                                    <td>{user.user_num}</td>
+                                    <td>{user.user_acc}</td>
                                     <td>{user.nickname}</td>
+                                    <td>{user.temperature}</td>
                                     <td>2023-05-28</td>
                                     <td className="manage_button"><button onClick={() => onClickManage(user.uid)}>관리</button></td>
                                 </tr>
