@@ -26,18 +26,20 @@ const NearMap = () => {
         PostingService.getNearLocation(lon, lat, 10).then((res) => {
             data = res.data
 
-            for(var i = 0; i < 5; i++ ){
+            for(var i = 0; i < data.length; i++ ){
                 console.log()
                 temp[i] = {
+                    num : data[i].post_num,
                     title: data[i].post_title,
                     img: data[i].pictureURL,
                     price: data[i].price,
                     model: data[i].model_name,
-                    latlng: new kakao.maps.LatLng(lat, lon)
+                    latlng: new kakao.maps.LatLng(data[i].location.latitude, parseFloat(data[i].location.logitude).toFixed(6))
                 }
             }
             
             temp[temp.length] = {
+                num: "",
                 title: '내 위치',
                 latlng: new kakao.maps.LatLng(lat, lon),
                 img: "",
@@ -96,7 +98,7 @@ const NearMap = () => {
             
 
             goto.onclick = () => {
-                sendMessage(117);
+                sendMessage(pos.num);
             };
             content.appendChild(closeBtn);
             content.appendChild(goto);
