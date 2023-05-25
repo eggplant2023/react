@@ -155,7 +155,7 @@ const NearMap = () => {
     return (
         <div className="mappage">
 
-            <div id="map" style={{ width: "400px", height: "650px" }} />
+            <div id="map" style={{ width: "400px", height: "680px" }} />
 
         </div>
 

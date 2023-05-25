@@ -70,7 +70,7 @@ const Map = () => {
     return (
         <div className="mappage">
 
-            <div id="map" style={{ width: "500px", height: "1000px" }}/>
+            <div id="map" style={{ width: "400px", height: "680px" }}/>
 
         </div>
 
