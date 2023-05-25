@@ -417,8 +417,8 @@ td{
     width:200px;
     height: 150px;
     border-radius: 10px;
-    background-color: white;
-    padding:10px;
+    background-color: #585459;
+    padding:5px;
     height: auto;
     width: auto;
 }
@@ -444,9 +444,4 @@ td{
 .ovcontrol{
     display: block;
 
-}
-.ovbuttondiv{
-    width: 4px;
-    height: auto;
-    display: inline-block;
 }

@@ -93,8 +93,11 @@ const NearMap = () => {
 
             var titlediv = document.createElement('div');
             var title = document.createElement('span');
+            var closeBtn = document.createElement('button');
+            closeBtn.appendChild(document.createTextNode('닫기'));
             title.appendChild(document.createTextNode(pos.title));
             titlediv.appendChild(title);
+            titlediv.appendChild(closeBtn);
             content.appendChild(titlediv);
             titlediv.classList.add('ovtitle');
 
@@ -107,28 +110,27 @@ const NearMap = () => {
 
             var controlldiv = document.createElement('div');
 
-            var closeBtn = document.createElement('button');
-            closeBtn.appendChild(document.createTextNode('닫기'));
 
-            var goto = document.createElement('button');
-            goto.appendChild(document.createTextNode('이동'));
 
-            var buttondiv = document.createElement('div');
-            buttondiv.classList.add('ovbuttondiv');
+            // var goto = document.createElement('button');
+            // goto.appendChild(document.createTextNode('이동'));
+
+            // var buttondiv = document.createElement('div');
+            // buttondiv.classList.add('ovbuttondiv');
 
             closeBtn.onclick = () => {
                 overlay.setMap(null);
             };
 
 
-            goto.onclick = () => {
+            image.onclick = () => {
                 sendMessage(pos.num);
             };
-            controlldiv.appendChild(closeBtn);
-            controlldiv.appendChild(buttondiv);
-            controlldiv.appendChild(goto);
-            controlldiv.classList.add('ovcontrol');
-            content.appendChild(controlldiv);
+
+            // controlldiv.appendChild(buttondiv);
+            // controlldiv.appendChild(goto);
+            // controlldiv.classList.add('ovcontrol');
+
 
             // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.
             var overlay = new kakao.maps.CustomOverlay({
