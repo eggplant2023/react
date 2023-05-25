@@ -91,10 +91,10 @@ const NearMap = () => {
             var content = document.createElement('div');
             content.classList.add('test');
 
-            var infodiv = document.createElement('div');
-            var info = document.createElement('span');
-            info.appendChild(document.createTextNode(pos.title));
-            infodiv.appendChild(info);
+            var titlediv = document.createElement('div');
+            var title = document.createElement('span');
+            title.appendChild(document.createTextNode(pos.title));
+            titlediv.appendChild(title);
             content.appendChild(infodiv);
 
             var image = document.createElement('img');
@@ -102,6 +102,11 @@ const NearMap = () => {
             image.setAttribute("width","50px");
             image.setAttribute("height","50px");
             content.appendChild(image);
+
+            var infodiv = document.createElement('div');
+            infodiv.appendChild(document.createTextNode("모델명: "+pos.model))
+            infodiv.appendChild(document.createTextNode("가격: "+pos.price));
+            content.appendChild(infodiv)
 
 
             var controlldiv = document.createElement('div');
