@@ -91,9 +91,11 @@ const NearMap = () => {
             var content = document.createElement('div');
             content.classList.add('test');
 
+            var infodiv = document.createElement('div');
             var info = document.createElement('span');
             info.appendChild(document.createTextNode(pos.title));
-            content.appendChild(info);
+            infodiv.appendChild(info);
+            content.appendChild(infodiv);
 
             var image = document.createElement('img');
             image.setAttribute("src",pos.img);
@@ -102,6 +104,7 @@ const NearMap = () => {
             content.appendChild(image);
 
 
+            var controlldiv = document.createElement('div');
 
             var closeBtn = document.createElement('button');
             closeBtn.appendChild(document.createTextNode('닫기'));
@@ -117,8 +120,9 @@ const NearMap = () => {
             goto.onclick = () => {
                 sendMessage(pos.num);
             };
-            content.appendChild(closeBtn);
-            content.appendChild(goto);
+            controlldiv.appendChild(closeBtn);
+            controlldiv.appendChild(goto);
+            content.appendChild(controlldiv);
 
             // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.
             var overlay = new kakao.maps.CustomOverlay({
