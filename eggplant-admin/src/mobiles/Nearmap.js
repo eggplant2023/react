@@ -69,6 +69,16 @@ const NearMap = () => {
         map = new kakao.maps.Map(container, options);
 
 
+        var zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+
+        kakao.maps.event.addListener(map, 'zoom_changed', function() {        
+
+            // 지도의 현재 레벨을 얻어옵니다
+            setLevel(map.getLevel());
+        });
+        
         positions.forEach(function (pos) {
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
@@ -89,16 +99,6 @@ const NearMap = () => {
 
             var goto = document.createElement('button');
             goto.appendChild(document.createTextNode('이동'));
-
-            var zoomControl = new kakao.maps.ZoomControl();
-            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-
-            kakao.maps.event.addListener(map, 'zoom_changed', function() {        
-    
-                // 지도의 현재 레벨을 얻어옵니다
-                setLevel(map.getLevel());
-            });
 
             closeBtn.onclick = () => {
                 overlay.setMap(null);
