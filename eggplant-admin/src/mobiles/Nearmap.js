@@ -95,7 +95,7 @@ const NearMap = () => {
             var title = document.createElement('span');
             var closeBtn = document.createElement('button');
             closeBtn.appendChild(document.createTextNode('X'));
-            title.appendChild(document.createTextNode(pos.title+"    "));
+            title.appendChild(document.createTextNode(pos.title+"       "));
             titlediv.appendChild(title);
             titlediv.appendChild(closeBtn);
             content.appendChild(titlediv);
