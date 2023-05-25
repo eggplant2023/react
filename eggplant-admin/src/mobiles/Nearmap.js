@@ -93,8 +93,8 @@ const NearMap = () => {
 
             var image = document.createElement('img');
             image.setAttribute("src",pos.img);
-            image.setAttribute("width","20px");
-            image.setAttribute("height","20px");
+            image.setAttribute("width","50px");
+            image.setAttribute("height","50px");
             content.appendChild(image);
 
             var info = document.createElement('span');
