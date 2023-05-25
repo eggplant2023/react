@@ -47,6 +47,7 @@ const NearMap = () => {
                 model: "",
             }
             setPositions(temp)
+            createMaps();
         })
 
     }
@@ -78,7 +79,7 @@ const NearMap = () => {
             // 지도의 현재 레벨을 얻어옵니다
             setLevel(map.getLevel());
         });
-        
+
         positions.forEach(function (pos) {
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
@@ -128,10 +129,6 @@ const NearMap = () => {
         setScreenSize();
         setLocations();
     }, []);
-
-    useEffect(() => {
-        createMaps();
-    });
 
     return (
         <div className="mappage">
