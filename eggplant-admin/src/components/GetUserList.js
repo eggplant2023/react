@@ -8,7 +8,7 @@ const GetUserList = () => {
     const [postsPerPage, setPostPerPage] = useState(10);
     const [usernum, setUsernum] = useState(0);
     const [postState, setPostState] = useState(false);
-    const [allUsers, setAllUsers] = useState();
+    const [allUsers, setAllUsers] = useState([]);
 
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
