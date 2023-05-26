@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const Today = ({worknum, qnum, rnum, cnum}) => {
+const Today = ({worknum, qnum, rnum, pnum}) => {
 
     return (
         <div className="today">
@@ -11,7 +11,7 @@ const Today = ({worknum, qnum, rnum, cnum}) => {
                 <tbody>
                     <tr><td>1:1 문의<span className="small_number">{qnum}</span></td>
                         <td>신고 목록<span className="small_number">{rnum}</span></td>
-                        <td>게시 승인<span className="small_number">{cnum}</span></td>
+                        <td>최근 게시물<span className="small_number">{pnum}</span></td>
                     </tr>
                 </tbody>
             </table>
