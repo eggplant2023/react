@@ -30,7 +30,7 @@ const GetReportList = () => {
 
 
     useEffect(() => {
-        PostingService.getPosts().then((res) => {
+        PostingService.getReportList().then((res) => {
             setAllPosts(res.data)
             console.log(res.data)
             setPostList(res.data.slice(0,postsPerPage))

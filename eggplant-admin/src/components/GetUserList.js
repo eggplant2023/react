@@ -93,7 +93,7 @@ const GetUserList = () => {
                                     <td>{user.nickname}</td>
                                     <td>{user.temperature}</td>
                                     <td>2023-05-28</td>
-                                    <td className="manage_button"><button onClick={() => onClickManage(user.uid)}>관리</button></td>
+                                    <td className="manage_button"><button onClick={() => onClickManage(user.user_num)}>관리</button></td>
                                 </tr>
                         )
                     }
