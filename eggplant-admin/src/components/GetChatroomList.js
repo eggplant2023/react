@@ -58,9 +58,9 @@ const GetChatroomList = () => {
                     <tr>
                         <th>채팅방 번호</th>
                         <th>문의자</th>
-                        <th>마지막 문의</th>
+                        <th>마지막 채팅</th>
                         <th>마지막 작성시간</th>
-                        <th>제목</th>
+                        <th>게시글 제목</th>
                         <th>      </th>
                     </tr>
                 </thead>

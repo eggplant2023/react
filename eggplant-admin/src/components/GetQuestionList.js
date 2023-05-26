@@ -60,7 +60,6 @@ const GetQuestionList = () => {
                         <th>문의자</th>
                         <th>마지막 문의</th>
                         <th>마지막 작성시간</th>
-                        <th>제목</th>
                         <th>      </th>
                     </tr>
                 </thead>
@@ -73,7 +72,6 @@ const GetQuestionList = () => {
                                     <td>{chatroom.host_info}</td>
                                     <td>{chatroom.last_cht_msg}</td>
                                     <td>{chatroom.last_cht_time}</td>
-                                    <td>{chatroom.post_name}</td>
                                     <td className="manage_button"><button onClick={() => onClickManage(chatroom.cht_room_no)}>관리</button></td>
                                 </tr>
                         )
