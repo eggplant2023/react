@@ -3,19 +3,21 @@ import PostingService from '../services/PostingService';
 import Pagination from './Pagination';
 import UpdatePost from './UpdatePost';
 
-const GetPostList = () => {
+const GetPostList = (state) => {
 
     const [postList, setPostList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
-    const [postnum,setPostnum] = useState(0);
+    const [postnum, setPostnum] = useState(0);
     const [postState, setPostState] = useState(false);
     const [allPosts, setAllPosts] = useState([]);
+    const [exPost, setExPost] = useState([]);
+    const [hdPost, setHdPost] = useState([]);
 
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
         let i = (pageNum - 1) * postsPerPage
-        setPostList(allPosts.slice(i,i+postsPerPage))
+        setPostList(allPosts.slice(i, i + postsPerPage))
         console.log(postList)
         setCurrentPage(pageNum)
     }
@@ -30,17 +32,26 @@ const GetPostList = () => {
 
 
     useEffect(() => {
-        PostingService.getPosts().then((res) => {
-            setAllPosts(res.data)
-            console.log(res.data)
-            setPostList(res.data.slice(0,postsPerPage))
+
+        if (state) {
+            PostingService.getPosts().then((res) => {
+                setAllPosts(res.data)
+                console.log(res.data)
+                setPostList(res.data.slice(0, postsPerPage))
+            }
+            )
         }
-        )
-    }, []);
+        else {
+            PostingService.getHiddenList().then((res) => {
+                setAllPosts(res.data)
+                setPostList(res.data.slice(0, postsPerPage))
+            })
+        }
+    }, [state]);
 
 
     const onClickManage = (num) => {
-        if(!postState){
+        if (!postState) {
             openPost()
             setPostnum(num)
         }
@@ -80,9 +91,9 @@ const GetPostList = () => {
                                     <td>{post.post_title}</td>
                                     <td>{post.nickname}</td>
                                     <td>{post.written_date}</td>
-                                    <td className="manage_button"><button onClick={()=>onClickManage(post.post_num)}>관리</button></td>
+                                    <td className="manage_button"><button onClick={() => onClickManage(post.post_num)}>관리</button></td>
                                 </tr>
-                        ) 
+                        )
                     }
                 </tbody>
             </table>
@@ -92,8 +103,8 @@ const GetPostList = () => {
                 paginate={setPage}
                 currentPage={currentPage}
             />
-            {  postState &&
-                    <UpdatePost post_num={postnum} closePost={closePost}/>
+            {postState &&
+                <UpdatePost post_num={postnum} closePost={closePost} />
             }
         </div>
     );

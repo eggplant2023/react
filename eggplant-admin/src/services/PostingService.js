@@ -136,6 +136,10 @@ class PostingService {
     getUserInfo(num) {
         return axios.get(API_BASE_URL+`/user/info/${num}`)
     }
+
+    getHiddenList() {
+        return axios.get(API_BASE_URL + '/post/hidden')
+    }
 }
 
 

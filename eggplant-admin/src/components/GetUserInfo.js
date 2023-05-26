@@ -7,7 +7,7 @@ const GetUserInfo = ({user_num, closePost}) => {
     useEffect(() => {
 
         PostingService.getUserInfo(user_num).then((res) => {
-            console.log(info)
+            console.log(res.data)
         })
 
 
