@@ -99,7 +99,7 @@ const UpdatePost = ({ post_num, closePost }) => {
                     <div class="filebox">
                         &nbsp;
 
-                        { (post.status, "숨김") ?
+                        { post.status == "숨김" ?
                             <button onClick={onExposure}>공개</button>
                             :
                             <button onClick={onHide}>비공개</button>
