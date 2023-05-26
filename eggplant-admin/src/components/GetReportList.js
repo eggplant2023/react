@@ -2,6 +2,7 @@ import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import Pagination from './Pagination';
 import UpdatePost from './UpdatePost';
+import ManageReport from './ManageReport';
 
 const GetReportList = () => {
 
@@ -11,7 +12,7 @@ const GetReportList = () => {
     const [postnum,setPostnum] = useState(0);
     const [postState, setPostState] = useState(false);
     const [allPosts, setAllPosts] = useState([]);
-
+    const [reportnum, setReportNum] = useState();
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
         let i = (pageNum - 1) * postsPerPage
@@ -38,10 +39,11 @@ const GetReportList = () => {
         )
     }, []);
 
-    const onClickManage = (num) => {
+    const onClickManage = (report_num,post_num) => {
         if(!postState){
             openPost()
-            setPostnum(num)
+            setReportNum(report_num)
+            setPostnum(post_num)
         }
     }
 
@@ -61,11 +63,10 @@ const GetReportList = () => {
             <table className="Postings">
                 <thead>
                     <tr>
-                        <th>게시글 번호</th>
-                        <th>모델명</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성시간</th>
+                        <th>신고번호</th>
+                        <th>게시글번호</th>
+                        <th>신고자</th>
+                        <th>신고시간</th>
                         <th>      </th>
                     </tr>
                 </thead>
@@ -74,12 +75,11 @@ const GetReportList = () => {
                         postList.map(
                             (post) =>
                                 <tr>
+                                    <td>{post.report_num}</td>
                                     <td>{post.post_num}</td>
-                                    <td>{post.model_name}</td>
-                                    <td>{post.post_title}</td>
-                                    <td>{post.nickname}</td>
-                                    <td>{post.written_date}</td>
-                                    <td className="manage_button"><button onClick={()=>onClickManage(post.post_num)}>관리</button></td>
+                                    <td>{post.reporter_num}</td>
+                                    <td>{post.report_date}</td>
+                                    <td className="manage_button"><button onClick={()=>onClickManage(post.report_num ,post.post_num)}>관리</button></td>
                                 </tr>
                         ) 
                     }
@@ -92,7 +92,7 @@ const GetReportList = () => {
                 currentPage={currentPage}
             />
             {  postState &&
-                    <UpdatePost post_num={postnum} closePost={closePost}/>
+                    <ManageReport report_num={reportnum} post_num={postnum} closePost={closePost}/>
             }
         </div>
     );
