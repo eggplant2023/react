@@ -37,11 +37,11 @@ const UpdatePost = ({ post_num, closePost }) => {
     }
 
     const onExposure = () => {
-        PostingService.exposureReport(post_num)
+        PostingService.exposurePost(post_num)
     }
 
     const onDelete = () => {
-        PostingService.deleteReport(post_num)
+        PostingService.deletePost(post_num)
             console.log("dd")
     }
     return (

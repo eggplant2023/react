@@ -74,7 +74,7 @@ class PostingService {
         })
     }
 
-    hidePost(report_num){
+    hideReport(report_num){
         return axios.get(API_BASE_URL+`/report/${report_num}/hide`)
     }
     getReportList(){
@@ -139,6 +139,19 @@ class PostingService {
 
     getHiddenList() {
         return axios.get(API_BASE_URL + '/post/hidden')
+    }
+
+
+    hidePost(post_num) {
+        return axios.get(API_BASE_URL + `/post/${post_num}/hide`)
+    }
+
+    exposurePost(post_num) {
+        return axios.get(API_BASE_URL + `/post/${post_num}/exposure`)
+    }
+
+    deletePost(post_num) {
+        return axios.get(API_BASE_URL + `/post/${post_num}/delete`)
     }
 }
 

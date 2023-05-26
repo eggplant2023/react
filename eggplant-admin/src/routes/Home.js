@@ -7,6 +7,7 @@ import RecentQuestions from "../components/RecentQuestions";
 import RecentReports from "../components/RecentReports";
 import Statistics from "../components/Statistics";
 import Menu from "../components/Menu"; 
+import RecentPost from '../components/RecentPost';
 
 const Home = () => {
 
@@ -47,15 +48,13 @@ const Home = () => {
         <>
         <Menu />
         <div className="home">
-            
-
                 <Today worknum={worknum} qnum={qnum} rnum={rnum} cnum={cnum} />
                 <div className="wrap_box">
                 <RecentQuestions questionList={questionList} />
                 <RecentReports reportsList={reportsList} />
             </div>
             <div className="wrap_box">
-                <RecentConfirm confirmList={confirmList} />
+                <RecentPost/>
                 <Statistics />
             </div>
         </div>

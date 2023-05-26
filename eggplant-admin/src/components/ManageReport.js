@@ -8,6 +8,7 @@ const ManageReport = ({ report_num, post_num, closePost }) => {
     const [viewStat, setViewStat] = useState(false);
     const [viewSrc, setViewSrc] = useState("")
     const [stat, setStat] = useState(false)
+
     useEffect(() => {
         PostingService.getSinglePost(post_num, 2).then((res) => {
             setPost(res.data)
@@ -16,7 +17,6 @@ const ManageReport = ({ report_num, post_num, closePost }) => {
                 setStat(true)
             }
         })
-        
     }, [])
 
     const imgClicked = (e) => {
@@ -31,7 +31,7 @@ const ManageReport = ({ report_num, post_num, closePost }) => {
     }
 
     const onHide = () => {
-        PostingService.hidePost(report_num).then(res => 
+        PostingService.hideReport(report_num).then(res => 
             console.log(res)
         )
     }
