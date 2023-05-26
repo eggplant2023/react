@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const RecentPost = (setNum) => {
-    const [posts, setPosts] = useState([]);
-    const [length, setLength] = useState();
+const RecentPost = ({posts, length}) => {
 
-    useEffect(()=>{
-        PostingService.getPosts().then((res)=>{
-            setPosts(res.data.slice(0, 3))
-            setLength(res.data.length)
-            setNum(res.data.length)
-        })
-    },[])
 
     return (
         <div className="hom_conf">

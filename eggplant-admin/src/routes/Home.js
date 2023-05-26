@@ -15,8 +15,30 @@ const Home = () => {
     const [qnum, setQnum] = useState(0);
     const [rnum, setRnum] = useState(0);
     const [pnum, setPnum] = useState(0);
+    const [reports, setReports] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [quests, setQuests] = useState([]);
 
-    useEffect(()=>{setWorknum(qnum+rnum+pnum)})
+    useEffect(() => {
+        PostingService.getAdminChatroom(2).then((res) => {
+            setQuests(res.data.slice(0, 3))
+            setQnum(res.data.length)
+
+            PostingService.getReportList.then((res) => {
+                setReports(res.data.slice(0, 3))
+                setRnum(res.data.length)
+
+                PostingService.getPosts().then((res)=>{
+                    setPosts(res.data.slice(0, 3))
+                    setPnum(res.data.length)
+                })
+            })
+        })
+    },[]) 
+
+    useEffect(()=>{
+        setWorknum(qnum+rnum+pnum)
+    },[qnum,rnum,pnum])
 
     return (
         <>
@@ -24,11 +46,11 @@ const Home = () => {
         <div className="home">
                 <Today worknum={worknum} qnum={qnum} rnum={rnum} pnum={pnum} />
                 <div className="wrap_box">
-                <RecentQuestions setNum={setQnum} />
-                <RecentReports setNum={setRnum} />
+                <RecentQuestions quests={quests} length={qnum}/>
+                <RecentReports reports={reports} length={rnum} />
             </div>
             <div className="wrap_box">
-                <RecentPost setNum = {setPnum}/>
+                <RecentPost posts = {posts} length={pnum}/>
                 <Statistics />
             </div>
         </div>

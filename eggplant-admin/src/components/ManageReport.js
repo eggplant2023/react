@@ -98,7 +98,7 @@ const ManageReport = ({ report_num, post_num, closePost }) => {
 
                     <br /><br />
                     <div class="filebox">
-                        <from>
+                        <form>
 
                         &nbsp;
 
@@ -111,7 +111,7 @@ const ManageReport = ({ report_num, post_num, closePost }) => {
                         <button onClick={onDelete}>삭제</button>
                         &nbsp;
                         <button onClick={closePost}>닫기</button>
-                    </from>
+                    </form>
                     </div>
                
                     

@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const RecentQuestions = (setNum) => {
-
-    const [quests,setQuests] = useState([])
-    const [length,setLength] = useState(0)
-
-    useEffect(() => {
-        PostingService.getAdminChatroom(2).then((res) => {
-            setQuests(res.data.slice(0, 3))
-            setLength(res.data.length)
-            setNum(res.data.length)
-        })
-    },[])
+const RecentQuestions = ({quests,length}) => {
 
     return (
         <div className="hom_quest">

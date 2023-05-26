@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const RecentReports = (setNum) => {
+const RecentReports = ({reports, length}) => {
 
-    const [reports,setReports] = useState([])
-    const [length,setLength] = useState(0)
 
-    useEffect(() => {
-        PostingService.getReportList.then((res) => {
-            setReports(res.data.slice(0, 3))
-            setLength(res.data.length)
-            setNum(res.data.length)
-        })
-    },[])
+    
 
     return(
         <div className="hom_report">
