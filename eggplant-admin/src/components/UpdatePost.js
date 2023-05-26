@@ -29,7 +29,7 @@ const UpdatePost = ({ post_num, closePost }) => {
     }
 
     const onHide = () => {
-        PostingService.hidePost.then(res => 
+        PostingService.hidePost(post_num).then(res => 
             console.log(res)
         )
     }
@@ -52,7 +52,6 @@ const UpdatePost = ({ post_num, closePost }) => {
                         <h1>게시글 관리</h1>
                     </div>
                     <hr />
-                    <form>
                     <table className="form_table">
                         <tr>
                             <td>제목: {post.post_title}</td>
@@ -110,7 +109,6 @@ const UpdatePost = ({ post_num, closePost }) => {
                         &nbsp;
                         <button onClick={closePost}>닫기</button>
                     </div>
-                    </form>
                
                     
                 {

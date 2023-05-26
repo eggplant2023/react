@@ -86,7 +86,7 @@ class PostingService {
     }
 
     deleteReport(report_num){
-        return axios.get(API_BASE_URL+`/post/${report_num}/delete`)
+        return axios.get(API_BASE_URL+`/report/${report_num}/delete`)
     }
 
     getApprovalList(){
