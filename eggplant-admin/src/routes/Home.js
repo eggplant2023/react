@@ -6,7 +6,7 @@ import RecentConfirm from "../components/RecentConfirm";
 import RecentQuestions from "../components/RecentQuestions";
 import RecentReports from "../components/RecentReports";
 import Statistics from "../components/Statistics";
-import Menu from "../components/Menu"; 
+import Menu from "../components/Menu";
 import RecentPost from '../components/RecentPost';
 
 const Home = () => {
@@ -19,45 +19,45 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const [quests, setQuests] = useState([]);
 
+    const getQuestions = PostingService.getAdminChatroom(2).then((res) => {
+        setQuests(res.data.slice(0, 3))
+        setQnum(res.data.length)
+    })
+
+    const getReports = PostingService.getReportList().then((res) => {
+        setReports(res.data.slice(0, 3))
+        setRnum(res.data.length)
+    })
+
+    const getPosts = PostingService.getPosts().then((res) => {
+        setPosts(res.data.slice(0, 3))
+        setPnum(res.data.length)
+    })
+
+
     useEffect(() => {
-        PostingService.getAdminChatroom(2).then((res) => {
-            setQuests(res.data.slice(0, 3))
-            setQnum(res.data.length)
-        })
-    },[]) 
+        Promise.all([getQuestions, getReports, getPosts])
+    }, [])
 
-    useEffect(()=>{
-        PostingService.getPosts().then((res)=>{
-            setPosts(res.data.slice(0, 3))
-            setPnum(res.data.length)
-        })
-    },[])
 
-    useEffect(()=>{
-        PostingService.getReportList.then((res) => {
-            setReports(res.data.slice(0, 3))
-            setRnum(res.data.length)
-        })
-    },[])
-
-    useEffect(()=>{
-        setWorknum(qnum+rnum+pnum)
-    },[qnum,rnum,pnum])
+    useEffect(() => {
+        setWorknum(qnum + rnum + pnum)
+    }, [qnum, rnum, pnum])
 
     return (
         <>
-        <Menu />
-        <div className="home">
+            <Menu />
+            <div className="home">
                 <Today worknum={worknum} qnum={qnum} rnum={rnum} pnum={pnum} />
                 <div className="wrap_box">
-                <RecentQuestions quests={quests} length={qnum}/>
-                <RecentReports reports={reports} length={rnum} />
+                    <RecentQuestions quests={quests} length={qnum} />
+                    <RecentReports reports={reports} length={rnum} />
+                </div>
+                <div className="wrap_box">
+                    <RecentPost posts={posts} length={pnum} />
+                    <Statistics />
+                </div>
             </div>
-            <div className="wrap_box">
-                <RecentPost posts = {posts} length={pnum}/>
-                <Statistics />
-            </div>
-        </div>
         </>
     )
 }
