@@ -1,5 +1,5 @@
 import React from "react";
-import GetChatroom from "../components/GetChatroomList";
+import GetChatroomList from "../components/GetChatroomList";
 import Menu from "../components/Menu"; 
 const Chatroom = () => {
     return (
@@ -11,7 +11,7 @@ const Chatroom = () => {
             </div>
             <hr />
             <div className="body">
-                <GetChatroom />
+                <GetChatroomList />
             </div>
 
         </div>

@@ -2,14 +2,14 @@ import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import GetChatList from './GetChatList';
 import Pagination from './Pagination';
-const GetChatroom = () => {
+const GetChatroomList = () => {
     const [chatroomList, setChatroomList] = useState([]);
     const [chatrommstate, setChatroomstate] = useState(false);
     const [roomnum, setRoomnum] = useState();
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
     const [allRooms, setAllRooms] = useState([]);
-    const [id,setId] = useState(2);
+
 
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
@@ -26,7 +26,7 @@ const GetChatroom = () => {
     }
 
     useEffect(() => {
-        PostingService.getAdminChatroom(id).then((res) => {
+        PostingService.getChatroom().then((res) => {
             setAllRooms(res.data)
             setChatroomList(res.data.slice(0, postsPerPage))
         })
@@ -57,10 +57,10 @@ const GetChatroom = () => {
                 <thead>
                     <tr>
                         <th>채팅방 번호</th>
-                        <th>판매자</th>
-                        <th>마지막 메세지</th>
+                        <th>문의자</th>
+                        <th>마지막 문의</th>
                         <th>마지막 작성시간</th>
-                        <th>판매글 제목</th>
+                        <th>제목</th>
                         <th>      </th>
                     </tr>
                 </thead>
@@ -95,4 +95,4 @@ const GetChatroom = () => {
     )
 }
 
-export default GetChatroom;
+export default GetChatroomList;
