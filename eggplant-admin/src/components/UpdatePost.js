@@ -7,11 +7,12 @@ const UpdatePost = ({ post_num, closePost }) => {
     const [attachment, setAttachment] = useState();
     const [viewStat, setViewStat] = useState(false);
     const [viewSrc, setViewSrc] = useState("")
+    var stat = "판매중"
     useEffect(() => {
         PostingService.getSinglePost(post_num, 2).then((res) => {
             setPost(res.data)
             setAttachment(res.data.pictureURL)
-            console.log(res.data.status == "숨김")
+            stat = res.data.status
         })
         
     }, [])
