@@ -132,6 +132,10 @@ class PostingService {
     getAdminChatroom(admin) {
         return axios.get(API_BASE_URL+`/chattingroom/guest/${admin}`)
     }
+
+    getUserInfo(num) {
+        return axios.get(API_BASE_URL+`/user/info/${num}`)
+    }
 }
 
 

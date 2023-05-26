@@ -2,19 +2,15 @@ import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
 const GetUserInfo = ({user_num, closePost}) => {
-    const [visitList, setVisitList] = useState([]);
-    const [likeList, setLikeList] = useState([]);
+    const [info,setInfo] = useState()
 
     useEffect(() => {
-        PostingService.getVisitList(user_num).then((res) => {
-            setVisitList(res.data)
-            console.log(res.data)
+
+        PostingService.getUserInfo(user_num).then((res) => {
+            console.log(info)
         })
 
-        PostingService.getLikeList(user_num).then((res) => {
-            setLikeList(res.data)
-            console.log(res.data)
-        })
+
     }, [])
 
     return (
