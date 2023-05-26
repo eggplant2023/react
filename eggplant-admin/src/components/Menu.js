@@ -10,11 +10,8 @@ const Menu = () => (
             <NavLink to ="/users"><li>회원 관리</li></NavLink>
             <NavLink to ="/posts"><li>게시글 관리</li></NavLink>
             <NavLink to ="/reports"><li>신고 목록</li></NavLink>
-            <NavLink to ="/confirm"><li>게시글 승인</li></NavLink>
-            <NavLink to ="/question"><li>1:1 문의</li></NavLink>
             <NavLink to ="/productinfo"><li>제품 정보 관리</li></NavLink>
             <NavLink to ="/chatroom"><li>채팅방 관리</li></NavLink>
-            <NavLink to ="/classify"><li>사진 분류 확인</li></NavLink>
         </ul>
     </nav>
     </div>
