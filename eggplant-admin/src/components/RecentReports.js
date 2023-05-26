@@ -4,7 +4,7 @@ import PostingService from '../services/PostingService';
 const RecentReports = ({reports, length}) => {
 
 
-    
+
 
     return(
         <div className="hom_report">
@@ -15,7 +15,7 @@ const RecentReports = ({reports, length}) => {
                 reports.map((it) =>
                     <tr key={it.num}>
                         <td><span className="new_note">NEW</span></td>
-                        <td className="home_lists_title">{it.post_num}번 게시글</td>
+                        <td className="home_lists_title">{it.post_num}번 게시글 신고</td>
                         <td>{it.report_date}</td>
                     </tr>
                 )

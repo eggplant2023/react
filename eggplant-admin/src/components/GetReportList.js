@@ -65,6 +65,7 @@ const GetReportList = () => {
                     <tr>
                         <th>신고번호</th>
                         <th>게시글번호</th>
+                        <th>신고자번호</th>
                         <th>신고자</th>
                         <th>신고시간</th>
                         <th>      </th>
@@ -78,6 +79,7 @@ const GetReportList = () => {
                                     <td>{post.report_num}</td>
                                     <td>{post.post_num}</td>
                                     <td>{post.reporter_num}</td>
+                                    <td>{post.nickname}</td>
                                     <td>{post.report_date}</td>
                                     <td className="manage_button"><button onClick={()=>onClickManage(post.report_num ,post.post_num)}>관리</button></td>
                                 </tr>
