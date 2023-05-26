@@ -11,50 +11,24 @@ import RecentPost from '../components/RecentPost';
 
 const Home = () => {
 
-    const [worknum, setWorknum] = useState(0)
-    const [qnum, setQnum] = useState(0)
-    const [rnum, setRnum] = useState(0)
-    const [cnum, setCnum] = useState(0)
-    const [confirmList, setConfirmList] = useState([])
-    const [questionList, setQuestionList] = useState([])
-    const [reportsList, setReportsList] = useState([])
-    const test = [{
-        num: 1,
-        title: "테스트 타이틀",
-        date: "오늘"
-    }, {
-        num: 2,
-        title: "테스트 타이틀",
-        date: "오늘"
-    }, {
-        num: 3,
-        title: "테스트 타이틀",
-        date: "오늘"
-    }]
+    const [worknum, setWorknum] = useState(0);
+    const [qnum, setQnum] = useState(0);
+    const [rnum, setRnum] = useState(0);
+    const [pnum, setPnum] = useState(0);
 
-    useEffect(() => {
-        setQnum(test.length)
-        setRnum(test.length)
-        setCnum(test.length)
-        setWorknum(test.length+test.length+test.length)
-        setConfirmList(test)
-        setQuestionList(test)
-        setReportsList(test)
-    }, [])
-
-
+    useEffect(()=>{setWorknum(qnum+rnum+pnum)})
 
     return (
         <>
         <Menu />
         <div className="home">
-                <Today worknum={worknum} qnum={qnum} rnum={rnum} cnum={cnum} />
+                <Today worknum={worknum} qnum={qnum} rnum={rnum} pnum={pnum} />
                 <div className="wrap_box">
-                <RecentQuestions questionList={questionList} />
-                <RecentReports reportsList={reportsList} />
+                <RecentQuestions setNum={setQnum} />
+                <RecentReports setNum={setRnum} />
             </div>
             <div className="wrap_box">
-                <RecentPost/>
+                <RecentPost setNum = {setPnum}/>
                 <Statistics />
             </div>
         </div>
