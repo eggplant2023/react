@@ -51,7 +51,7 @@ const ManageReport = ({ report_num, post_num, closePost }) => {
                     <div className="modal-header">
                         
 
-                        <h1>게시글 관리</h1>
+                        <h1>신고 관리</h1>
                     </div>
                     <hr />
                     <table className="form_table">
