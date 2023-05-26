@@ -1,50 +1,50 @@
 import React, { Componet, useState, useEffect } from 'react';
-import Pagination from './Pagination';
 import PostingService from '../services/PostingService';
+import Pagination from './Pagination';
 import UpdatePost from './UpdatePost';
-const GetReprotList = () => {
-    const [reportList, setReportList] = useState([]);
+
+const GetReportList = () => {
+
+    const [postList, setPostList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
     const [postnum,setPostnum] = useState(0);
-    const [postState, setPostState] = useState(false)
+    const [postState, setPostState] = useState(false);
+    const [allPosts, setAllPosts] = useState([]);
 
-    const test = [{
-        report_no: 1,
-        report_title: "신고합니다",
-        user_no: "1",
-        updateat: "2020-03-02",
-    },
-    {
-        report_no: 2,
-        report_title: "사기 신고합니다;;",
-        user_no: "2",
-        updateat: "2020-03-02",
-    },
-    {
-        report_no: 3,
-        report_title: "사기의심 게시글 신고합니다",
-        user_no: "3",
-        updateat: "2020-03-02",
-    },
-    ]
+    const setPage = (pageNum) => {
+        console.log(`post now page ${pageNum} `)
+        let i = (pageNum - 1) * postsPerPage
+        setPostList(allPosts.slice(i,i+postsPerPage))
+        console.log(postList)
+        setCurrentPage(pageNum)
+    }
+
+    const openPost = () => {
+        setPostState(true)
+    }
+
+    const closePost = () => {
+        setPostState(false)
+    }
+
 
     useEffect(() => {
-         PostingService.getReportList().then((res) => {
-            setReportList(res.data)
-         })
-    }, [])
+        PostingService.getPosts().then((res) => {
+            setAllPosts(res.data)
+            console.log(res.data)
+            setPostList(res.data.slice(0,postsPerPage))
+        }
+        )
+    }, []);
 
     const onClickManage = (num) => {
-        if(!setPostState){
-           setPostnum(num)
-           setPostState(true)
+        if(!postState){
+            openPost()
+            setPostnum(num)
         }
-   }
+    }
 
-   const closePost = () => {
-    setPostState(false)
-}
     return (
         <div>
             <div id="postList_form">
@@ -61,7 +61,8 @@ const GetReprotList = () => {
             <table className="Postings">
                 <thead>
                     <tr>
-                        <th>신고 번호</th>
+                        <th>게시글 번호</th>
+                        <th>모델명</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성시간</th>
@@ -70,23 +71,25 @@ const GetReprotList = () => {
                 </thead>
                 <tbody>
                     {
-                        reportList.map(
-                            (report) =>
+                        postList.map(
+                            (post) =>
                                 <tr>
-                                    <td>{report.report_num}</td>
-                                    <td>{report.report_title}</td>
-                                    <td>{report.nickname}</td>
-                                    <td>{report.report_date}</td>
-                                    <td className="manage_button"><button onClick={() => onClickManage(report.report_num)}>관리</button></td>
+                                    <td>{post.post_num}</td>
+                                    <td>{post.model_name}</td>
+                                    <td>{post.post_title}</td>
+                                    <td>{post.nickname}</td>
+                                    <td>{post.written_date}</td>
+                                    <td className="manage_button"><button onClick={()=>onClickManage(post.post_num)}>관리</button></td>
                                 </tr>
-                        )
+                        ) 
                     }
                 </tbody>
             </table>
             <Pagination
                 postsPerPage={postsPerPage}
-                totalPosts={reportList.length}
-                paginate={setCurrentPage}
+                totalPosts={allPosts.length}
+                paginate={setPage}
+                currentPage={currentPage}
             />
             {  postState &&
                     <UpdatePost post_num={postnum} closePost={closePost}/>
@@ -95,4 +98,4 @@ const GetReprotList = () => {
     );
 }
 
-export default GetReprotList;
+export default GetReportList;

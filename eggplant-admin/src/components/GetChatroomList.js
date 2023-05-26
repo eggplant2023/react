@@ -9,7 +9,7 @@ const GetChatroom = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
     const [allRooms, setAllRooms] = useState([]);
-
+    const [id,setId] = useState(2);
 
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
@@ -26,7 +26,7 @@ const GetChatroom = () => {
     }
 
     useEffect(() => {
-        PostingService.getChatroom().then((res) => {
+        PostingService.getAdminChatroom(id).then((res) => {
             setAllRooms(res.data)
             setChatroomList(res.data.slice(0, postsPerPage))
         })

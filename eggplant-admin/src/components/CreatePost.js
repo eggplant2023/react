@@ -132,7 +132,7 @@ const CreatePost = ({ closePosting }) => {
                     <hr />
                     <table className="form_table">
                         <tr>
-                            <td>제목 <input type="text" className="form_title" onChange={changeTitleHandler} /></td>
+                            <td>제목 <input type="text" onChange={changeTitleHandler} /></td>
                             <td>유저ID <input type="number" onChange={changeUserHandler}/></td>
                         </tr>
                         <tr>
