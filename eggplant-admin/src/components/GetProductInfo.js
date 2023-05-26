@@ -9,6 +9,14 @@ const GetProductInfo = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
     const [postnum,setPostnum] = useState(0);
+    const [allPosts, setAllPosts] = useState([]);
+
+    const setPage = (pageNum) => {
+        console.log(`post now page ${pageNum} `)
+        let i = (pageNum - 1) * postsPerPage
+        setModels(allPosts.slice(i, i + postsPerPage))
+        setCurrentPage(pageNum)
+    }
 
 
     useEffect(()=>{
@@ -18,8 +26,8 @@ const GetProductInfo = () => {
             }
         )
         PostingService.getModel().then((res) => {
-                setModels(res.data)
-                console.log(res.data)
+                setAllPosts(res.data)
+                setModels(res.data.slice(0,postsPerPage))
             }
         )
     },[])
@@ -58,8 +66,9 @@ const GetProductInfo = () => {
                 </table>  
                 <Pagination
                 postsPerPage={postsPerPage}
-                totalPosts={models.length}
-                paginate={setCurrentPage}
+                totalPosts={allPosts.length}
+                paginate={setPage}
+                currentPage={currentPage}
             />
         </div>
     );

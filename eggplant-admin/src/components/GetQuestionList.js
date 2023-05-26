@@ -1,13 +1,23 @@
 import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import GetChatList from './GetChatList';
-
-const GetQuestion = () => {
+import Pagination from './Pagination';
+const GetChatroom = () => {
     const [chatroomList, setChatroomList] = useState([]);
     const [chatrommstate, setChatroomstate] = useState(false);
     const [roomnum, setRoomnum] = useState();
-    const [id,SetId] = useState(2)
-    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostPerPage] = useState(10);
+    const [allRooms, setAllRooms] = useState([]);
+
+
+    const setPage = (pageNum) => {
+        console.log(`post now page ${pageNum} `)
+        let i = (pageNum - 1) * postsPerPage
+        setChatroomList(allRooms.slice(i, i + postsPerPage))
+        setCurrentPage(pageNum)
+    }
+
     const openRoom = () => {
         setChatroomstate(true)
     }
@@ -16,13 +26,14 @@ const GetQuestion = () => {
     }
 
     useEffect(() => {
-        PostingService.getAdminChatroom(id).then((res) => {
-            setChatroomList(res.data)
+        PostingService.getChatroom().then((res) => {
+            setAllRooms(res.data)
+            setChatroomList(res.data.slice(0, postsPerPage))
         })
     }, [])
 
     const onClickManage = (num) => {
-        if(!chatrommstate){
+        if (!chatrommstate) {
             openRoom()
             setRoomnum(num)
         }
@@ -46,10 +57,10 @@ const GetQuestion = () => {
                 <thead>
                     <tr>
                         <th>채팅방 번호</th>
-                        <th>판매자</th>
-                        <th>마지막 메세지</th>
+                        <th>문의자</th>
+                        <th>마지막 문의</th>
                         <th>마지막 작성시간</th>
-                        <th>판매글 제목</th>
+                        <th>제목</th>
                         <th>      </th>
                     </tr>
                 </thead>
@@ -69,12 +80,19 @@ const GetQuestion = () => {
                     }
                 </tbody>
             </table>
-            {   
+            {
                 chatrommstate &&
-                <GetChatList close={closeRoom} roomnumber={roomnum}/>
+                <GetChatList close={closeRoom} roomnumber={roomnum} />
             }
+
+            <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={allRooms.length}
+                paginate={setPage}
+                currentPage={currentPage}
+            />
         </div>
     )
 }
 
-export default GetQuestion;
+export default GetChatroom;

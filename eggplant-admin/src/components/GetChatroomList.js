@@ -1,12 +1,23 @@
 import React, { Componet, useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import GetChatList from './GetChatList';
-
+import Pagination from './Pagination';
 const GetChatroom = () => {
     const [chatroomList, setChatroomList] = useState([]);
     const [chatrommstate, setChatroomstate] = useState(false);
     const [roomnum, setRoomnum] = useState();
-    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostPerPage] = useState(10);
+    const [allRooms, setAllRooms] = useState([]);
+
+
+    const setPage = (pageNum) => {
+        console.log(`post now page ${pageNum} `)
+        let i = (pageNum - 1) * postsPerPage
+        setChatroomList(allRooms.slice(i, i + postsPerPage))
+        setCurrentPage(pageNum)
+    }
+
     const openRoom = () => {
         setChatroomstate(true)
     }
@@ -16,12 +27,13 @@ const GetChatroom = () => {
 
     useEffect(() => {
         PostingService.getChatroom().then((res) => {
-            setChatroomList(res.data)
+            setAllRooms(res.data)
+            setChatroomList(res.data.slice(0, postsPerPage))
         })
     }, [])
 
     const onClickManage = (num) => {
-        if(!chatrommstate){
+        if (!chatrommstate) {
             openRoom()
             setRoomnum(num)
         }
@@ -68,10 +80,17 @@ const GetChatroom = () => {
                     }
                 </tbody>
             </table>
-            {   
+            {
                 chatrommstate &&
-                <GetChatList close={closeRoom} roomnumber={roomnum}/>
+                <GetChatList close={closeRoom} roomnumber={roomnum} />
             }
+
+            <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={allRooms.length}
+                paginate={setPage}
+                currentPage={currentPage}
+            />
         </div>
     )
 }

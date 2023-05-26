@@ -38,7 +38,7 @@ const ChatBox = ({ currentUserId,
         <div>
         <div className="chatbox">
             {messages.map((msg) =>
-                msg.authorId == "1234" ?
+                msg.authorId == "2" ?
                     <div className="mychat">
                         <div className="mychat_massage">{msg.message}</div>{msg.timestamp}
                     </div>

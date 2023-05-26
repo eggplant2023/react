@@ -17,15 +17,6 @@ const GetUserList = () => {
         setCurrentPage(pageNum)
     }
 
-    const indexOfLast = currentPage * postsPerPage;
-    const indexOfFirst = indexOfLast - postsPerPage;
-
-    const currentPosts = (posts) => {
-        let currentPosts = 0;
-        currentPosts = posts.slice(indexOfFirst, indexOfLast);
-        return currentPosts;
-    };
-
 
     const closePost = () => {
         setPostState(false)
