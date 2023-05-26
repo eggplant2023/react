@@ -8,10 +8,10 @@ const UpdatePost = ({ post_num, closePost }) => {
     const [viewStat, setViewStat] = useState(false);
     const [viewSrc, setViewSrc] = useState("")
     useEffect(() => {
-        PostingService.getSinglePost(post_num, 1).then((res) => {
+        PostingService.getSinglePost(post_num, 2).then((res) => {
             setPost(res.data)
             setAttachment(res.data.pictureURL)
-            console.log(res.data)
+            console.log(res.data.status == "숨김")
         })
         
     }, [])
@@ -97,10 +97,12 @@ const UpdatePost = ({ post_num, closePost }) => {
                     <br /><br />
                     <div class="filebox">
                         &nbsp;
-                        {post.status = "숨김" ?
+
+                        { (post.status, "숨김") ?
                             <button onClick={onExposure}>공개</button>
                             :
                             <button onClick={onHide}>비공개</button>
+                            
                         }
                         &nbsp;
                         <button onClick={onDelete}>삭제</button>
