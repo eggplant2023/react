@@ -98,6 +98,8 @@ const UpdatePost = ({ post_num, closePost }) => {
 
                     <br /><br />
                     <div class="filebox">
+                        <form>
+
                         &nbsp;
 
                         { stat ?
@@ -109,6 +111,7 @@ const UpdatePost = ({ post_num, closePost }) => {
                         <button onClick={onDelete}>삭제</button>
                         &nbsp;
                         <button onClick={closePost}>닫기</button>
+                    </form>
                     </div>
                
                     
