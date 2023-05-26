@@ -13,7 +13,7 @@ const UpdatePost = ({ post_num, closePost }) => {
             setAttachment(res.data.pictureURL)
             console.log(res.data)
         })
-
+        
     }, [])
 
     const imgClicked = (e) => {
@@ -97,10 +97,10 @@ const UpdatePost = ({ post_num, closePost }) => {
                     <br /><br />
                     <div class="filebox">
                         &nbsp;
-                        {post.status == "숨김" ?
-                            <button onClick={onHide}>비공개</button>
-                            :
+                        {post.status = "숨김" ?
                             <button onClick={onExposure}>공개</button>
+                            :
+                            <button onClick={onHide}>비공개</button>
                         }
                         &nbsp;
                         <button onClick={onDelete}>삭제</button>
