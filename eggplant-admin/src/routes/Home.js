@@ -23,18 +23,22 @@ const Home = () => {
         PostingService.getAdminChatroom(2).then((res) => {
             setQuests(res.data.slice(0, 3))
             setQnum(res.data.length)
-
-            PostingService.getReportList.then((res) => {
-                setReports(res.data.slice(0, 3))
-                setRnum(res.data.length)
-
-                PostingService.getPosts().then((res)=>{
-                    setPosts(res.data.slice(0, 3))
-                    setPnum(res.data.length)
-                })
-            })
         })
     },[]) 
+
+    useEffect(()=>{
+        PostingService.getPosts().then((res)=>{
+            setPosts(res.data.slice(0, 3))
+            setPnum(res.data.length)
+        })
+    },[])
+
+    useEffect(()=>{
+        PostingService.getReportList.then((res) => {
+            setReports(res.data.slice(0, 3))
+            setRnum(res.data.length)
+        })
+    },[])
 
     useEffect(()=>{
         setWorknum(qnum+rnum+pnum)
