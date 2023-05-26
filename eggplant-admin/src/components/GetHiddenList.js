@@ -3,7 +3,7 @@ import PostingService from '../services/PostingService';
 import Pagination from './Pagination';
 import UpdatePost from './UpdatePost';
 
-const GetPostList = () => {
+const GetHiddenList = () => {
 
     const [postList, setPostList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -11,8 +11,6 @@ const GetPostList = () => {
     const [postnum, setPostnum] = useState(0);
     const [postState, setPostState] = useState(false);
     const [allPosts, setAllPosts] = useState([]);
-    const [exPost, setExPost] = useState([]);
-    const [hdPost, setHdPost] = useState([]);
 
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
@@ -32,11 +30,8 @@ const GetPostList = () => {
 
 
     useEffect(() => {
-
-
-            PostingService.getPosts().then((res) => {
+            PostingService.getHiddenList().then((res) => {
                 setAllPosts(res.data)
-                console.log(res.data)
                 setPostList(res.data.slice(0, postsPerPage))
             })
 
@@ -104,4 +99,4 @@ const GetPostList = () => {
     );
 }
 
-export default GetPostList;
+export default GetHiddenList;

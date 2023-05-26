@@ -24,6 +24,7 @@ hr {
 }
 
 h1{
+    display: inline-block;
     font-weight: bold;
     font-size: x-large;
 }
@@ -460,10 +461,18 @@ td{
     font-weight: bold;
     font-size: x-large;
     color : black;
+    display: inline-block;
 }
 
 .titleGray{
     font-weight: bold;
     font-size: x-large;
     color : #E3E3E3;
+    display: inline-block;
+}
+
+.showState{
+    margin-top: 20px;
+    margin-left: 150px;
+    margin-bottom: -40px;
 }
