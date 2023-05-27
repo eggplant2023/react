@@ -489,7 +489,6 @@ td{
     width: 100px;
     height: 100px;
     border-radius: 100%;
-    margin-left: 0;
 }
 
 .modal_nickname{
@@ -507,8 +506,6 @@ td{
 }
 
 .modal_control{
-    margin-right: 0;
-    margin-left: auto;
     display: inline-block;
 }
 
@@ -522,4 +519,5 @@ td{
 .modal_img{
     width: auto;
     height: 300px;
+    display: inline-block;
 }
