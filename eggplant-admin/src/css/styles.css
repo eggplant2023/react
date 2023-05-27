@@ -522,11 +522,11 @@ td{
     text-align: left;
 }
 
-.modal_userinfo{
+.madal_userinfo{
     position: relative;
     width: 500px;
     background-color: #fafafa;
-    bottom: 20px;
+    top:-100px;
 }
 .modal_modelname{
     position: relative;
