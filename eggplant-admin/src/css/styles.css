@@ -487,8 +487,8 @@ td{
 
 .modal_profileImg{
     position: relative;
-    bottom:-70px;
-    left: -200px;
+    bottom:-25px;
+    left: -100px;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -513,7 +513,7 @@ td{
 .modal_control{
     position: relative;
     bottom: 25px;
-    right: -1250px;
+    right: -125px;
     display: inline-block;
 }
 
