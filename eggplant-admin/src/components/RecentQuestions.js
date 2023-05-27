@@ -11,8 +11,11 @@ const RecentQuestions = ({quests,length}) => {
                 {
                     quests.map((it) =>
                         <tr>
-                            <td key={it.num}><span className="new_note">NEW</span></td>
-                            <td className="home_lists_title">{it.chatroom.last_cht_msg}</td>
+                            <td key={it.num}><span className="new_note">NEW</span></td>{
+                                it.chatroom.last_cht_msg ? 
+                                <td className="home_lists_title">{it.chatroom.last_cht_msg}</td> :
+                                <td className="home_lists_title">문의드립니다.</td>
+                            }
                             <td>{it.last_cht_time}</td>
                         </tr>
                     )
