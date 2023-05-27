@@ -488,7 +488,6 @@ td{
 .modal_profileImg{
     position: relative;
     bottom:-25px;
-    left: -100px;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -500,7 +499,7 @@ td{
     display: inline-block;
     font-size: x-large;
     font-weight: bold;
-    left:-50px;
+    left:50px;
 }
 
 .modal_status{
@@ -513,7 +512,6 @@ td{
 .modal_control{
     position: relative;
     bottom: 25px;
-    right: -125px;
     display: inline-block;
 }
 
@@ -526,7 +524,7 @@ td{
 
 .modal_userifo{
     background-color: #fafafa;
-    padding-bottom: 20px;
+    bottom: 20px;
 }
 .modal_modelname{
     position: relative;
