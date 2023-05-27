@@ -9,6 +9,7 @@ const UpdatePost = ({ post_num, closePost }) => {
     const [viewSrc, setViewSrc] = useState("")
     const [stat, setStat] = useState(false)
     useEffect(() => {
+        
         PostingService.getSinglePost(post_num, 2).then((res) => {
             setPost(res.data)
             setAttachment(res.data.pictureURL)
@@ -52,9 +53,10 @@ const UpdatePost = ({ post_num, closePost }) => {
                         
 
                         <h1>게시글 관리</h1>
+                        <button className ="modal_closebutton" onClick={closePost}>닫기</button>
                     </div>
                     <hr />
-                    <table className="form_table">
+                    {/* <table className="form_table">
                         <tr>
                             <td>제목: {post.post_title}</td>
                             <td>작성자: {post.nickname}</td>
@@ -72,21 +74,38 @@ const UpdatePost = ({ post_num, closePost }) => {
                             <td>가격: {post.price} <br />
                             </td>
                         </tr>
-                    </table>
-
+                    </table> */}
+                    <div className = "madal_userinfo">
+                        <img src={post.profile_image} className="modal_profileImg"/>
+                        <h2>{post.nickname}</h2>
+                        <h3>{post.status}</h3>
+                        <div class="modal_control">
+                        <form>
+                        { stat ?
+                            <button onClick={onExposure}>공개</button>
+                            :
+                            <button onClick={onHide}>비공개</button>
+                        }
+                        &nbsp;
+                        <button onClick={onDelete}>삭제</button>
+                        &nbsp;
+                    </form>
+                    </div>
+                    <div className="modal_imgbox">
                     {
                         attachment &&
                         attachment.map(
                             (attachment) =>
                             <img src={attachment} style={{
                                 backgroundImage: attachment,
-                                width: 100,
-                                height: 100
+                                width: "auto",
+                                height: "auto"
                             }}
                             onClick={imgClicked}
                             />
                             )
                         }
+                    </div>
                     <br />
                     내용
                     <div className="content_area">
@@ -97,21 +116,6 @@ const UpdatePost = ({ post_num, closePost }) => {
                     </div>
 
                     <br /><br />
-                    <div class="filebox">
-                        <form>
-
-                        &nbsp;
-
-                        { stat ?
-                            <button onClick={onExposure}>공개</button>
-                            :
-                            <button onClick={onHide}>비공개</button>
-                        }
-                        &nbsp;
-                        <button onClick={onDelete}>삭제</button>
-                        &nbsp;
-                        <button onClick={closePost}>닫기</button>
-                    </form>
                     </div>
                
                     

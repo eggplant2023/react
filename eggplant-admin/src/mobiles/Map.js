@@ -12,7 +12,9 @@ const Map = () => {
     const [positions,setPositions] = useState([])
     const [searchParams, setSearchParams] = useSearchParams();
     
-    const post = searchParams.get('post'); // postnum 값 변수에 저장
+    const post = searchParams.get('num'); // postnum 값 변수에 저장
+    const lat_key = searchParams.get('lat')
+    const lon_key = searchParams.get('lon');
 
     function setScreenSize() {
         let vh = window.innerHeight * 0.01;
@@ -58,8 +60,8 @@ const Map = () => {
 
     useEffect(() => {
         setScreenSize();
-        setLat(searchParams.get('lat'))
-        setLon(searchParams.get('lon'))
+        setLat(lat_key)
+        setLon(lon_key)
         setLocations();
     },[]);
 

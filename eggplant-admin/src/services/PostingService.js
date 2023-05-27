@@ -153,6 +153,10 @@ class PostingService {
     deletePost(post_num) {
         return axios.get(API_BASE_URL + `/post/${post_num}/delete`)
     }
+
+    getPofileImg(user_num){
+        return axios.get(API_BASE_URL + `/user/${user_num}`)
+    }
 }
 
 

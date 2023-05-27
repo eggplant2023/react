@@ -120,6 +120,7 @@ td{
     border-radius: 10px;
     animation: bounceIn;
     animation-duration: 0.5s;
+    overflow: scroll;
 }
 
 .filebox label {
@@ -475,4 +476,9 @@ td{
     margin-top: 20px;
     margin-left: 150px;
     margin-bottom: -40px;
+}
+
+.modal_imgbox{
+    width: 500px;
+    height: 300px;
 }
