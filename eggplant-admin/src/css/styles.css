@@ -487,7 +487,7 @@ td{
 
 .modal_profileImg{
     position: relative;
-    bottom:-100px;
+    bottom:-70px;
     left: -200px;
     display: inline-block;
     width: 100px;
@@ -500,7 +500,7 @@ td{
     display: inline-block;
     font-size: x-large;
     font-weight: bold;
-    left:150px;
+    left:-150px;
 }
 
 .modal_status{
@@ -512,7 +512,7 @@ td{
 
 .modal_control{
     position: relative;
-    bottom: 50px;
+    bottom: 20px;
     right: -50px;
     display: inline-block;
 }
