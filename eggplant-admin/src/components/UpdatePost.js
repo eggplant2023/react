@@ -96,7 +96,6 @@ const UpdatePost = ({ post_num, closePost }) => {
                     <img src={post.profile_image} className="modal_profileImg" />
                     <h2 className="modal_nickname">{post.nickname}<br />
                         <h3 className="modal_status">{post.status}</h3></h2>
-                    <h2 className="modal_modelname">카테고리:{post.category_name} 모델명: {post.model_name}</h2>
                     <div class="modal_control">
                         <form>
                             {stat ?
@@ -109,6 +108,7 @@ const UpdatePost = ({ post_num, closePost }) => {
                             &nbsp;
                         </form>
                     </div>
+                    <h2 className="modal_modelname">카테고리:{post.category_name} 모델명: {post.model_name}</h2>
                     </div>
                     <div className="content_area">
 
