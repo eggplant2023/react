@@ -52,10 +52,11 @@ const UpdatePost = ({ post_num, closePost }) => {
                 <div className="modal-header">
 
 
-                    <h1>게시글 관리</h1>
+                    <h1>{post.post_title}</h1>
                     <button className="clase" onClick={closePost}>닫기</button>
                 </div>
                 <hr />
+                <br/>
                 {/* <table className="form_table">
                         <tr>
                             <td>제목: {post.post_title}</td>
@@ -108,10 +109,8 @@ const UpdatePost = ({ post_num, closePost }) => {
                             &nbsp;
                         </form>
                     </div>
-
                     <br />
                     <br />
-                    내용
                     <div className="content_area">
 
                         <div className="content_box">{post.post_content}</div>
@@ -120,6 +119,7 @@ const UpdatePost = ({ post_num, closePost }) => {
                     </div>
                     <br />
                     <div className="modal_exInfo">가격: {post.price}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         평균거래가: {post.fairPrice}</div>
                 </div>
