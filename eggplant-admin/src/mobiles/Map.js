@@ -22,6 +22,7 @@ const Map = () => {
     const setLocations = () => {
         PostingService.getSellerLocation(post).then((res) => {
             console.log(res.data)
+            console.log("lat: "+lat+"   lon: "+lon)
             setPositions([
 
                 {
@@ -38,7 +39,6 @@ const Map = () => {
     }
 
     const createMaps = () => {
-        console.log("lat: "+lat+"   lon: "+lon)
         var container = document.getElementById('map');
         var options = {
             center: new kakao.maps.LatLng(lat, lon),
