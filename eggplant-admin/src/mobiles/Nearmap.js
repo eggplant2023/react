@@ -57,6 +57,7 @@ const NearMap = () => {
     const createMaps = (temp) => {
 
         console.log(positions)
+        console.log("lat: "+lat+"   lon: "+lon)
         var container = document.getElementById('map');
         var options = {
             center: new kakao.maps.LatLng(lat, lon),
