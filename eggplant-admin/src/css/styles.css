@@ -481,4 +481,35 @@ td{
 .modal_imgbox{
     width: 500px;
     height: 300px;
+    text-align: center;
+}
+
+.modal_profileImg{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.modal_nickname{
+    display: inline-block;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.modal_status{
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+    color: gray;
+}
+
+.modal_control{
+    display: inline-block;
+}
+
+.modal_exInfo{
+    display: inline-block;
+    font-size: x-large;
+    font-weight: bold;
 }

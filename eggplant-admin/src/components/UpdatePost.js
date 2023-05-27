@@ -53,7 +53,7 @@ const UpdatePost = ({ post_num, closePost }) => {
                         
 
                         <h1>게시글 관리</h1>
-                        <button className ="modal_closebutton" onClick={closePost}>닫기</button>
+                        <button className ="clase" onClick={closePost}>닫기</button>
                     </div>
                     <hr />
                     {/* <table className="form_table">
@@ -75,22 +75,7 @@ const UpdatePost = ({ post_num, closePost }) => {
                             </td>
                         </tr>
                     </table> */}
-                    <div className = "madal_userinfo">
-                        <img src={post.profile_image} className="modal_profileImg"/>
-                        <h2>{post.nickname}</h2>
-                        <h3>{post.status}</h3>
-                        <div class="modal_control">
-                        <form>
-                        { stat ?
-                            <button onClick={onExposure}>공개</button>
-                            :
-                            <button onClick={onHide}>비공개</button>
-                        }
-                        &nbsp;
-                        <button onClick={onDelete}>삭제</button>
-                        &nbsp;
-                    </form>
-                    </div>
+
                     <div className="modal_imgbox">
                     {
                         attachment &&
@@ -106,16 +91,32 @@ const UpdatePost = ({ post_num, closePost }) => {
                             )
                         }
                     </div>
+
+                    <div className = "madal_userinfo">
+                        <img src={post.profile_image} className="modal_profileImg"/>
+                        <h2 className="modal_nickname">{post.nickname}</h2>
+                        <h3 className="modal_status">{post.status}</h3>
+                        <div class="modal_control">
+                        <form>
+                        { stat ?
+                            <button onClick={onExposure}>공개</button>
+                            :
+                            <button onClick={onHide}>비공개</button>
+                        }
+                        &nbsp;
+                        <button onClick={onDelete}>삭제</button>
+                        &nbsp;
+                        </form>
+                        </div>
                     <br />
                     내용
                     <div className="content_area">
 
                         <div className="content_box">{post.post_content}</div>
-                        <br />
-                        <br />
-                    </div>
+                        
 
-                    <br /><br />
+                    </div>
+                     <div className="modal_exInfo">가격: {post.price}  평균거래가: {post.fairPrice}</div>
                     </div>
                
                     

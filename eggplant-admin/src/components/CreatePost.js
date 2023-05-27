@@ -125,6 +125,7 @@ const CreatePost = ({ closePosting }) => {
     return (
         <div className="modal">
             <div className="modal_body">
+                <form>
                     <div className="modal-header">
                         <h1>게시글 등록</h1>
                     </div>
@@ -193,6 +194,7 @@ const CreatePost = ({ closePosting }) => {
                         <button onClick={closePosting}>닫기</button>
                     </div>
 
+                </form>
             </div>
         </div>
     );
