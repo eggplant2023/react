@@ -500,7 +500,7 @@ td{
     display: inline-block;
     font-size: x-large;
     font-weight: bold;
-    left:-150px;
+    left:-75px;
 }
 
 .modal_status{
@@ -512,8 +512,8 @@ td{
 
 .modal_control{
     position: relative;
-    bottom: 20px;
-    right: -50px;
+    bottom: 25px;
+    right: -100px;
     display: inline-block;
 }
 
