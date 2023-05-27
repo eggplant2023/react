@@ -95,11 +95,19 @@ const UpdatePost = ({ post_num, closePost }) => {
                     <h3 className="modal_status">{post.status}</h3></h2>
                     <div class="modal_control">
                         <form>
-                            {stat ?
-                                <button onClick={onExposure}>공개</button>
-                                :
-                                <button onClick={onHide}>비공개</button>
-                            }
+                        {
+                        attachment &&
+                        attachment.map(
+                            (attachment) =>
+                            <img src={attachment} style={{
+                                backgroundImage: attachment,
+                                width: "500px",
+                                height: "auto"
+                            }}
+                            onClick={imgClicked}
+                            />
+                            )
+                        }
                             &nbsp;
                             <button onClick={onDelete}>삭제</button>
                             &nbsp;
@@ -116,7 +124,9 @@ const UpdatePost = ({ post_num, closePost }) => {
 
                     </div>
                     <br/>
-                    <div className="modal_exInfo">가격: {post.price}                평균거래가: {post.fairPrice}</div>
+                    <div className="modal_exInfo">가격: {post.price}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    평균거래가: {post.fairPrice}</div>
                 </div>
 
 
