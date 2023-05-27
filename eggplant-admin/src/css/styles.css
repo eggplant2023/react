@@ -491,6 +491,7 @@ td{
     display: inline-block;
     width: 100px;
     height: 100px;
+    left:-20px;
     border-radius: 100%;
 }
 
@@ -499,7 +500,7 @@ td{
     display: inline-block;
     font-size: x-large;
     font-weight: bold;
-    left:50px;
+    left:30px;
 }
 
 .modal_status{
@@ -513,7 +514,7 @@ td{
     position: relative;
     bottom: 50px;
     display: inline-block;
-    right:-125px;
+    right:-150px;
 }
 
 .modal_exInfo{
@@ -524,14 +525,12 @@ td{
 }
 
 .madal_userinfo{
-    width: 500px;
-    background-color: #fafafa;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     margin: auto;
 }
 .modal_modelname{
     position: relative;
     display: inline-block;
     font-weight: 100;
-    left:100px;
+    left:80px;
 }
