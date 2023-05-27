@@ -511,8 +511,9 @@ td{
 
 .modal_control{
     position: relative;
-    bottom: 25px;
+    bottom: 50px;
     display: inline-block;
+    right:-125px;
 }
 
 .modal_exInfo{
@@ -525,7 +526,8 @@ td{
 .madal_userinfo{
     width: 500px;
     background-color: #fafafa;
-    margin-bottom: 50px;
+    padding-bottom: 50px;
+    margin: auto;
 }
 .modal_modelname{
     position: relative;
