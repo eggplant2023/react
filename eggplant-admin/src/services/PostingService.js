@@ -157,6 +157,9 @@ class PostingService {
     getPofileImg(user_num){
         return axios.get(API_BASE_URL + `/user/${user_num}`)
     }
+    getTodaysPost(){
+        return axios.get(API_BASE_URL + '/post/today')
+    }
 }
 
 

@@ -29,7 +29,7 @@ const Home = () => {
         setRnum(res.data.length)
     })
 
-    const getPosts = PostingService.getPosts().then((res) => {
+    const getPosts = PostingService.getTodaysPost().then((res) => {
         setPosts(res.data.slice(0, 3))
         setPnum(res.data.length)
     })
