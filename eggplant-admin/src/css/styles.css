@@ -523,10 +523,9 @@ td{
 }
 
 .madal_userinfo{
-    position: relative;
     width: 500px;
     background-color: #fafafa;
-    top:-100px;
+    margin-bottom: 50px;
 }
 .modal_modelname{
     position: relative;
