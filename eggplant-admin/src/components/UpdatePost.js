@@ -76,19 +76,17 @@ const UpdatePost = ({ post_num, closePost }) => {
                         </tr>
                     </table> */}
 
-                <div className="modal_imgbox">
+
                     {
                         attachment &&
                         attachment.map(
                             (attachment) =>
-                                <img className="modal_img" src={attachment} style={{
-                                    backgroundImage: attachment,
-                                }}
-                                    onClick={imgClicked}
-                                />
+                            <div className="modal_imgbox" onClick={imgClicked} backgroundImage={attachment}>
+                                
+                             </div>
                         )
                     }
-                </div>
+
 
                 <div className="madal_userinfo">
                     <img src={post.profile_image} className="modal_profileImg" />
@@ -107,7 +105,9 @@ const UpdatePost = ({ post_num, closePost }) => {
                             &nbsp;
                         </form>
                     </div>
+
                     <br />
+                    <br/>
                     내용
                     <div className="content_area">
 
@@ -116,7 +116,7 @@ const UpdatePost = ({ post_num, closePost }) => {
 
                     </div>
                     <br/>
-                    <div className="modal_exInfo">가격: {post.price}  평균거래가: {post.fairPrice}</div>
+                    <div className="modal_exInfo">가격: {post.price}                평균거래가: {post.fairPrice}</div>
                 </div>
 
 
