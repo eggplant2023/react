@@ -91,9 +91,8 @@ const UpdatePost = ({ post_num, closePost }) => {
                             />
                     )
                 }
-
-
-                <div className="madal_userinfo">
+                    <br/>
+                    <div className="madal_userinfo">
                     <img src={post.profile_image} className="modal_profileImg" />
                     <h2 className="modal_nickname">{post.nickname}<br />
                         <h3 className="modal_status">{post.status}</h3></h2>
