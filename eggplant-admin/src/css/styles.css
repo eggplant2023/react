@@ -482,9 +482,13 @@ td{
     width: 500px;
     height: 300px;
     text-align: center;
+    background-size: contain;
 }
 
 .modal_profileImg{
+    position: relative;
+    bottom:-100px;
+    left: -200px;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -492,10 +496,11 @@ td{
 }
 
 .modal_nickname{
+    position: relative;
     display: inline-block;
     font-size: x-large;
     font-weight: bold;
-    margin-left: 150px;
+    left:150px;
 }
 
 .modal_status{
@@ -506,6 +511,9 @@ td{
 }
 
 .modal_control{
+    position: relative;
+    bottom: 50px;
+    right: -50px;
     display: inline-block;
 }
 
@@ -514,10 +522,4 @@ td{
     font-size: x-large;
     font-weight: bold;
     text-align: left;
-}
-
-.modal_img{
-    width: auto;
-    height: 300px;
-    display: inline-block;
 }
