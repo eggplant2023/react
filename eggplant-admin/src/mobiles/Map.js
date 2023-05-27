@@ -20,12 +20,12 @@ const Map = () => {
     const setLocations = () => {
         PostingService.getSellerLocation(post).then((res) => {
             console.log(res.data)
-            setPosition([
+            setPosition(
                 {
                     title: '판매자',
                     latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
                 }
-            ])
+            )
         }
         )
     }
