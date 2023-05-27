@@ -518,10 +518,19 @@ td{
 }
 
 .modal_exInfo{
-    width:500px;
     display: inline-block;
     font-size: x-large;
     font-weight: bold;
     text-align: left;
-    background-color: #E3E3E3;
+}
+
+.modal_userifo{
+    background-color: #fafafa;
+    padding-bottom: 20px;
+}
+.modal_modelname{
+    position: relative;
+    display: inline-block;
+    font-weight: 100;
+    left:100px;
 }
