@@ -9,15 +9,15 @@ const UpdatePost = ({ post_num, closePost }) => {
     const [viewSrc, setViewSrc] = useState("")
     const [stat, setStat] = useState(false)
     useEffect(() => {
-        
+
         PostingService.getSinglePost(post_num, 2).then((res) => {
             setPost(res.data)
             setAttachment(res.data.pictureURL)
-            if(res.data.status == "숨김"){
+            if (res.data.status == "숨김") {
                 setStat(true)
             }
         })
-        
+
     }, [])
 
     const imgClicked = (e) => {
@@ -32,7 +32,7 @@ const UpdatePost = ({ post_num, closePost }) => {
     }
 
     const onHide = () => {
-        PostingService.hidePost(post_num).then(res => 
+        PostingService.hidePost(post_num).then(res =>
             console.log(res)
         )
     }
@@ -43,20 +43,20 @@ const UpdatePost = ({ post_num, closePost }) => {
 
     const onDelete = () => {
         PostingService.deletePost(post_num)
-            console.log("dd")
+        console.log("dd")
     }
     return (
         <div className="modal">
             <div className="modal_body">
 
-                    <div className="modal-header">
-                        
+                <div className="modal-header">
 
-                        <h1>게시글 관리</h1>
-                        <button className ="clase" onClick={closePost}>닫기</button>
-                    </div>
-                    <hr />
-                    {/* <table className="form_table">
+
+                    <h1>게시글 관리</h1>
+                    <button className="clase" onClick={closePost}>닫기</button>
+                </div>
+                <hr />
+                {/* <table className="form_table">
                         <tr>
                             <td>제목: {post.post_title}</td>
                             <td>작성자: {post.nickname}</td>
@@ -76,50 +76,50 @@ const UpdatePost = ({ post_num, closePost }) => {
                         </tr>
                     </table> */}
 
-                    <div className="modal_imgbox">
+                <div className="modal_imgbox">
                     {
                         attachment &&
                         attachment.map(
                             (attachment) =>
-                            <img src={attachment} style={{
-                                backgroundImage: attachment,
-                                width: "auto",
-                                height: "auto"
-                            }}
-                            onClick={imgClicked}
-                            />
-                            )
-                        }
-                    </div>
+                                <img className="modal_img" src={attachment} style={{
+                                    backgroundImage: attachment,
+                                }}
+                                    onClick={imgClicked}
+                                />
+                        )
+                    }
+                </div>
 
-                    <div className = "madal_userinfo">
-                        <img src={post.profile_image} className="modal_profileImg"/>
-                        <h2 className="modal_nickname">{post.nickname}</h2>
-                        <h3 className="modal_status">{post.status}</h3>
-                        <div class="modal_control">
+                <div className="madal_userinfo">
+                    <img src={post.profile_image} className="modal_profileImg" />
+                    <br />
+                    <h2 className="modal_nickname">{post.nickname}<br />
+                    <h3 className="modal_status">{post.status}</h3></h2>
+                    <div class="modal_control">
                         <form>
-                        { stat ?
-                            <button onClick={onExposure}>공개</button>
-                            :
-                            <button onClick={onHide}>비공개</button>
-                        }
-                        &nbsp;
-                        <button onClick={onDelete}>삭제</button>
-                        &nbsp;
+                            {stat ?
+                                <button onClick={onExposure}>공개</button>
+                                :
+                                <button onClick={onHide}>비공개</button>
+                            }
+                            &nbsp;
+                            <button onClick={onDelete}>삭제</button>
+                            &nbsp;
                         </form>
-                        </div>
+                    </div>
                     <br />
                     내용
                     <div className="content_area">
 
                         <div className="content_box">{post.post_content}</div>
-                        
+
 
                     </div>
-                     <div className="modal_exInfo">가격: {post.price}  평균거래가: {post.fairPrice}</div>
-                    </div>
-               
-                    
+                    <br/>
+                    <div className="modal_exInfo">가격: {post.price}  평균거래가: {post.fairPrice}</div>
+                </div>
+
+
                 {
                     viewStat && <GetImageView src={viewSrc} closeView={closeView} />
                 }
