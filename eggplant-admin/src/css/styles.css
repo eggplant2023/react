@@ -514,7 +514,7 @@ td{
     position: relative;
     bottom: 50px;
     display: inline-block;
-    right:-180px;
+    right:-30px;
 }
 
 .modal_exInfo{
@@ -526,7 +526,7 @@ td{
 
 .madal_userinfo{
     width:500px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     margin: auto;
 }
 .modal_modelname{
