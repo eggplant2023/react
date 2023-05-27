@@ -514,7 +514,7 @@ td{
     position: relative;
     bottom: 50px;
     display: inline-block;
-    right:-200px;
+    right:-180px;
 }
 
 .modal_exInfo{
@@ -533,5 +533,5 @@ td{
     position: relative;
     display: inline-block;
     font-weight: 100;
-    left:20px;
+    left:50px;
 }

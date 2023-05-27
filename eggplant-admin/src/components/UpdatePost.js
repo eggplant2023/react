@@ -57,25 +57,6 @@ const UpdatePost = ({ post_num, closePost }) => {
                 </div>
                 <hr />
                 <br/>
-                {/* <table className="form_table">
-                        <tr>
-                            <td>제목: {post.post_title}</td>
-                            <td>작성자: {post.nickname}</td>
-                        </tr>
-                        <tr>
-                            <td>카테고리: {post.category_name}
-                            </td>
-                            <td>
-                                모델명: {post.model_name}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>등급: {post.grade} <br />
-                            </td>
-                            <td>가격: {post.price} <br />
-                            </td>
-                        </tr>
-                    </table> */}
 
 
                 {
