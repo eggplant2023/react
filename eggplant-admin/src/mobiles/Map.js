@@ -7,7 +7,7 @@ const { kakao } = window;
 
 const Map = () => {
 
-    const [positions, setPositions] = useState([])
+    const [position, setPosition] = useState()
     const [searchParams, setSearchParams] = useSearchParams();
     const [lon, setlon] = useState();
     const [lat, setlat] = useState();
@@ -21,13 +21,14 @@ const Map = () => {
     const setLocations = () => {
         PostingService.getSellerLocation(post).then((res) => {
             console.log(res.data)
-            console.log("lat: " + lat + "   lon: " + lon)
-            setPositions([
+            setlon(res.data.longitude)
+            setlat(res.data.latitude)
+            setPosition(
                 {
                     title: '판매자',
                     latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
                 }
-            ])
+            )
         }
         )
     }
@@ -50,7 +51,7 @@ const Map = () => {
         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
         var marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
-            position: positions[0].latlng, // 마커를 표시할 위치
+            position: position.latlng, // 마커를 표시할 위치
             image: markerImage,
         });
 
