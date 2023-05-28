@@ -116,6 +116,8 @@ const CreatePost = ({ closePosting }) => {
 
     };
 
+
+
     useEffect(() => {
         if (!!models) {
             console.log(models)
@@ -125,7 +127,7 @@ const CreatePost = ({ closePosting }) => {
     return (
         <div className="modal">
             <div className="modal_body">
-                <form>
+
                     <div className="modal-header">
                         <h1>게시글 등록</h1>
                     </div>
@@ -136,7 +138,7 @@ const CreatePost = ({ closePosting }) => {
                             <td>유저ID <input type="number" onChange={changeUserHandler}/></td>
                         </tr>
                         <tr>
-                            <td>카테고리 <input className="form_category" type="text" list="category" onChange={changeCategoryHandler}></input><datalist id="category">
+                            <td>카테고리 <input className="form_category" type="text" value="smartphone" list="category" onChange={changeCategoryHandler}></input><datalist id="category">
                                 {
                                     categories.map((category) =>
                                         <option>{category.category_name}</option>
@@ -178,9 +180,9 @@ const CreatePost = ({ closePosting }) => {
                     <div className="content_area">
 
                         <br />
-                        <input type="textarea" className="form_content" onkeypress="if(event.keyCode=='13'){event.preventDefault(); searchEvt();}" onChange={changePostContentHandler} /> <br />
+                        <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
                     </div>
-
+                    <form>
                     <br /><br />
                     <div class="filebox">
                         <label for="attach-file">파일찾기</label>
