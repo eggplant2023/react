@@ -67,6 +67,7 @@ const CreatePost = ({ closePosting }) => {
     }
 
     const changeGradeHandler = (event) => {
+        console.log(event.target.value)
         setPost({ ...post, grade: event.target.value })
     }
 
@@ -128,61 +129,67 @@ const CreatePost = ({ closePosting }) => {
         <div className="modal">
             <div className="modal_body">
 
-                    <div className="modal-header">
-                        <h1>게시글 등록</h1>
-                    </div>
-                    <hr />
-                    <table className="form_table">
-                        <tr>
-                            <td>제목 <input type="text" onChange={changeTitleHandler} /></td>
-                            <td>유저ID <input type="number" onChange={changeUserHandler}/></td>
-                        </tr>
-                        <tr>
-                            <td>카테고리 <input className="form_category" type="text" value="smartphone" list="category" onChange={changeCategoryHandler}></input><datalist id="category">
+                <div className="modal-header">
+                    <h1>게시글 등록</h1>
+                </div>
+                <hr />
+                <table className="form_table">
+                    <tr>
+                        <td>제목 <input type="text" onChange={changeTitleHandler} /></td>
+                        <td>유저ID <input type="number" onChange={changeUserHandler} /></td>
+                    </tr>
+                    <tr>
+                        <td>카테고리 <input className="form_category" type="text" value="smartphone" list="category" onChange={changeCategoryHandler}></input><datalist id="category">
+                            {
+                                categories.map((category) =>
+                                    <option>{category.category_name}</option>
+                                )
+                            }
+                        </datalist>
+                        </td>
+                        <td>
+                            모델명 <input type="text" className="form_model" list="model" onChange={changeModelNameHandler}></input><datalist id="model">
                                 {
-                                    categories.map((category) =>
-                                        <option>{category.category_name}</option>
+                                    models.map((model) =>
+                                        <option>{model.model_name}</option>
                                     )
                                 }
                             </datalist>
-                            </td>
-                            <td>
-                                모델명 <input type="text" className="form_model" list="model" onChange={changeModelNameHandler}></input><datalist id="model">
-                                    {
-                                        models.map((model) =>
-                                            <option>{model.model_name}</option>
-                                        )
-                                    }
-                                </datalist>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>등급 <input type="text" classNmae="form_grade" onChange={changeGradeHandler} /> <br />
-                            </td>
-                            <td>가격 <input type="number" classNmae="form_price" onChange={changePriceHandler} /> <br />
-                            </td>
-                        </tr>
-                    </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>등급 <select classNmae="form_grade" onChange={changeGradeHandler}>
+                            <option vlaue="S">S</option>
+                            <option vlaue="A">A</option>
+                            <option vlaue="B">B</option>
+                            <option vlaue="C">C</option>
+                            <option vlaue="F">F</option>
+                        </select> <br />
+                        </td>
+                        <td>가격 <input type="number" classNmae="form_price" onChange={changePriceHandler} /> <br />
+                        </td>
+                    </tr>
+                </table>
 
-                    {
-                        attachment &&
-                        attachment.map(
-                            (attachment) =>
-                                <img src={attachment} style={{
-                                    backgroundImage: attachment,
-                                    width: 100,
-                                    height: 100
-                                }} />
-                        )
-                    }
+                {
+                    attachment &&
+                    attachment.map(
+                        (attachment) =>
+                            <img src={attachment} style={{
+                                backgroundImage: attachment,
+                                width: 100,
+                                height: 100
+                            }} />
+                    )
+                }
+                <br />
+                내용
+                <div className="content_area">
+
                     <br />
-                    내용
-                    <div className="content_area">
-
-                        <br />
-                        <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
-                    </div>
-                    <form>
+                    <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
+                </div>
+                <form>
                     <br /><br />
                     <div class="filebox">
                         <label for="attach-file">파일찾기</label>
