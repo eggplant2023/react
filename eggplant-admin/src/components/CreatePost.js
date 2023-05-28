@@ -178,7 +178,7 @@ const CreatePost = ({ closePosting }) => {
                     <div className="content_area">
 
                         <br />
-                        <input type="textarea" className="form_content" onChange={changePostContentHandler} /> <br />
+                        <input type="textarea" className="form_content" onkeypress="if(event.keyCode=='13'){event.preventDefault(); searchEvt();}" onChange={changePostContentHandler} /> <br />
                     </div>
 
                     <br /><br />
