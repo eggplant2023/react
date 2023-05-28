@@ -7,7 +7,6 @@ const { kakao } = window;
 
 const Map = () => {
 
-    const [position, setPosition] = useState()
     const [searchParams, setSearchParams] = useSearchParams();
     const post = searchParams.get('num'); // postnum 값 변수에 저장
     const lat = searchParams.get('lat');
@@ -17,20 +16,16 @@ const Map = () => {
         document.documentElement.style.setProperty("--vh", `${vh}px`);
     }
 
-    const setLocations = () => {
-        PostingService.getSellerLocation(post).then((res) => {
-            console.log(res.data)
-            setPosition(
-                {
-                    title: '판매자',
-                    latlng: new kakao.maps.LatLng(res.data.latitude, res.data.longitude)
-                }
-            )
-        }
-        )
-    }
+
 
     const createMaps = () => {
+
+
+        var position = {
+            title: '판매자',
+            latlng: new kakao.maps.LatLng(lat, lon)
+        }
+
         var container = document.getElementById('map');
         var options = {
             center: new kakao.maps.LatLng(lat, lon),
@@ -58,7 +53,6 @@ const Map = () => {
 
     useEffect(() => {
         setScreenSize();
-        setLocations();
     }, []);
 
     useEffect(() => {

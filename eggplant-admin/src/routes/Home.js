@@ -50,7 +50,7 @@ const Home = () => {
             <div className="home">
                 <Today worknum={worknum} qnum={qnum} rnum={rnum} pnum={pnum} />
                 <div className="wrap_box">
-                    <RecentQuestions quests={quests} length={qnum} />
+                    <RecentQuestions setQuests={setQuests} quests={quests} length={qnum} />
                     <RecentReports reports={reports} length={rnum} />
                 </div>
                 <div className="wrap_box">

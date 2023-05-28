@@ -1,7 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 
-const RecentQuestions = ({quests,length}) => {
+const RecentQuestions = ({setQuests,quests,length}) => {
+
+    var Q = [];
+
+    useEffect(()=>{
+        for (let i=0; i<quests.length;i++){
+            if(quests.last_cht_msg == null){
+                Q[i] = {
+                    num: quests[i].num,
+                    last_cht_msg: "문의드립니다",
+                    last_cht_time: " "
+                     }
+            }
+            else{
+                Q[i] = quests[i]
+            }
+        }
+    },[])
 
     return (
         <div className="hom_quest">
@@ -11,11 +28,8 @@ const RecentQuestions = ({quests,length}) => {
                 {
                     quests.map((it) =>
                         <tr>
-                            <td key={it.num}><span className="new_note">NEW</span></td>{
-                                it.chatroom.last_cht_msg ? 
-                                <td className="home_lists_title">{it.chatroom.last_cht_msg}</td> :
-                                <td className="home_lists_title">문의드립니다.</td>
-                            }
+                            <td key={it.num}><span className="new_note">NEW</span></td>
+                                <td className="home_lists_title">{it.last_cht_msg}</td> :
                             <td>{it.last_cht_time}</td>
                         </tr>
                     )
