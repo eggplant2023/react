@@ -19,7 +19,7 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const [quests, setQuests] = useState([]);
 
-    const getQuestions = PostingService.getAdminChatroom(2).then((res) => {
+    const getQuestions = PostingService.getAdminChatroom(71).then((res) => {
         setQuests(res.data.slice(0, 3))
         setQnum(res.data.length)
     })

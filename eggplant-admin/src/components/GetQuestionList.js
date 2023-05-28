@@ -9,7 +9,7 @@ const GetQuestionList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10);
     const [allRooms, setAllRooms] = useState([]);
-    const [id, setId] = useState(2);
+    const [id, setId] = useState(71);
 
     const setPage = (pageNum) => {
         console.log(`post now page ${pageNum} `)
