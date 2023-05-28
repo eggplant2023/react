@@ -19,7 +19,7 @@ const CreatePost = ({ closePosting }) => {
                 status: "판매중",
                 post_title: "",
                 model_name: "iphone XE",
-                grade: "",
+                grade: "S",
                 price: 0,
                 post_content: "",
             }
