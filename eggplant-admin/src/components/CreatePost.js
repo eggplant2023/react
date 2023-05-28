@@ -25,20 +25,22 @@ const CreatePost = ({ closePosting }) => {
             }
         )
 
-        PostingService.getCategory().then((res) => { setCategories(res.data) })
-        setModels([{ model_name: "먼저 카테고리를 선택하세요" }])
+        // PostingService.getCategory().then((res) => { setCategories(res.data) })
+        // setModels([{ model_name: "먼저 카테고리를 선택하세요" }])
+        PostingService.getCategoriesModel("smartphone").then((res) => {
+            setModels(res.data) })
     }, [])
 
-    useEffect(() => {
-        for (let i in categories) {
-            if (category == categories[i].category_name) {
-                PostingService.getCategoriesModel(category).then((res) => {
-                    setModels(res.data)
-                })
-                break
-            }
-        }
-    }, [category])
+    // useEffect(() => {
+    //     for (let i in categories) {
+    //         if (category == categories[i].category_name) {
+    //             PostingService.getCategoriesModel(category).then((res) => {
+    //                 setModels(res.data)
+    //             })
+    //             break
+    //         }
+    //     }
+    // }, [category])
 
 
     const submit = () => {
