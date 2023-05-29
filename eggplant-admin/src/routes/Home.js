@@ -19,37 +19,20 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const [quests, setQuests] = useState([]);
 
-    const getQuestions = PostingService.getAdminChatroom(71).then((res) => {
-        setQuests(res.data.slice(0, 3))
-        setQnum(res.data.length)
-    })
-
-    const getReports = PostingService.getReportList().then((res) => {
-        setReports(res.data.slice(0, 3))
-        setRnum(res.data.length)
-    })
-
-    const getPosts = PostingService.getTodaysPost().then((res) => {
-        setPosts(res.data.slice(0, 3))
-        setPnum(res.data.length)
-        setWorknum(qnum + rnum + pnum)
-    })
-
-
-    const getall = () => {PostingService.getAdminChatroom(71).then((res) => {
-        setQuests(res.data.slice(0, 3))
-        setQnum(res.data.length)
-    }).then(PostingService.getReportList().then((res) => {
-        setReports(res.data.slice(0, 3))
-        setRnum(res.data.length)
-    })).then(PostingService.getTodaysPost().then((res) => {
-        setPosts(res.data.slice(0, 3))
-        setPnum(res.data.length)
-        setWorknum(qnum + rnum + pnum)
-    }))}
 
     useEffect(() => {
-        getall();
+        PostingService.getAdminChatroom(71).then((res) => {
+            setQuests(res.data.slice(0, 3))
+            setQnum(res.data.length)
+        }).then(PostingService.getReportList().then((res) => {
+            setReports(res.data.slice(0, 3))
+            setRnum(res.data.length)
+        })).then(PostingService.getTodaysPost().then((res) => {
+            setPosts(res.data.slice(0, 3))
+            setPnum(res.data.length)
+            setWorknum(qnum + rnum + pnum)
+            console.log("today 호출")
+        }))
     }, [])
 
 
