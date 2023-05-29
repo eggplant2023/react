@@ -36,7 +36,7 @@ const Home = () => {
     })
 
 
-    const getall = PostingService.getAdminChatroom(71).then((res) => {
+    const getall = () => {PostingService.getAdminChatroom(71).then((res) => {
         setQuests(res.data.slice(0, 3))
         setQnum(res.data.length)
     }).then(PostingService.getReportList().then((res) => {
@@ -46,7 +46,7 @@ const Home = () => {
         setPosts(res.data.slice(0, 3))
         setPnum(res.data.length)
         setWorknum(qnum + rnum + pnum)
-    }))
+    }))}
 
     useEffect(() => {
         getall();
