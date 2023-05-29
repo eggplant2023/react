@@ -415,14 +415,15 @@ td{
     z-index: 999;
 }
 
-.ovcontent{
-    width:auto;
+
+.ovcontent {
+    background-color: #f6f1f6;
+    border-radius: 5px;
+    color: #f6f1f6;
     height: auto;
-    border-radius: 10px;
-    background-color: #F6F1F6;
-    padding:10px;
-    height: auto;
-    color: #F6F1F6;
+    padding: 10px;
+    width: auto;
+    border: 5px solid #A512BD;
 }
 
 .ovtitle{
@@ -433,10 +434,12 @@ td{
     margin-bottom: 3px;
     overflow: scroll;
     color: #A512BD;
+    font-weight: bolder;
 }
 
 .ovimage{
     display: inline-block;
+    border-radius: 5px;
 }
 
 .ovinfo{
@@ -459,6 +462,7 @@ td{
     position: relative;
     left :5px;
     border-radius: 0;
+    font-weight: bolder;
 }
 
 .titleBlack{
