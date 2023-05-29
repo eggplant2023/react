@@ -26,7 +26,7 @@ const NearMap = () => {
     const initLocations = () => {
         let temp = []
         let data = []
-        PostingService.getNearLocation(lon, lat, level * 10).then((res) => {
+        PostingService.getNearLocation(lon, lat, level*5).then((res) => {
             data = res.data
 
             for (var i = 0; i < data.length; i++) {
@@ -61,6 +61,7 @@ const NearMap = () => {
     }
 
     const setLocations = () => {
+
         let temp = []
         let data = []
         PostingService.getNearLocation(lon, lat, level * 10).then((res) => {
@@ -100,8 +101,7 @@ const NearMap = () => {
 
 
     const loadMarkers = (it) => {
-
-         console.log(it);
+        console.log(it);
         markers.forEach(function(mark){
             mark.setMap(null);
         })
