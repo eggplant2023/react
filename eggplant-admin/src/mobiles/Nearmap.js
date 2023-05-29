@@ -12,11 +12,12 @@ const NearMap = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const lat = searchParams.get('lat')
     const lon = searchParams.get('lon');
+    var model = searchParams.get('model');
     const [level, setLevel] = useState(3);
     const [flag, setFlag] = useState(true);
     const [markers, setMarkers] = useState([]);
     const [overlays, setOverlays] = useState([]);
-
+    
 
     function setScreenSize() {
         let vh = window.innerHeight * 0.01;
@@ -26,7 +27,10 @@ const NearMap = () => {
     const initLocations = () => {
         let temp = []
         let data = []
-        PostingService.getNearLocation(lon, lat, 60).then((res) => {
+        if(model == "" || model == null){
+            model = "Galaxy Note 10";
+        }
+        PostingService.getPostmodel(model).then((res) => {
             data = res.data
 
             for (var i = 0; i < data.length; i++) {

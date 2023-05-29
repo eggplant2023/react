@@ -160,6 +160,10 @@ class PostingService {
     getTodaysPost(){
         return axios.get(API_BASE_URL + '/post/today')
     }
+
+    getPostmodel(model){
+        return axios.get(API_BASE_URL + `/post/${model}`)
+    }
 }
 
 
