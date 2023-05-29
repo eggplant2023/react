@@ -422,7 +422,7 @@ td{
     background-color: #585459;
     padding:10px;
     height: auto;
-    color: #dadada;
+    color: #F6F1F6;
 }
 
 .ovtitle{
@@ -432,6 +432,7 @@ td{
     font-weight: bold;
     margin-bottom: 3px;
     overflow: scroll;
+    color: #A512BD;
 }
 
 .ovimage{
