@@ -261,8 +261,8 @@ const NearMap = () => {
                 var closeBtn = document.createElement('button');
                 closeBtn.appendChild(document.createTextNode('X'));
                 title.appendChild(document.createTextNode(pos.title + "       "));
-                titlediv.appendChild(title);
                 titlediv.appendChild(closeBtn);
+                titlediv.appendChild(title);
                 content.appendChild(titlediv);
                 titlediv.classList.add('ovtitle');
 

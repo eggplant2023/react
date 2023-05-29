@@ -431,7 +431,7 @@ td{
     text-align: center;
     font-weight: bold;
     margin-bottom: 3px;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .ovimage{
