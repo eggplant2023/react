@@ -101,7 +101,7 @@ const UpdatePost = ({ post_num, closePost }) => {
                     <div className="modal_exInfo">가격: {post.price}
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        평균거래가: {post.fairPrice}</div>
+                        최근거래가: {post.fairPrice}</div>
 
                 {
                     viewStat && <GetImageView src={viewSrc} closeView={closeView} />
