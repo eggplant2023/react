@@ -457,6 +457,7 @@ td{
     margin-bottom: 10px;
     position: relative;
     left :5px;
+    border-radius: 0;
 }
 
 .titleBlack{
