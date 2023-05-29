@@ -162,7 +162,7 @@ class PostingService {
     }
 
     getPostmodel(model){
-        return axios.get(API_BASE_URL + `/post/${model}`)
+        return axios.get(API_BASE_URL + `/post/model/${model}`)
     }
 }
 
