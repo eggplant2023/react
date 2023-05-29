@@ -45,6 +45,7 @@ const NearMap = () => {
                 price: "",
                 model: "",
             }
+            console.log(temp);
             createMaps(temp);
         })
 
@@ -75,6 +76,7 @@ const NearMap = () => {
         kakao.maps.event.addListener(map, 'zoom_changed', function () {
 
             // 지도의 현재 레벨을 얻어옵니다
+            console.log("now level is "+map.getLevel())
             setLevel(map.getLevel());
         });
 
@@ -170,8 +172,12 @@ const NearMap = () => {
 
     useEffect(() => {
         setScreenSize();
-        setLocations();
     }, []);
+
+
+    useEffect(()=>{
+        setLocations();
+    }, [level]);
 
     return (
         <div className="mappage">

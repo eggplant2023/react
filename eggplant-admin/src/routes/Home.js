@@ -32,6 +32,7 @@ const Home = () => {
     const getPosts = PostingService.getTodaysPost().then((res) => {
         setPosts(res.data.slice(0, 3))
         setPnum(res.data.length)
+        setWorknum(qnum + rnum + pnum)
     })
 
 
@@ -39,10 +40,6 @@ const Home = () => {
         Promise.all([getQuestions, getReports, getPosts])
     }, [])
 
-
-    useEffect(() => {
-        setWorknum(qnum + rnum + pnum)
-    }, [qnum, rnum, pnum])
 
     return (
         <>
