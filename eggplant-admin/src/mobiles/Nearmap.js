@@ -12,7 +12,7 @@ const NearMap = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const lat = searchParams.get('lat')
     const lon = searchParams.get('lon');
-    const [level, setLevel] = useState(1);
+    const [level, setLevel] = useState(3);
     const [flag, setFlag] = useState(true);
     const [markers, setMarkers] = useState([]);
     const [overlays, setOverlays] = useState([]);
@@ -21,6 +21,43 @@ const NearMap = () => {
     function setScreenSize() {
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty("--vh", `${vh}px`);
+    }
+
+    const initLocations = () => {
+        let temp = []
+        let data = []
+        PostingService.getNearLocation(lon, lat, level * 10).then((res) => {
+            data = res.data
+
+            for (var i = 0; i < data.length; i++) {
+                console.log(data[i])
+                console.log("lat: "+lat+"   lon: "+lon)
+                temp[i] = {
+                    num: data[i].post_num,
+                    title: data[i].post_title,
+                    img: data[i].pictureURL,
+                    price: data[i].price,
+                    model: data[i].model_name,
+                    latlng: new kakao.maps.LatLng(data[i].location.latitude.toFixed(6), data[i].location.longitude.toFixed(6))
+                }
+            }
+
+            temp[temp.length] = {
+                num: "",
+                title: '내 위치',
+                latlng: new kakao.maps.LatLng(lat, lon),
+                img: "",
+                price: "",
+                model: "",
+            }
+            console.log(temp);
+            setPositions(temp);
+
+            createMaps(temp);
+
+
+        })
+
     }
 
     const setLocations = () => {
@@ -52,13 +89,7 @@ const NearMap = () => {
             }
             console.log(temp);
             setPositions(temp);
-            if (flag == true){
-                createMaps(temp);
-                setFlag(false);
-            }
-            else{
-                loadMarkers(temp);
-            }
+            loadMarkers(temp);
         })
 
     }
@@ -280,12 +311,19 @@ const NearMap = () => {
 
     useEffect(() => {
         setScreenSize();
-
+        createMaps();
     }, []);
 
 
     useEffect(()=>{
-        setLocations();
+        console.log(flag)
+        if(flag){
+            setFlag(false);
+            initLocations();
+        }
+        else{
+            setLocations();
+        }
 
     }, [level]);
 
