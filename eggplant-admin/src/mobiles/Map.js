@@ -29,7 +29,7 @@ const Map = () => {
         var container = document.getElementById('map');
         var options = {
             center: new kakao.maps.LatLng(lat, lon),
-            level: 3
+            level: 5
         };
 
 
