@@ -26,12 +26,12 @@ const NearMap = () => {
     const initLocations = () => {
         let temp = []
         let data = []
-        PostingService.getNearLocation(lon, lat, level*5).then((res) => {
+        PostingService.getNearLocation(lon, lat, level*2).then((res) => {
             data = res.data
 
             for (var i = 0; i < data.length; i++) {
                 console.log(data[i])
-                console.log("lat: "+lat+"   lon: "+lon)
+                console.log("lat: " + lat + "   lon: " + lon)
                 temp[i] = {
                     num: data[i].post_num,
                     title: data[i].post_title,
@@ -69,7 +69,7 @@ const NearMap = () => {
 
             for (var i = 0; i < data.length; i++) {
                 console.log(data[i])
-                console.log("lat: "+lat+"   lon: "+lon)
+                console.log("lat: " + lat + "   lon: " + lon)
                 temp[i] = {
                     num: data[i].post_num,
                     title: data[i].post_title,
@@ -102,9 +102,11 @@ const NearMap = () => {
 
     const loadMarkers = (it) => {
         console.log(it);
-        markers.forEach(function(mark){
-            mark.setMap(null);
-        })
+        if (markers != []) {
+            markers.forEach(function (mark) {
+                mark.setMap(null);
+            })
+        }
         it.forEach(function (pos) {
 
 
@@ -130,9 +132,9 @@ const NearMap = () => {
                     title: pos.title
                 });
             }
-            
-            setMarkers({...markers, marker})
-            
+
+            setMarkers({ ...markers, marker })
+
             // content HTMLElement 생성
             if (pos.title != '내 위치') {
                 var content = document.createElement('div');
@@ -213,7 +215,7 @@ const NearMap = () => {
         kakao.maps.event.addListener(map, 'zoom_changed', function () {
 
             // 지도의 현재 레벨을 얻어옵니다
-            console.log("now level is "+map.getLevel())
+            console.log("now level is " + map.getLevel())
             setLevel(map.getLevel());
         });
 
@@ -242,9 +244,9 @@ const NearMap = () => {
                     title: pos.title
                 });
             }
-            
-            setMarkers({...markers, marker})
-            
+
+            setMarkers({ ...markers, marker })
+
             // content HTMLElement 생성
             if (pos.title != '내 위치') {
                 var content = document.createElement('div');
@@ -311,13 +313,13 @@ const NearMap = () => {
     }, []);
 
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(flag)
-        if(flag){
+        if (flag) {
             setFlag(false);
             initLocations();
         }
-        else{
+        else {
             setLocations();
         }
 
