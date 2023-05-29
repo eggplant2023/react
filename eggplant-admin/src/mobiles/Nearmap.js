@@ -308,7 +308,6 @@ const NearMap = () => {
 
     useEffect(() => {
         setScreenSize();
-        createMaps();
     }, []);
 
 
