@@ -36,8 +36,20 @@ const Home = () => {
     })
 
 
+    const getall = PostingService.getAdminChatroom(71).then((res) => {
+        setQuests(res.data.slice(0, 3))
+        setQnum(res.data.length)
+    }).then(PostingService.getReportList().then((res) => {
+        setReports(res.data.slice(0, 3))
+        setRnum(res.data.length)
+    })).then(PostingService.getTodaysPost().then((res) => {
+        setPosts(res.data.slice(0, 3))
+        setPnum(res.data.length)
+        setWorknum(qnum + rnum + pnum)
+    }))
+
     useEffect(() => {
-        Promise.all([getQuestions, getReports, getPosts])
+        getall();
     }, [])
 
 
