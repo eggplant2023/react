@@ -101,11 +101,10 @@ const NearMap = () => {
 
     const loadMarkers = (it) => {
 
-
+         console.log(it);
         markers.forEach(function(mark){
             mark.setMap(null);
         })
-
         it.forEach(function (pos) {
 
 
@@ -218,95 +217,93 @@ const NearMap = () => {
             setLevel(map.getLevel());
         });
 
-        loadMarkers(temp);
-
-        // temp.forEach(function (pos) {
+        temp.forEach(function (pos) {
 
 
-        //     if (pos.title == "내 위치") {
-        //         var imageSrc = boogie,
-        //             imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-        //             imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+            if (pos.title == "내 위치") {
+                var imageSrc = boogie,
+                    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+                    imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-        //         // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-        //         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-        //         var marker = new kakao.maps.Marker({
-        //             map: map, // 마커를 표시할 지도
-        //             position: pos.latlng, // 마커를 표시할 위치
-        //             image: markerImage,
-        //         });
-        //     }
+                // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+                var marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: pos.latlng, // 마커를 표시할 위치
+                    image: markerImage,
+                });
+            }
 
-        //     else {
-        //         // 마커를 생성합니다
-        //         var marker = new kakao.maps.Marker({
-        //             map: map, // 마커를 표시할 지도
-        //             position: pos.latlng, // 마커를 표시할 위치
-        //             title: pos.title
-        //         });
-        //     }
+            else {
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: pos.latlng, // 마커를 표시할 위치
+                    title: pos.title
+                });
+            }
             
-        //     setMarkers({...markers, marker})
+            setMarkers({...markers, marker})
             
-        //     // content HTMLElement 생성
-        //     if (pos.title != '내 위치') {
-        //         var content = document.createElement('div');
-        //         content.classList.add('ovcontent');
+            // content HTMLElement 생성
+            if (pos.title != '내 위치') {
+                var content = document.createElement('div');
+                content.classList.add('ovcontent');
 
-        //         var titlediv = document.createElement('div');
-        //         var title = document.createElement('span');
-        //         var closeBtn = document.createElement('button');
-        //         closeBtn.appendChild(document.createTextNode('X'));
-        //         title.appendChild(document.createTextNode(pos.title + "       "));
-        //         titlediv.appendChild(title);
-        //         titlediv.appendChild(closeBtn);
-        //         content.appendChild(titlediv);
-        //         titlediv.classList.add('ovtitle');
+                var titlediv = document.createElement('div');
+                var title = document.createElement('span');
+                var closeBtn = document.createElement('button');
+                closeBtn.appendChild(document.createTextNode('X'));
+                title.appendChild(document.createTextNode(pos.title + "       "));
+                titlediv.appendChild(title);
+                titlediv.appendChild(closeBtn);
+                content.appendChild(titlediv);
+                titlediv.classList.add('ovtitle');
 
-        //         var image = document.createElement('img');
-        //         image.setAttribute("src", pos.img);
-        //         image.setAttribute("width", "150px");
-        //         image.setAttribute("height", "150px");
-        //         content.appendChild(image);
-        //         image.classList.add('ovimage');
+                var image = document.createElement('img');
+                image.setAttribute("src", pos.img);
+                image.setAttribute("width", "150px");
+                image.setAttribute("height", "150px");
+                content.appendChild(image);
+                image.classList.add('ovimage');
 
-        //         var controlldiv = document.createElement('div');
-
-
-
-        //         // var goto = document.createElement('button');
-        //         // goto.appendChild(document.createTextNode('이동'));
-
-        //         // var buttondiv = document.createElement('div');
-        //         // buttondiv.classList.add('ovbuttondiv');
-
-        //         closeBtn.onclick = () => {
-        //             overlay.setMap(null);
-        //         };
+                var controlldiv = document.createElement('div');
 
 
-        //         image.onclick = () => {
-        //             sendMessage(pos.num);
-        //         };
 
-        //         // controlldiv.appendChild(buttondiv);
-        //         // controlldiv.appendChild(goto);
-        //         // controlldiv.classList.add('ovcontrol');
+                // var goto = document.createElement('button');
+                // goto.appendChild(document.createTextNode('이동'));
+
+                // var buttondiv = document.createElement('div');
+                // buttondiv.classList.add('ovbuttondiv');
+
+                closeBtn.onclick = () => {
+                    overlay.setMap(null);
+                };
 
 
-        //         // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.
-        //         let overlay = new kakao.maps.CustomOverlay({
-        //             position: pos.latlng,
-        //             content: content
-        //         });
+                image.onclick = () => {
+                    sendMessage(pos.num);
+                };
 
-        //         // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-        //         kakao.maps.event.addListener(marker, 'click', () => {
-        //             overlay.setMap(map);
-        //         });
-        //     }
+                // controlldiv.appendChild(buttondiv);
+                // controlldiv.appendChild(goto);
+                // controlldiv.classList.add('ovcontrol');
 
-        // });
+
+                // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.
+                let overlay = new kakao.maps.CustomOverlay({
+                    position: pos.latlng,
+                    content: content
+                });
+
+                // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+                kakao.maps.event.addListener(marker, 'click', () => {
+                    overlay.setMap(map);
+                });
+            }
+
+        });
     }
 
     useEffect(() => {
