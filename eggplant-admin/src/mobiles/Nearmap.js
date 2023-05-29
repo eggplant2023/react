@@ -26,7 +26,7 @@ const NearMap = () => {
     const initLocations = () => {
         let temp = []
         let data = []
-        PostingService.getNearLocation(lon, lat, level*2).then((res) => {
+        PostingService.getNearLocation(lon, lat, 60).then((res) => {
             data = res.data
 
             for (var i = 0; i < data.length; i++) {
@@ -319,9 +319,9 @@ const NearMap = () => {
             setFlag(false);
             initLocations();
         }
-        else {
-            setLocations();
-        }
+        // else {
+        //     setLocations();
+        // }
 
     }, [level]);
 
