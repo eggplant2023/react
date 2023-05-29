@@ -213,7 +213,7 @@ const NearMap = () => {
 
 
         var zoomControl = new kakao.maps.ZoomControl();
-        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+        map.addControl(zoomControl, kakao.maps.ControlPosition.LEFT);
 
 
         kakao.maps.event.addListener(map, 'zoom_changed', function () {
