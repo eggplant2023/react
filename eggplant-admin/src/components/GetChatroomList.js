@@ -27,6 +27,8 @@ const GetChatroomList = () => {
 
     useEffect(() => {
         PostingService.getChatroom().then((res) => {
+            console.log("getChatroom")
+            console.log(res.data)
             setAllRooms(res.data)
             setChatroomList(res.data.slice(0, postsPerPage))
         })

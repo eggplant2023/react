@@ -27,6 +27,8 @@ const GetQuestionList = () => {
 
     useEffect(() => {
         PostingService.getAdminChatroom(id).then((res) => {
+            console.log("채팅방 요청 id :  " + id + "")
+            console.log("")
             setAllRooms(res.data)
             setChatroomList(res.data.slice(0, postsPerPage))
         })
