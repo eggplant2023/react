@@ -11,6 +11,7 @@ import Chatroom from './routes/Chatroom';
 import Classify from './routes/Classify';
 import Map from './mobiles/Map';
 import NearMap from './mobiles/Nearmap';
+import SellerMap from './mobiles/Sellermap';
 const AppRouter = () => {
 
   return(
@@ -28,6 +29,7 @@ const AppRouter = () => {
     <Route path="/classify" element={<Classify />}/>
     <Route path="/map" element={<Map />} />
     <Route path="/nearmap" element={<NearMap />} />
+    <Route path="/sellermap" element={<SellerMap />} />
   </Routes>
 
   </div>

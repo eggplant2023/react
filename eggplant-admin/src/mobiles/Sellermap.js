@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PostingService from '../services/PostingService';
 import { useLocation, useSearchParams } from "react-router-dom"
 import boogie from '../img/boogie.png'
+import sellerpin from '../img/sellerpin.png'
 const { kakao } = window;
 
-const NearMap = () => {
+const SellerMap = () => {
 
     var map
 
@@ -17,7 +18,7 @@ const NearMap = () => {
     const [flag, setFlag] = useState(true);
     const [markers, setMarkers] = useState([]);
     const [overlays, setOverlays] = useState([]);
-    
+    var num = searchParams.get('num');
 
     function setScreenSize() {
         let vh = window.innerHeight * 0.01;
@@ -128,12 +129,17 @@ const NearMap = () => {
                 });
             }
 
-            else {
-                // 마커를 생성합니다
+            if (pos.post_num == num) {
+                var imageSrc = sellerpin,
+                    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+                    imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+                // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
                 var marker = new kakao.maps.Marker({
                     map: map, // 마커를 표시할 지도
                     position: pos.latlng, // 마커를 표시할 위치
-                    title: pos.title
+                    image: markerImage,
                 });
             }
 
@@ -228,6 +234,20 @@ const NearMap = () => {
 
             if (pos.title == "내 위치") {
                 var imageSrc = boogie,
+                    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+                    imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+                // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+                var marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: pos.latlng, // 마커를 표시할 위치
+                    image: markerImage,
+                });
+            }
+
+            else if (postMessage.post_num == num) {
+                var imageSrc = sellerpin,
                     imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
                     imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
@@ -339,4 +359,4 @@ const NearMap = () => {
     );
 }
 
-export default NearMap;
+export default SellerMap;

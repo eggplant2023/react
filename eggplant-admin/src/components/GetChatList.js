@@ -10,7 +10,7 @@ const GetChatList = ({ roomnumber, close }) => {
     const [apponent, setApponent] = useState("")
     const topic = `/sub/chat/room/${roomnumber}`
     const clientRef = useRef(null)
-    const [currentUser, setCurrentUser] = useState(1234)
+    const [currentUser, setCurrentUser] = useState(71)
 
     //const chatUrl = "http://localhost:8080/ws-stomp"
     const chatUrl = "http://52.78.130.186:8080/ws-stomp"
